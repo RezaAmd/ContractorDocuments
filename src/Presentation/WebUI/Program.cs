@@ -1,7 +1,12 @@
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register dependency services.
+builder.Services.AddDependencyServices();
 
 var app = builder.Build();
 
@@ -20,7 +25,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=Home}/{action=Overview}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

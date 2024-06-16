@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\Core\Core.csproj" />
     <ProjectReference Include="..\..\Libraries\Services\Services.csproj" />
   </ItemGroup>
 
