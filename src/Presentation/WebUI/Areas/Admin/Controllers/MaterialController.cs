@@ -2,14 +2,11 @@
 
 namespace WebUI.Areas.Admin.Controllers
 {
-    public class ContractController : AdminBaseController
+    public class MaterialController : AdminBaseController
     {
         #region DI & Ctor
 
-        public ContractController()
-        {
-            
-        }
+
 
         #endregion
 
