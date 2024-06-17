@@ -1,0 +1,10 @@
+@import '../fonts/dirooz/dirooz.css';
+
+html, body
+{
+    position: relative;
+    min-height: 100vh;
+    overflow-x: clip;
+    font-family: "Dirooz";
+    --bs-body-font-family: "Dirooz" !important;
+}

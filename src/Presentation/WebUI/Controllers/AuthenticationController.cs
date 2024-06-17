@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebUI.Models.InputModels;
+using WebUI.Models.ViewModels;
 
 namespace WebUI.Controllers
 {
@@ -24,10 +26,22 @@ namespace WebUI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult SignUp()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SignIn([FromForm] UserSignInInputModel userInputModel)
         {
-            return View();
+
+            return Redirect("/");
+        }
+
+        #endregion
+
+        #region Json
+
+        [HttpPost]
+        public IActionResult Logout(string? returnUrl)
+        {
+            return Ok(new SignoutViewModel(returnUrl is null ? "/" : returnUrl));
         }
 
         #endregion
