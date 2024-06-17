@@ -1,10 +1,42 @@
 @import '../fonts/dirooz/dirooz.css';
 
-html, body
-{
+html, body {
     position: relative;
     min-height: 100vh;
     overflow-x: clip;
     font-family: "Dirooz";
-    --bs-body-font-family: "Dirooz" !important;
+}
+
+/* Bootstrap costumize */
+body {
+    --bs-body-font-family: "Dirooz";
+}
+
+.tooltip {
+    font-family: "Dirooz";
+}
+
+body[data-bs-theme="light"] [data-theme="light"] {
+    display: none;
+}
+
+body[data-bs-theme="dark"] [data-theme="dark"] {
+    display: none;
+}
+
+[data-bs-theme=dark],
+[data-bs-theme=dark] .table {
+    --bs-body-color: #cdd6cf !important;
+    --bs-table-color: #cdd6cf !important;
+}
+
+/* Utilities */
+
+.floating-hover:hover .floating-hover-child {
+    opacity: 1;
+}
+
+.floating-hover-child {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
 }

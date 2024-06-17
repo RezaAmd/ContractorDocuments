@@ -1,6 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', async () => {
 
-    // #region Signout controller
+    //#region Signout controller
 
     let signOutController = document.querySelectorAll('.sign-out-controller');
     if (signOutController && signOutController.length > 0) {
@@ -20,4 +20,16 @@
 
     //#endregion
 
+    //#region dark theme
+
+    prepareBootstrapTooltip();
+
+    //#endregion
+
+    
 });
+
+const prepareBootstrapTooltip = () => {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-title]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+}
