@@ -1,9 +1,11 @@
-﻿namespace Core.Domain.Customers
+﻿namespace BuildingMaterialAccounting.Core.Domain.Customers
 {
     public class UserEntity : BaseEntity
     {
+        public Fullname? Fullname { get; set; }
         public string PhoneNumber { get; set; }
-        public string Password { get; set; }
+        public PasswordHash Password { get; set; }
+        public DateTime CreatedOn { get; private set; } = DateTime.Now;
 
         #region Relations
 
@@ -13,7 +15,7 @@
 
         #region Ctor
 
-        public UserEntity(string phoneNumber, string password)
+        public UserEntity(string phoneNumber, PasswordHash password)
         {
             PhoneNumber = phoneNumber;
             Password = password;
