@@ -1,5 +1,5 @@
-﻿using BuildingMaterialAccounting.Services.Customers;
-using Core;
+﻿using BuildingMaterialAccounting.Core;
+using BuildingMaterialAccounting.Services.Customers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BuildingMaterialAccounting.Services

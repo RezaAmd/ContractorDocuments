@@ -8,6 +8,25 @@ html, body {
     font-family: "Dirooz";
 }
 
+.scrollable {
+    max-height: 70vh;
+    overflow: auto;
+}
+::-webkit-scrollbar {
+    width: 9px
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c8cbcf
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #babec4
+    }
+
+::-webkit-scrollbar-track {
+    background: var(--bs-body-bg)
+}
 /* Bootstrap costumize */
 body {
     --bs-body-font-family: "Dirooz";
