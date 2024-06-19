@@ -1,10 +1,19 @@
-﻿<div class="card">
-    <div class="card-body">
-        <h3>خوش آمدید!</h3>
-        <p>
-            برای دسترسی به پنل مدیریت، از طریق
-            <a asp-area="" asp-controller="Authentication" asp-action="SignIn">صفحه ورود</a>
-            به حساب کاربری خود وارد شوید.
-        </p>
+﻿<div class="row h-100">
+    <div class="col-12 col-lg-6">
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="d-flex flex-column">
+            <div>
+                <h3>خوش آمدید!</h3>
+                <p>
+                    برای دسترسی به پنل مدیریت، از طریق
+                    <a asp-area="" asp-controller="Authentication" asp-action="SignIn">صفحه ورود</a>
+                    به حساب کاربری خود وارد شوید.
+                </p>
+            </div>
+            <div class="d-grid pt-4">
+                <a class="btn btn-lg btn-success" href="/Authentication/SignIn">بزن بریم!</a>
+            </div>
+        </div>
     </div>
 </div>
