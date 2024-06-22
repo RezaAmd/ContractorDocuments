@@ -9,9 +9,7 @@
 
   <ItemGroup>
     <Folder Include="Caching\" />
-    <Folder Include="Data\Configurations\Customers\" />
     <Folder Include="Data\Migrations\" />
-    <Folder Include="Persistence\Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

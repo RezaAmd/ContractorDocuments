@@ -1,6 +1,6 @@
 ﻿using BuildingMaterialAccounting.Core.Domain.Customers;
 
-namespace BuildingMaterialAccounting.Infrastructure.Persistence.Configurations.FluentApi.Customers
+namespace BuildingMaterialAccounting.Infrastructure.Data.Configurations.Customers
 {
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {

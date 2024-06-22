@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Core\Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Libraries\Services\Application.csproj" />
+  </ItemGroup>
+
 </Project>
