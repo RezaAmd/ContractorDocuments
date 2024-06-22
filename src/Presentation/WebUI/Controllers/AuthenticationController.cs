@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BuildingMaterialAccounting.Application.Customers.Commands.Signin;
+using Microsoft.AspNetCore.Mvc;
 using WebUI.Models.InputModels;
 using WebUI.Models.ViewModels;
 
@@ -8,13 +9,16 @@ namespace WebUI.Controllers
     {
         #region Fields
 
-
+        private readonly IMediator _mediator;
 
         #endregion
 
         #region Ctor
 
-
+        public AuthenticationController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         #endregion
 
@@ -28,9 +32,14 @@ namespace WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SignIn([FromForm] UserSignInInputModel userInputModel)
+        public async Task<IActionResult> SignIn([FromForm] UserSignInInputModel userInputModel,
+            CancellationToken cancellationToken)
         {
-
+            var signInResult = await _mediator.Send(new UserSignInPasswordCommand
+            {
+                Username = userInputModel.username,
+                Password = userInputModel.password
+            }, cancellationToken);
             return Redirect("/");
         }
 

@@ -33,7 +33,7 @@ namespace BuildingMaterialAccounting.Application.Customers
                 return (UserSignInStatus.WrongUsernamePassword, null);
             }
             // Wrong password
-            if (user.Password != password)
+            if (user.Password is null || user.Password != password)
             {
 
                 return (UserSignInStatus.WrongUsernamePassword, null);
