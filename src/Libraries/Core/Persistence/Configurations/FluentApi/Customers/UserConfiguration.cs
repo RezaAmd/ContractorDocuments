@@ -1,6 +1,6 @@
 ﻿using BuildingMaterialAccounting.Core.Domain.Customers;
 
-namespace DigitalWallet.Infrastructure.Persistence.Configurations.FluentApi.Identity
+namespace BuildingMaterialAccounting.Infrastructure.Persistence.Configurations.FluentApi.Customers
 {
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {

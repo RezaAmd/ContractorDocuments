@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Core.Domain.Catalogs
+﻿namespace Domain.Entities.Materials
 {
     public class MaterialEntity : BaseEntity
     {
@@ -6,7 +6,7 @@
 
         #region Relations
 
-        public virtual MaterialMeasurementUnitEntity? MeasurementUnits { get; private set; }
+        public virtual MaterialMeasureEntity? MeasurementUnits { get; private set; }
 
         #endregion
 
@@ -14,7 +14,7 @@
 
         public MaterialEntity(string name)
         {
-            if(string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("Material name cannot be null.");
             Name = name;
         }

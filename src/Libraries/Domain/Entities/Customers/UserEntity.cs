@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Core.Domain.Customers
+﻿namespace Domain.Entities.Customers
 {
     public class UserEntity : BaseEntity
     {

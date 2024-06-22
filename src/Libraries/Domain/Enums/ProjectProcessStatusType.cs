@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Core.Enums
+﻿namespace Domain.Enums
 {
     public enum ProjectProcessStatusType
     {

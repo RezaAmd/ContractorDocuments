@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BuildingMaterialAccounting.Core.Common
+namespace Domain.Common
 {
     public abstract class ValueObject
     {

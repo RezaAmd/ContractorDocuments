@@ -1,4 +1,6 @@
-﻿namespace BuildingMaterialAccounting.Core.Domain.Catalogs
+﻿using Domain.Entities;
+
+namespace Domain.Entities.Catalogs
 {
     public class ProjectEntity : BaseEntity
     {

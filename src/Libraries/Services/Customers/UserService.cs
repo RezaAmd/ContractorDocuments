@@ -1,7 +1,7 @@
 ﻿using BuildingMaterialAccounting.Core.Data;
-using BuildingMaterialAccounting.Core.Domain.Customers;
+using Domain.Entities.Customers;
 
-namespace BuildingMaterialAccounting.Services.Customers
+namespace BuildingMaterialAccounting.Application.Customers
 {
     public class UserService
     {

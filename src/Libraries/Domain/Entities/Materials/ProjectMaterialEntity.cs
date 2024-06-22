@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Core.Domain.Catalogs
+﻿namespace Domain.Entities.Materials
 {
     public class ProjectMaterialEntity : BaseEntity
     {
@@ -8,7 +8,7 @@
 
         #region Relations
 
-        public virtual MaterialMeasurementUnitEntity? MaterialMeasurementUnit { get; private set; }
+        public virtual MaterialMeasureEntity? MaterialMeasurementUnit { get; private set; }
 
         #endregion
 

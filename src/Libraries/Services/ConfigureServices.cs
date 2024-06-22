@@ -1,8 +1,8 @@
-﻿using BuildingMaterialAccounting.Core;
-using BuildingMaterialAccounting.Services.Customers;
+﻿using BuildingMaterialAccounting.Application.Customers;
+using BuildingMaterialAccounting.Core;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BuildingMaterialAccounting.Services
+namespace BuildingMaterialAccounting.Application
 {
     public static class ConfigureServices
     {

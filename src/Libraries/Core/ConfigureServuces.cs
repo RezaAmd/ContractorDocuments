@@ -1,7 +1,7 @@
-﻿using BuildingMaterialAccounting.Core.Data;
+﻿using BuildingMaterialAccounting.Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BuildingMaterialAccounting.Core
+namespace BuildingMaterialAccounting.Infrastructure
 {
     public static class ConfigureServuces
     {
