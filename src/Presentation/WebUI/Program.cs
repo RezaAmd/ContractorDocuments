@@ -1,7 +1,3 @@
-
-
-using BuildingMaterialAccounting.Infrastructure;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,6 +15,9 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+await app.InitialiseDatabaseAsync();
+
 app.UseStaticFiles();
 
 app.UseRouting();

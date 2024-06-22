@@ -7,7 +7,7 @@ namespace BuildingMaterialAccounting.Application.Customers
         #region Fields
 
         private readonly ILogger<UserService> _logger;
-        private readonly IQueryable<UserEntity> _userQuery;
+        private readonly IApplicationDbContext _context;
 
         #endregion
 
@@ -16,7 +16,7 @@ namespace BuildingMaterialAccounting.Application.Customers
         public UserService(IApplicationDbContext context,
             ILogger<UserService> logger)
         {
-            _userQuery = context.Users;
+            _context = context;
             _logger = logger;
         }
 
@@ -29,6 +29,15 @@ namespace BuildingMaterialAccounting.Application.Customers
         //{
 
         //}
+
+        public async Task<Result> AddAsync(UserEntity user,
+            CancellationToken cancellationToken = default)
+        {
+            await _context.Users.AddAsync(user, cancellationToken);
+            if (Convert.ToBoolean(await _context.SaveChangesAsync(cancellationToken)))
+                return Result.Ok();
+            return Result.Fail();
+        }
 
         #endregion
     }

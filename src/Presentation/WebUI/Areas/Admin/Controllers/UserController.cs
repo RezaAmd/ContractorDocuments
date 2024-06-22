@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BuildingMaterialAccounting.Application.Customers.Commands.Register;
+using WebUI.Areas.Admin.Models.Customers;
 
 namespace WebUI.Areas.Admin.Controllers
 {
@@ -6,15 +7,15 @@ namespace WebUI.Areas.Admin.Controllers
     {
         #region Fields
 
-
+        private readonly Mediator _mediator;
 
         #endregion
 
         #region Ctor
 
-        public UserController()
+        public UserController(Mediator mediator)
         {
-
+            _mediator = mediator;
         }
 
         #endregion
@@ -38,9 +39,20 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create()
+        public async Task<IActionResult> Create([FromBody] RegisterUserPasswordInputModel userModel,
+            CancellationToken cancellationToken)
         {
-            return Ok();
+            var createUserResult = await _mediator.Send(new RegisterUserPasswordCommand()
+            {
+                PhoneNumber = userModel.PhoneNumber,
+                Password = userModel.Password
+            }, cancellationToken);
+
+            if (createUserResult.IsSuccess)
+            {
+                return Ok(createUserResult);
+            }
+            return BadRequest(createUserResult);
         }
 
         [HttpPost]
