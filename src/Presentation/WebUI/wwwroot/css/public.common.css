@@ -2,6 +2,7 @@
 
 html, body {
     position: relative;
+    height: 100%;
     min-height: 100vh;
     overflow-x: clip;
     font-family: "Dirooz";
@@ -47,6 +48,14 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
 [data-bs-theme=dark] .table {
     --bs-body-color: #cdd6cf !important;
     --bs-table-color: #cdd6cf !important;
+}
+
+:root {
+    --bs-border-radius: 0.8rem;
+    --bs-border-radius-sm: 3rem;
+    --bs-border-radius-lg: 1rem;
+    --bs-border-radius-xl: 1.5rem;
+    --bs-border-radius-xxl: 2rem;
 }
 
 /* Utilities */
