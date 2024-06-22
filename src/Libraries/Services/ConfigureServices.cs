@@ -5,7 +5,7 @@ namespace BuildingMaterialAccounting.Application
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddLogicServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             #region Customers
 

@@ -38,7 +38,7 @@ namespace BuildingMaterialAccounting.Domain.ValueObjects
 
             return string.Concat(
                 Convert.ToBase64String(saltBytes),
-                "-TOI-",
+                "-ToI-",
                 Convert.ToBase64String(hashPasswordBytes));
         }
         private void _setValue(string password)

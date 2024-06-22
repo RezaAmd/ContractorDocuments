@@ -1,5 +1,7 @@
 
 
+using BuildingMaterialAccounting.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,8 @@ builder.Services.AddControllersWithViews();
 
 // Register dependency services.
 builder.Services.AddDependencyServices();
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 

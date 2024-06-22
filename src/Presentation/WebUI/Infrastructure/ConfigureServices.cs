@@ -6,7 +6,7 @@ namespace WebUI.Infrastructure
     {
         public static IServiceCollection AddDependencyServices(this IServiceCollection services)
         {
-            services.AddLogicServices();
+            services.AddApplicationServices();
 
             #region Admin
 

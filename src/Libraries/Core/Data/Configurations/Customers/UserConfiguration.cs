@@ -6,7 +6,7 @@ namespace BuildingMaterialAccounting.Infrastructure.Data.Configurations.Customer
     {
         public void Configure(EntityTypeBuilder<UserEntity> b)
         {
-            b.ToTable("User");
+            b.ToTable("Users");
 
             // PhoneNumber
             b.Property(e => e.PhoneNumber)
