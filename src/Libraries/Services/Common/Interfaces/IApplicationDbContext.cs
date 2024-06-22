@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Customers;
-using Microsoft.EntityFrameworkCore;
+﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
 
 namespace BuildingMaterialAccounting.Application.Common.Interfaces
 {

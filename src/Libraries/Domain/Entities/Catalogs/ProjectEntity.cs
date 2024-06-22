@@ -1,6 +1,7 @@
-﻿using Domain.Entities;
+﻿using BuildingMaterialAccounting.Domain.Entities;
+using BuildingMaterialAccounting.Domain.Enums;
 
-namespace Domain.Entities.Catalogs
+namespace BuildingMaterialAccounting.Domain.Entities.Catalogs
 {
     public class ProjectEntity : BaseEntity
     {

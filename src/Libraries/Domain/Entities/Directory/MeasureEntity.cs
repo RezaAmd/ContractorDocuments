@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Directory
+﻿namespace BuildingMaterialAccounting.Domain.Entities.Directory
 {
     public class MeasureEntity : BaseEntity
     {
@@ -10,7 +10,7 @@
 
         public MeasureEntity(string name, string systemKeyword)
         {
-            if(string.IsNullOrEmpty(name)) throw new ArgumentNullException("Name cannot be null.");
+            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("Name cannot be null.");
             Name = name;
 
             if (string.IsNullOrEmpty(systemKeyword)) throw new ArgumentNullException("SystemKeyword cannot be null.");

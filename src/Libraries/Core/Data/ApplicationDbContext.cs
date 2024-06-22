@@ -1,9 +1,10 @@
-﻿using BuildingMaterialAccounting.Core.Domain.Customers;
+﻿using BuildingMaterialAccounting.Application.Common.Interfaces;
+using BuildingMaterialAccounting.Domain.Entities.Customers;
 using System.Reflection;
 
 namespace BuildingMaterialAccounting.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

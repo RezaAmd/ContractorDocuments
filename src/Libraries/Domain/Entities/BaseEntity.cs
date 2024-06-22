@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities
+﻿namespace BuildingMaterialAccounting.Domain.Entities
 {
     public class BaseEntity
     {

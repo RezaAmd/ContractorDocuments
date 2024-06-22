@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Catalogs
+﻿namespace BuildingMaterialAccounting.Domain.Entities.Catalogs
 {
     public class ProjectServiceEntity : BaseEntity
     {

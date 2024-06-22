@@ -1,4 +1,4 @@
-﻿using BuildingMaterialAccounting.Services.Customers;
+﻿using BuildingMaterialAccounting.Application.Customers;
 
 namespace WebUI.Areas.Admin.Factories
 {

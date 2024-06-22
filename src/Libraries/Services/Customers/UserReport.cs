@@ -1,5 +1,4 @@
-﻿using Domain.Entities.Customers;
-using Microsoft.EntityFrameworkCore;
+﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
 
 namespace BuildingMaterialAccounting.Application.Customers
 {
@@ -7,15 +6,15 @@ namespace BuildingMaterialAccounting.Application.Customers
     {
         #region Fields
 
-        private readonly Repository<UserEntity> _userRepository;
+        private readonly IQueryable<UserEntity> _UserQuery;
 
         #endregion
 
         #region Ctor
 
-        public UserReport(Repository<UserEntity> userRepository)
+        public UserReport(IApplicationDbContext context)
         {
-            _userRepository = userRepository;
+            _UserQuery = context.Users.AsNoTracking();
         }
 
         #endregion
@@ -24,7 +23,7 @@ namespace BuildingMaterialAccounting.Application.Customers
 
         public async Task<UserEntity?> FindUserByUsernameAsync(string phoneNumber,
             CancellationToken cancellationToken)
-            => await _userRepository.Table
+            => await _UserQuery
             .Where(u => u.PhoneNumber == phoneNumber)
             .FirstOrDefaultAsync(cancellationToken);
 

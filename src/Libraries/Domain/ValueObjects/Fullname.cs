@@ -1,8 +1,8 @@
-﻿using Domain.Common;
+﻿using BuildingMaterialAccounting.Domain.Common;
 using System;
 using System.Collections.Generic;
 
-namespace Domain.ValueObjects
+namespace BuildingMaterialAccounting.Domain.ValueObjects
 {
     public class Fullname : ValueObject
     {

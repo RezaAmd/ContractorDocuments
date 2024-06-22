@@ -1,4 +1,7 @@
-﻿namespace Domain.Entities.Customers
+﻿using BuildingMaterialAccounting.Domain.Entities;
+using BuildingMaterialAccounting.Domain.ValueObjects;
+
+namespace BuildingMaterialAccounting.Domain.Entities.Customers
 {
     public class UserEntity : BaseEntity
     {

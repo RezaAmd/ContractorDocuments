@@ -1,28 +1,35 @@
-﻿using BuildingMaterialAccounting.Core.Data;
-using Domain.Entities.Customers;
+﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
 
 namespace BuildingMaterialAccounting.Application.Customers
 {
     public class UserService
     {
-        #region DI & Ctor
+        #region Fields
 
         private readonly ILogger<UserService> _logger;
-        private readonly Repository<UserEntity> _userRepository;
+        private readonly IQueryable<UserEntity> _userQuery;
 
-        public UserService(Repository<UserEntity> userRepository,
+        #endregion
+
+        #region Ctor
+
+        public UserService(IApplicationDbContext context,
             ILogger<UserService> logger)
         {
-            _userRepository = userRepository;
+            _userQuery = context.Users;
             _logger = logger;
         }
 
         #endregion
+
+        #region Methods
 
         //public async Task<UserEntity> FindByIdAsync(Guid id,
         //    CancellationToken cancellationToken = default)
         //{
 
         //}
+
+        #endregion
     }
 }

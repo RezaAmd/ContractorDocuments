@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+﻿using BuildingMaterialAccounting.Domain.Common;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 
-namespace Domain.ValueObjects
+namespace BuildingMaterialAccounting.Domain.ValueObjects
 {
     public class PasswordHash : ValueObject
     {

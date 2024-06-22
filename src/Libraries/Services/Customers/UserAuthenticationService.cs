@@ -1,5 +1,5 @@
-﻿using Domain.Entities.Customers;
-using Domain.ValueObjects;
+﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
+using BuildingMaterialAccounting.Domain.ValueObjects;
 
 namespace BuildingMaterialAccounting.Application.Customers
 {

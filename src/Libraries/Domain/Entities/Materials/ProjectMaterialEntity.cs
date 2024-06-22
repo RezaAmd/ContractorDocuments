@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities.Materials
+﻿using BuildingMaterialAccounting.Domain.Entities;
+
+namespace BuildingMaterialAccounting.Domain.Entities.Materials
 {
     public class ProjectMaterialEntity : BaseEntity
     {

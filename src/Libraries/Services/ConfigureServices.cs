@@ -1,5 +1,4 @@
 ﻿using BuildingMaterialAccounting.Application.Customers;
-using BuildingMaterialAccounting.Core;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BuildingMaterialAccounting.Application
@@ -8,12 +7,11 @@ namespace BuildingMaterialAccounting.Application
     {
         public static IServiceCollection AddLogicServices(this IServiceCollection services)
         {
-            services.AddCoreServices();
-
             #region Customers
 
             services
                 .AddScoped<UserService>()
+                .AddScoped<UserReport>()
                 ;
 
             #endregion

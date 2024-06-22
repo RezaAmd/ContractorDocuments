@@ -1,4 +1,4 @@
-﻿using BuildingMaterialAccounting.Core.Domain.Customers;
+﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
 
 namespace BuildingMaterialAccounting.Infrastructure.Data.Configurations.Customers
 {
