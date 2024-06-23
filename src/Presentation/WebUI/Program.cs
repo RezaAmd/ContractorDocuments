@@ -1,12 +1,30 @@
+using FluentValidation;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Reflection;
+using WebUI.Models.InputModels;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+    options =>
+    {
+        options.AccessDeniedPath = "/forbidden";
+        options.LoginPath = "/authentication/signin";
+        builder.Configuration.Bind("CookieSettings", options);
+    });
+builder.Services.AddAuthorization();
+
 // Register dependency services.
 builder.Services.AddDependencyServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<UserSignInInputModelValidator>();
 
 var app = builder.Build();
 
@@ -20,8 +38,11 @@ await app.InitialiseDatabaseAsync();
 
 app.UseStaticFiles();
 
+// Routing
 app.UseRouting();
 
+// Auth
+app.UseAuthentication();
 app.UseAuthorization();
 
 #region Endpoit

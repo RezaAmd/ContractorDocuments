@@ -7,13 +7,13 @@ namespace WebUI.Areas.Admin.Controllers
     {
         #region Fields
 
-        private readonly Mediator _mediator;
+        private readonly IMediator _mediator;
 
         #endregion
 
         #region Ctor
 
-        public UserController(Mediator mediator)
+        public UserController(IMediator mediator)
         {
             _mediator = mediator;
         }

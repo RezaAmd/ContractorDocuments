@@ -20,6 +20,8 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+                return Redirect("/Admin/Dashboard");
             return View();
         }
 

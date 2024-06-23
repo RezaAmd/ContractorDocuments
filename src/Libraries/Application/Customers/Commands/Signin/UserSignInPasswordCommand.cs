@@ -1,14 +1,15 @@
-﻿using BuildingMaterialAccounting.Domain.ValueObjects;
+﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
+using BuildingMaterialAccounting.Domain.ValueObjects;
 
 namespace BuildingMaterialAccounting.Application.Customers.Commands.Signin
 {
-    public sealed class UserSignInPasswordCommand : IRequest<Result>
+    public sealed class UserSignInPasswordCommand : IRequest<Result<UserEntity?>>
     {
         public required string Username { get; set; }
         public required string Password { get; set; }
     }
 
-    public sealed class UserSignInPasswordCommandHandler : IRequestHandler<UserSignInPasswordCommand, Result>
+    public sealed class UserSignInPasswordCommandHandler : IRequestHandler<UserSignInPasswordCommand, Result<UserEntity?>>
     {
         #region DI & Ctor
 
@@ -21,7 +22,7 @@ namespace BuildingMaterialAccounting.Application.Customers.Commands.Signin
 
         #endregion
 
-        public async Task<Result> Handle(UserSignInPasswordCommand request, CancellationToken cancellationToken)
+        public async Task<Result<UserEntity?>> Handle(UserSignInPasswordCommand request, CancellationToken cancellationToken)
         {
             var signinResult = await _userAuthenticationService.SignInPasswordAsync(request.Username, PasswordHash.Parse(request.Password));
             if (signinResult.Status == UserSignInStatus.Success)
