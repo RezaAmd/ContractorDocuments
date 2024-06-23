@@ -1,7 +1,6 @@
 ﻿using BuildingMaterialAccounting.Application.Customers;
 using BuildingMaterialAccounting.Domain.Entities.Customers;
 using BuildingMaterialAccounting.Domain.ValueObjects;
-using BuildingMaterialAccounting.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,68 +22,68 @@ namespace BuildingMaterialAccounting.Infrastructure.Data
             await initialiser.SeedAsync();
         }
     }
-}
 
-public class ApplicationDbContextInitialiser
-{
-    #region Fields
-
-    private readonly ILogger<ApplicationDbContextInitialiser> _logger;
-    private readonly ApplicationDbContext _context;
-    private readonly UserService _userService;
-
-    #endregion
-
-    #region Ctor
-
-    public ApplicationDbContextInitialiser(ILogger<ApplicationDbContextInitialiser> logger,
-        ApplicationDbContext context, UserService userService)
+    public class ApplicationDbContextInitialiser
     {
-        _logger = logger;
-        _context = context;
-        _userService = userService;
-    }
+        #region Fields
 
-    #endregion
+        private readonly ILogger<ApplicationDbContextInitialiser> _logger;
+        private readonly ApplicationDbContext _context;
+        private readonly UserService _userService;
 
-    public async Task InitialiseAsync()
-    {
-        try
+        #endregion
+
+        #region Ctor
+
+        public ApplicationDbContextInitialiser(ILogger<ApplicationDbContextInitialiser> logger,
+            ApplicationDbContext context, UserService userService)
         {
-            await _context.Database.MigrateAsync();
+            _logger = logger;
+            _context = context;
+            _userService = userService;
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while initialising the database.");
-            throw;
-        }
-    }
 
-    public async Task SeedAsync()
-    {
-        try
-        {
-            await TrySeedAsync();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while seeding the database.");
-            throw;
-        }
-    }
+        #endregion
 
-    public async Task TrySeedAsync()
-    {
-        // Default users
-        var administrator = new UserEntity()
+        public async Task InitialiseAsync()
         {
-            PhoneNumber = "09058089095",
-            Password = PasswordHash.Parse("123456")
-        };
+            try
+            {
+                await _context.Database.MigrateAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while initialising the database.");
+                throw;
+            }
+        }
 
-        if (_context.Users.All(u => u.PhoneNumber != administrator.PhoneNumber))
+        public async Task SeedAsync()
         {
-            await _userService.AddAsync(administrator);
+            try
+            {
+                await TrySeedAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while seeding the database.");
+                throw;
+            }
+        }
+
+        public async Task TrySeedAsync()
+        {
+            // Default users
+            var administrator = new UserEntity()
+            {
+                PhoneNumber = "09058089095",
+                Password = PasswordHash.Parse("123456")
+            };
+
+            if (_context.Users.All(u => u.PhoneNumber != administrator.PhoneNumber))
+            {
+                await _userService.AddAsync(administrator);
+            }
         }
     }
 }
