@@ -8,6 +8,10 @@ html, body {
     font-family: "Dirooz";
 }
 
+hr {
+    border-color: #7e7e7ede;
+}
+
 .scrollable {
     max-height: 70vh;
     overflow: auto;

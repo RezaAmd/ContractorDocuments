@@ -88,6 +88,7 @@
   --bs-secondary-color-rgb: 33, 37, 41;
   --bs-secondary-bg: #e9ecef;
   --bs-secondary-bg-rgb: 233, 236, 239;
+  --bs-placeholder-color: rgb(87, 94, 101, 0.75);
   --bs-tertiary-color: rgba(33, 37, 41, 0.5);
   --bs-tertiary-color-rgb: 33, 37, 41;
   --bs-tertiary-bg: #f8f9fa;
@@ -2161,8 +2162,8 @@ progress {
   opacity: 1;
 }
 .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  opacity: 1;
+    color: var(--bs-placeholder-color);
+    opacity: 1;
 }
 .form-control:disabled {
   background-color: var(--bs-secondary-bg);
