@@ -1,12 +1,10 @@
-﻿using ContractorDocuments.Domain.Enums;
-
-namespace ContractorDocuments.Domain.Entities.Projects
+﻿namespace ContractorDocuments.Domain.Entities.Projects
 {
     public class ProjectEntity : BaseEntity
     {
         public required string Title { get; set; }
         public required ProjectType ProjectTypeId { get; set; } = ProjectType.Construction;
-        public required ProjectContractType ContractTypeId { get; set; } = ProjectContractType.Personal;
+        public required Guid ContractId { get; set; }
         public ProjectProcessStatusType ProcessStatusTypeId { get; set; } = ProjectProcessStatusType.InProgress;
         public DateTime? StartOn { get; set; }
         public DateTime? EndOn { get; set; }
@@ -15,7 +13,7 @@ namespace ContractorDocuments.Domain.Entities.Projects
 
         #region Relations
 
-
+        public required virtual ProjectContractEntity Contract { get; set; }
 
         #endregion
 

@@ -1,14 +1,16 @@
-﻿using ContractorDocuments.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ContractorDocuments.Domain.Entities.Projects
+﻿namespace ContractorDocuments.Domain.Entities.Projects
 {
     public class ProjectContractEntity : BaseEntity
     {
-        public ProjectContractType ContractTypeId { get; set; }
+        public required ProjectContractType ContractTypeId { get; set; }
+        public decimal Amount { get; set; }
+        public byte Percentage { get; set; }
+        public required Guid ProjectId { get; set; }
+
+        #region Relations
+
+        public virtual ProjectEntity? Project { get; set; }
+
+        #endregion
     }
 }
