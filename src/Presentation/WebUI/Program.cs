@@ -1,6 +1,5 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Reflection;
 using WebUI.Models.InputModels;
 
 var builder = WebApplication.CreateBuilder(args);

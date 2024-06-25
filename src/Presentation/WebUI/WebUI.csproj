@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="wwwroot\fonts\dirooz\webfonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/fonts/font-awesome/v6.5.2/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/public.common.css" asp-append-version="true" />
 </head>
-<body class="text-start">
+<body class="text-start pb-5">
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="z-index:2000;">
         <div class="container-fluid">
             <a class="navbar-brand fw-bolder" href="/Admin/Dashboard">پنل مدیریت</a>
@@ -20,27 +20,40 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Dashboard"><i class="far fa-gauge me-1"></i> داشبورد</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Overview">
+                            <i class="far fa-gauge me-1"></i>
+                            داشبورد
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Project"><i class="far fa-building-memo me-1"></i> پروژه ها</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="Project" asp-action="Overview">
+                            <i class="far fa-building-memo me-1"></i>
+                            پروژه ها
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-memo-circle-info"></i>
                             اطلاعات پایه
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="User"><i class="far fa-users me-1"></i> کاربران</a>
+                                <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="Overview">
+                                    <i class="far fa-users me-1"></i>
+                                    کاربران
+                                </a>
                             </li>
                             <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="Contract"><i class="far fa-file-contract me-1"></i> قرارداد ها</a>
+                                <a class="nav-link" asp-area="Admin" asp-controller="Material" asp-action="Overview">
+                                    <i class="far fa-truck-ramp-box me-1"></i>
+                                    مصالح
+                                </a>
                             </li>
                             <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="Material"><i class="far fa-truck-ramp-box me-1"></i> مصالح</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="Service"><i class="far fa-user-helmet-safety me-1"></i> خدمات</a>
+                                <a class="nav-link" asp-area="Admin" asp-controller="Material" asp-action="Overview">
+                                    <i class="far fa-layer-group me-1"></i>
+                                    مراحل پروژه
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -51,7 +64,7 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#" data-theme="light" data-bs-title="روشن" data-bs-placement="bottom"><i class="fa fa-sun"></i></a>
-                    </li>*@
+                    </li> *@
                     <li class="nav-item">
                         <a class="nav-link sign-out-controller" href="#" data-bs-title="خروج از حساب" data-bs-placement="bottom">
                             <i class="fa fa-right-from-bracket"></i>
@@ -61,13 +74,12 @@
             </div>
         </div>
     </nav>
-
     <main role="main">
         <div class="container-fluid py-4">
             @RenderBody()
         </div>
     </main>
-    <footer class="fixed-bottom bg-body py-2">
+    <footer class="fixed-bottom bg-body border-top shadow-lg py-2">
         <div class="container-fluid text-center">
             <label class="small text-muted" data-bs-title="امروز" data-bs-placement="top">
                 @DateTime.Now.ToString("dd MMMM yyyy", new CultureInfo("fa-IR"))

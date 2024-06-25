@@ -1,4 +1,5 @@
 ﻿using BuildingMaterialAccounting.Application.Customers;
+using BuildingMaterialAccounting.Application.Projects;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -22,6 +23,14 @@ namespace BuildingMaterialAccounting.Application
                 .AddScoped<UserService>()
                 .AddScoped<UserReport>()
                 .AddScoped<UserAuthenticationService>()
+                ;
+
+            #endregion
+
+            #region Projects
+
+            services
+                .AddScoped<ProjectService>()
                 ;
 
             #endregion

@@ -1,6 +1,6 @@
-﻿using BuildingMaterialAccounting.Domain.Entities;
+﻿using BuildingMaterialAccounting.Domain.Entities.Materials;
 
-namespace BuildingMaterialAccounting.Domain.Entities.Materials
+namespace BuildingMaterialAccounting.Domain.Entities.Projects
 {
     public class ProjectMaterialEntity : BaseEntity
     {

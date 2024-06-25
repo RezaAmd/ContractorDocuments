@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "پروژه جدید یا ویرایش";
+}
+
+<form action="/Admin/Project/AddOrEdit" method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <div class="d-none">
+                    <input id="Id" name="Id" type="hidden" />
+                </div>
+                <h3 class="fw-bold">اطلاعات پروژه</h3>
+                <hr />
+                <div class="row">
+                    @* Project Type *@
+                    <div class="col-md-4 mb-3">
+                        <label class="mb-1">
+                            <i class="far fa-hammer-brush"></i> نوع پروژه <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control">
+                            <option value="" selected disabled>انتخاب کنید</option>
+                            <option value="5">ساخت و ساز</option>
+                            <option value="10">نوسازی</option>
+                        </select>
+                        <span class="small text-muted ms-1"><i class="far fa-triangle-exclamation"></i> بعدا قابل ویرایش نیست.</span>
+                    </div>
+                    @* Start Date *@
+                    <div class="col-md-4 mb-3">
+                        <label class="mb-1">
+                            <i class="far fa-calendar"></i> تاریخ شروع
+                        </label>
+                        <input class="form-control" dir="ltr" name="StartIn" placeholder="yyyy/mm/dd" maxlength="10" />
+                    </div>
+                    @* End Date *@
+                    <div class="col-md-4 mb-3">
+                        <label class="mb-1">
+                            <i class="far fa-calendar"></i> تاریخ پایان
+                        </label>
+                        <input class="form-control" name="EndIn" dir="ltr" placeholder="yyyy/mm/dd" maxlength="10" />
+                    </div>
+                </div>
+                <br />
+                <h3 class="fw-bold">اطلاعات قرارداد</h3>
+                <hr />
+                @* Contract *@
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="contract-type" class="mb-1">
+                            <i class="far fa-file-contract"></i> نوع قرارداد <span class="text-danger">*</span>
+                        </label>
+                        <select id="contract-type" name="ContractTypeId" class="form-control">
+                            <option value="" selected disabled>انتخاب کنید</option>
+                            <option value="0">پروژه شخصی</option>
+                            <option value="5">مقطوع</option>
+                            <option value="10">درصدی</option>
+                            <option value="15">دستمزدی</option>
+                            <option value="20">فهرست بهایی</option>
+                        </select>
+                        <span class="small text-muted ms-1"><i class="far fa-triangle-exclamation"></i> بعدا قابل ویرایش نیست.</span>
+                    </div>
+                    @* <div class="col mb-3">
+                    <label class="mb-1">دستمزد</label>
+                    <input class="form-control" name="Amount" dir="ltr" placeholder="ساعتی یا روزانه" />
+                    </div> *@
+                    <div class="col align-content-center">
+                        <input type="range" class="form-range" min="1" max="99" id="customRange2">
+                        <div class="small d-flex justify-content-between text-center align-items-center">
+                            <div class="d-flex align-items-center gap-1">
+                                <label id="owner-percent">%</label>
+                                <input class="form-control form-control-sm" type="number" min="1" max="99" value="50" />
+                                <label>مجری</label>
+                            </div>
+                            <div>
+                                <label id="presenter-percent">50%</label>
+                                <label>مالک</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <h3 class="fw-bold">اطلاعات کلی</h3>
+                <hr />
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="title" class="mb-1">
+                            <i class="far fa-magnifying-glass"></i> عنوان <span class="text-danger">*</span>
+                        </label>
+                        <input id="title" name="Title" type="text" class="form-control" placeholder="عنوان پروژه را وارد کنید" maxlength="100" />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="description" class="mb-1">
+                            <i class="far fa-subtitles"></i> توضیحات تکمیلی
+                        </label>
+                        <textarea id="description" rows="5" class="form-control" name="Description"></textarea>
+                    </div>
+                </div>
+                @* <div class="row">
+                <div class="col">
+                <label class="mb-1">رنگ شخصی سازی</label>
+                <br />
+                <input id="customize-color" class="form-control-color" type="color" />
+                </div>
+                </div> *@
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+            <button class="btn btn-primary">ذخیره</button>
+        </div>
+    </div>
+</form>

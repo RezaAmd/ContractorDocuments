@@ -1,5 +1,6 @@
 ﻿using BuildingMaterialAccounting.Application.Common.Interfaces;
 using BuildingMaterialAccounting.Domain.Entities.Customers;
+using BuildingMaterialAccounting.Domain.Entities.Projects;
 using System.Reflection;
 
 namespace BuildingMaterialAccounting.Infrastructure.Data
@@ -10,7 +11,17 @@ namespace BuildingMaterialAccounting.Infrastructure.Data
 
         #region Tables
 
+        #region Customers
+
         public DbSet<UserEntity> Users => Set<UserEntity>();
+
+        #endregion
+
+        #region Projects
+
+        public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
+
+        #endregion
 
         #endregion
 

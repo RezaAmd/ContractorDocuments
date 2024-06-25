@@ -2,3 +2,4 @@
 global using BuildingMaterialAccounting.Domain.Common;
 global using BuildingMaterialAccounting.Domain.ValueObjects;
 global using BuildingMaterialAccounting.Domain.Enums;
+global using System.ComponentModel.DataAnnotations;
