@@ -2,7 +2,6 @@
 
 html, body {
     position: relative;
-    height: 100%;
     min-height: 100vh;
     overflow-x: clip;
     font-family: "Dirooz";
@@ -10,6 +9,10 @@ html, body {
 
 hr {
     border-color: #7e7e7ede;
+}
+
+small, .small {
+    font-size: .80em;
 }
 
 .scrollable {
@@ -54,13 +57,15 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     --bs-table-color: #cdd6cf !important;
 }
 
-:root {
+:root, [data-bs-theme=light] {
     --bs-border-radius: 0.8rem;
     --bs-border-radius-sm: 3rem;
     --bs-border-radius-lg: 1rem;
     --bs-border-radius-xl: 1.5rem;
     --bs-border-radius-xxl: 2rem;
+    --bs-card-border-radius: 0.8rem;
 }
+
 
 /* Utilities */
 
