@@ -1,6 +1,6 @@
-﻿using BuildingMaterialAccounting.Application.Customers;
+﻿using ContractorDocuments.Application.Customers;
 
-namespace WebUI.Areas.Admin.Factories
+namespace ContractorDocuments.WebUI.Areas.Admin.Factories
 {
     public class UserModelFactory
     {

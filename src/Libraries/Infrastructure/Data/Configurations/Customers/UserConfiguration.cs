@@ -1,6 +1,6 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
+﻿using ContractorDocuments.Domain.Entities.Customers;
 
-namespace BuildingMaterialAccounting.Infrastructure.Data.Configurations.Customers
+namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
 {
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {

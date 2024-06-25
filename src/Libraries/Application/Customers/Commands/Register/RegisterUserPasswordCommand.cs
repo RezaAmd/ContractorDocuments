@@ -1,7 +1,9 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
-using BuildingMaterialAccounting.Domain.ValueObjects;
+﻿using ContractorDocuments.Application.Common.Models;
+using ContractorDocuments.Application.Customers;
+using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Domain.ValueObjects;
 
-namespace BuildingMaterialAccounting.Application.Customers.Commands.Register
+namespace ContractorDocuments.Application.Customers.Commands.Register
 {
     public class RegisterUserPasswordCommand : IRequest<Result>
     {

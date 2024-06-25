@@ -1,4 +1,4 @@
-namespace WebUI.Models
+namespace ContractorDocuments.Framework.Models
 {
     public class ErrorViewModel
     {

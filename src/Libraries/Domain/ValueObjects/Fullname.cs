@@ -1,8 +1,8 @@
-﻿using BuildingMaterialAccounting.Domain.Common;
+﻿using ContractorDocuments.Domain.Common;
 using System;
 using System.Collections.Generic;
 
-namespace BuildingMaterialAccounting.Domain.ValueObjects
+namespace ContractorDocuments.Domain.ValueObjects
 {
     public class Fullname : ValueObject
     {

@@ -1,4 +1,6 @@
-﻿namespace BuildingMaterialAccounting.Domain.Entities.Projects
+﻿using ContractorDocuments.Domain.Enums;
+
+namespace ContractorDocuments.Domain.Entities.Projects
 {
     public class ProjectEntity : BaseEntity
     {

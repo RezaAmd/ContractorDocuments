@@ -1,8 +1,8 @@
-﻿using BuildingMaterialAccounting.Application.Projects.Commands;
+﻿using ContractorDocuments.Application.Projects.Commands;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Areas.Admin.Models.Projects;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
     public class ProjectController : AdminBaseController
     {

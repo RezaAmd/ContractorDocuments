@@ -1,7 +1,6 @@
-﻿using BuildingMaterialAccounting.Domain.Entities;
-using BuildingMaterialAccounting.Domain.Entities.Directory;
+﻿using ContractorDocuments.Domain.Entities.Directory;
 
-namespace BuildingMaterialAccounting.Domain.Entities.Materials
+namespace ContractorDocuments.Domain.Entities.Materials
 {
     public class MaterialMeasureEntity : BaseEntity
     {

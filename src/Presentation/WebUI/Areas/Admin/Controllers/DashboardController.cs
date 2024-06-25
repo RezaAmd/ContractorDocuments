@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
     public class DashboardController : AdminBaseController
     {
@@ -14,7 +14,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public DashboardController()
         {
-            
+
         }
 
         #endregion

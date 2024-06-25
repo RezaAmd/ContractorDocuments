@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Application.Common.Models
+﻿namespace ContractorDocuments.Application.Common.Models
 {
     public class BaseResult
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
     public class MaterialController : AdminBaseController
     {

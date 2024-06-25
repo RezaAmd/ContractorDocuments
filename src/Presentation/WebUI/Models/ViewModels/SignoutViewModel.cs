@@ -1,4 +1,4 @@
-﻿namespace WebUI.Models.ViewModels
+﻿namespace ContractorDocuments.WebUI.Models.ViewModels
 {
     public record SignoutViewModel(string RedirectUrl);
 }

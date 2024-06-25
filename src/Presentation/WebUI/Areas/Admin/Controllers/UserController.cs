@@ -1,7 +1,7 @@
-﻿using BuildingMaterialAccounting.Application.Customers.Commands.Register;
-using WebUI.Areas.Admin.Models.Customers;
+﻿using ContractorDocuments.Application.Customers.Commands.Register;
+using ContractorDocuments.WebUI.Areas.Admin.Models.Customers;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
     public class UserController : AdminBaseController
     {

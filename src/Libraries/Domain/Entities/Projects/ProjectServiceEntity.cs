@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Domain.Entities.Projects
+﻿namespace ContractorDocuments.Domain.Entities.Projects
 {
     public class ProjectServiceEntity : BaseEntity
     {

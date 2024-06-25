@@ -1,6 +1,8 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
+﻿using ContractorDocuments.Application.Common.Interfaces;
+using ContractorDocuments.Application.Common.Models;
+using ContractorDocuments.Domain.Entities.Customers;
 
-namespace BuildingMaterialAccounting.Application.Customers
+namespace ContractorDocuments.Application.Customers
 {
     public class UserService
     {

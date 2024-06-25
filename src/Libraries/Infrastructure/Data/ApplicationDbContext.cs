@@ -1,9 +1,9 @@
-﻿using BuildingMaterialAccounting.Application.Common.Interfaces;
-using BuildingMaterialAccounting.Domain.Entities.Customers;
-using BuildingMaterialAccounting.Domain.Entities.Projects;
+﻿using ContractorDocuments.Application.Common.Interfaces;
+using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Domain.Entities.Projects;
 using System.Reflection;
 
-namespace BuildingMaterialAccounting.Infrastructure.Data
+namespace ContractorDocuments.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {

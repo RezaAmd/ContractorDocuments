@@ -1,7 +1,7 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
-using BuildingMaterialAccounting.Domain.ValueObjects;
+﻿using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Domain.ValueObjects;
 
-namespace BuildingMaterialAccounting.Application.Customers
+namespace ContractorDocuments.Application.Customers
 {
     public class UserAuthenticationService
     {

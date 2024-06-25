@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Domain.Enums
+﻿namespace ContractorDocuments.Domain.Enums
 {
     public enum PaymentMethodType
     {

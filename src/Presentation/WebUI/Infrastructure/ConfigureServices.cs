@@ -1,6 +1,6 @@
-﻿using WebUI.Areas.Admin.Factories;
+﻿using ContractorDocuments.WebUI.Areas.Admin.Factories;
 
-namespace WebUI.Infrastructure
+namespace ContractorDocuments.WebUI.Infrastructure
 {
     public static class ConfigureServices
     {

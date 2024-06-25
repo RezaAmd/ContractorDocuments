@@ -1,2 +1,2 @@
-﻿global using WebUI.Areas.Admin.Controllers;
-global using BuildingMaterialAccounting.Domain.Enums;
+﻿global using ContractorDocuments.WebUI.Areas.Admin.Controllers;
+global using ContractorDocuments.Domain.Enums;

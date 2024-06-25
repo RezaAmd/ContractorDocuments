@@ -1,6 +1,8 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Projects;
+﻿using ContractorDocuments.Application.Common.Interfaces;
+using ContractorDocuments.Application.Common.Models;
+using ContractorDocuments.Domain.Entities.Projects;
 
-namespace BuildingMaterialAccounting.Application.Projects
+namespace ContractorDocuments.Application.Projects
 {
     public class ProjectService
     {
@@ -38,7 +40,7 @@ namespace BuildingMaterialAccounting.Application.Projects
             CancellationToken cancellationToken = default)
         {
             _context.Projects.Update(project);
-            
+
             if (Convert.ToBoolean(await _context.SaveChangesAsync(cancellationToken)))
                 return Result.Ok(project);
             return Result.Fail();

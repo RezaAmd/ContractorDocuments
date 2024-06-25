@@ -1,4 +1,6 @@
-﻿namespace BuildingMaterialAccounting.Application.Common.Extensions
+﻿using ContractorDocuments.Application.Common.Models;
+
+namespace ContractorDocuments.Application.Common.Extensions
 {
     public static class ResultExtensions
     {

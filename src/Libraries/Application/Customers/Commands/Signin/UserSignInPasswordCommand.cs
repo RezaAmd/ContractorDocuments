@@ -1,7 +1,8 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
-using BuildingMaterialAccounting.Domain.ValueObjects;
+﻿using ContractorDocuments.Application.Common.Models;
+using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Domain.ValueObjects;
 
-namespace BuildingMaterialAccounting.Application.Customers.Commands.Signin
+namespace ContractorDocuments.Application.Customers.Commands.Signin
 {
     public sealed class UserSignInPasswordCommand : IRequest<Result<UserEntity?>>
     {

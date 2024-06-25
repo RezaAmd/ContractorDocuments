@@ -1,6 +1,9 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Projects;
+﻿using ContractorDocuments.Application.Common.Models;
+using ContractorDocuments.Application.Projects;
+using ContractorDocuments.Domain.Entities.Projects;
+using ContractorDocuments.Domain.Enums;
 
-namespace BuildingMaterialAccounting.Application.Projects.Commands
+namespace ContractorDocuments.Application.Projects.Commands
 {
     public class AddOrEditProjectCommand : IRequest<Result<ProjectEntity>>
     {

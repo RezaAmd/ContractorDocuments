@@ -1,10 +1,10 @@
-﻿using BuildingMaterialAccounting.Application.Customers;
-using BuildingMaterialAccounting.Domain.Entities.Customers;
-using BuildingMaterialAccounting.Domain.ValueObjects;
+﻿using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Application.Customers;
+using ContractorDocuments.Domain.ValueObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BuildingMaterialAccounting.Infrastructure.Data
+namespace ContractorDocuments.Infrastructure.Data
 {
     public static class InitialiserExtensions
     {

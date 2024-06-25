@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Domain.Entities.Accounting
+﻿namespace ContractorDocuments.Domain.Entities.Accounting
 {
     public class CashReceiptsEntity : BaseEntity
     {

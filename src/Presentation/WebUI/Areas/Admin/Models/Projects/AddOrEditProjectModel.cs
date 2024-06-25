@@ -1,4 +1,6 @@
-﻿namespace WebUI.Areas.Admin.Models.Projects
+﻿using ContractorDocuments.Domain.Enums;
+
+namespace WebUI.Areas.Admin.Models.Projects
 {
     public partial class AddOrEditProjectModel
     {

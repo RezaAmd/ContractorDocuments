@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Domain.Entities.Directory
+﻿namespace ContractorDocuments.Domain.Entities.Directory
 {
     public class MeasureEntity : BaseEntity
     {

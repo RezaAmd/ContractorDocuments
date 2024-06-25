@@ -1,7 +1,9 @@
-﻿global using BuildingMaterialAccounting.Application;
+﻿global using ContractorDocuments.Application;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
-global using WebUI.Infrastructure;
-global using BuildingMaterialAccounting.Application.Common.Models;
-global using BuildingMaterialAccounting.Infrastructure.Data;
-global using BuildingMaterialAccounting.Infrastructure;
+global using ContractorDocuments.WebUI.Infrastructure;
+global using ContractorDocuments.Application.Common.Models;
+global using ContractorDocuments.Infrastructure.Data;
+global using ContractorDocuments.Infrastructure;
+global using System.Security.Claims;
+global using ContractorDocuments.Framework.Models;

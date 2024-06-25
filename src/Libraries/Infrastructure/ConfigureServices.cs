@@ -1,10 +1,10 @@
-﻿using BuildingMaterialAccounting.Application.Common.Interfaces;
-using BuildingMaterialAccounting.Infrastructure.Data;
+﻿using ContractorDocuments.Application.Common.Interfaces;
+using ContractorDocuments.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BuildingMaterialAccounting.Infrastructure
+namespace ContractorDocuments.Infrastructure
 {
     public static class ConfigureServices
     {

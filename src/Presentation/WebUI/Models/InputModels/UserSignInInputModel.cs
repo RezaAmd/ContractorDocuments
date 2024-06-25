@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace WebUI.Models.InputModels
+namespace ContractorDocuments.WebUI.Models.InputModels
 {
     public record UserSignInInputModel(string username, string password, bool IsPersistent);
     public class UserSignInInputModelValidator : AbstractValidator<UserSignInInputModel>

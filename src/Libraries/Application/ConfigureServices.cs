@@ -1,15 +1,16 @@
-﻿using BuildingMaterialAccounting.Application.Customers;
-using BuildingMaterialAccounting.Application.Projects;
+﻿using ContractorDocuments.Application.Customers;
+using ContractorDocuments.Application.Projects;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace BuildingMaterialAccounting.Application
+namespace ContractorDocuments.Application
 {
     public static class ConfigureServices
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => {
+            services.AddMediatR(cfg =>
+            {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
                 //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
                 //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehaviour<,>));

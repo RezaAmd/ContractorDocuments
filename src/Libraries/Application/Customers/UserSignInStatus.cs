@@ -1,4 +1,4 @@
-﻿namespace BuildingMaterialAccounting.Application.Customers
+﻿namespace ContractorDocuments.Application.Customers
 {
     public enum UserSignInStatus
     {

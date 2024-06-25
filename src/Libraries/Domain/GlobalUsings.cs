@@ -1,5 +1,5 @@
 ﻿global using System.Text;
-global using BuildingMaterialAccounting.Domain.Common;
-global using BuildingMaterialAccounting.Domain.ValueObjects;
-global using BuildingMaterialAccounting.Domain.Enums;
+global using ContractorDocuments.Domain.Common;
+global using ContractorDocuments.Domain.ValueObjects;
+global using ContractorDocuments.Domain.Enums;
 global using System.ComponentModel.DataAnnotations;

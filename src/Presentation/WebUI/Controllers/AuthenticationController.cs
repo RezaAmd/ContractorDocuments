@@ -1,13 +1,10 @@
-﻿using BuildingMaterialAccounting.Application.Customers.Commands.Signin;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using ContractorDocuments.Application.Customers.Commands.Signin;
+using ContractorDocuments.WebUI.Models.InputModels;
+using ContractorDocuments.WebUI.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using WebUI.Models.InputModels;
-using WebUI.Models.ViewModels;
-using Azure.Core;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
-namespace WebUI.Controllers
+namespace ContractorDocuments.WebUI.Controllers
 {
     public class AuthenticationController : Controller
     {

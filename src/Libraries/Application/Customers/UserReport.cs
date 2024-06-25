@@ -1,6 +1,7 @@
-﻿using BuildingMaterialAccounting.Domain.Entities.Customers;
+﻿using ContractorDocuments.Application.Common.Interfaces;
+using ContractorDocuments.Domain.Entities.Customers;
 
-namespace BuildingMaterialAccounting.Application.Customers
+namespace ContractorDocuments.Application.Customers
 {
     public class UserReport
     {
