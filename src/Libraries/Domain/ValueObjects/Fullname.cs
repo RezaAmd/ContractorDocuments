@@ -14,7 +14,7 @@ namespace ContractorDocuments.Domain.ValueObjects
         }
         public Fullname(string name, string surname)
         {
-            if (name.Length > 50)
+            if (name != null && name.Length > 50)
             {
                 throw new ArgumentOutOfRangeException("name can not be more than 50 characters");
             }
@@ -23,7 +23,7 @@ namespace ContractorDocuments.Domain.ValueObjects
                 Name = name;
             }
 
-            if (surname.Length > 50)
+            if (surname != null && surname.Length > 50)
             {
                 throw new ArgumentOutOfRangeException("surname can not be more than 50 characters");
             }
