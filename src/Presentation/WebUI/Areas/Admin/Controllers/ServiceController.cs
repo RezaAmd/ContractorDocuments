@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace ContractorDocuments.WebUI.BuildingMaterialAccounting.WebUI.Areas.Admin.Controllers
 {
     public class ServiceController : AdminBaseController
     {
@@ -14,7 +14,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public ServiceController()
         {
-            
+
         }
 
         #endregion
