@@ -1,12 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', async () => {
-    // Load theme from cache.
-    loadThemeFromCache();
-
-    // Add click event
-    clickEventToChangeThemeControllers();
-});
-
-const clickEventToChangeThemeControllers = () => {
+﻿const clickEventToChangeThemeControllers = () => {
     let themeController = document.querySelectorAll('[data-theme]');
     if (!themeController)
         return;
@@ -18,8 +10,6 @@ const clickEventToChangeThemeControllers = () => {
             let themeKey = e.currentTarget.getAttribute('data-theme');
             // Set theme to body.
             setTheme(themeKey);
-            // Cache theme.
-            localStorage.setItem('theme', themeKey)
         });
     });
 }
@@ -33,4 +23,11 @@ const loadThemeFromCache = () => {
 
 const setTheme = (themeKey) => {
     document.body.setAttribute('data-bs-theme', themeKey);
+    // Cache theme.
+    localStorage.setItem('theme', themeKey);
 }
+
+// Load theme from cache.
+loadThemeFromCache();
+// Add click event
+clickEventToChangeThemeControllers();

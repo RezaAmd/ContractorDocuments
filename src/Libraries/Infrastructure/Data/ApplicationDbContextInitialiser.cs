@@ -1,8 +1,8 @@
 ﻿using ContractorDocuments.Domain.Entities.Customers;
-using ContractorDocuments.Application.Customers;
 using ContractorDocuments.Domain.ValueObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using ContractorDocuments.Application.Users;
 
 namespace ContractorDocuments.Infrastructure.Data
 {

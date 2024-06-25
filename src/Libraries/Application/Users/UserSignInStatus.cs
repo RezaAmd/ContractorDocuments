@@ -1,4 +1,4 @@
-﻿namespace ContractorDocuments.Application.Customers
+﻿namespace ContractorDocuments.Application.Users
 {
     public enum UserSignInStatus
     {

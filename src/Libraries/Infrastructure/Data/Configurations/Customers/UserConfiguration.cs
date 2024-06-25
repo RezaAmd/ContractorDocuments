@@ -10,8 +10,10 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
 
             // PhoneNumber
             b.Property(e => e.PhoneNumber)
-                .IsRequired(false)
+                .IsRequired()
                 .HasMaxLength(15);
+            b.HasIndex(e => e.PhoneNumber)
+                .IsUnique();
 
             // Password
             b.OwnsOne(u => u.Password, u =>

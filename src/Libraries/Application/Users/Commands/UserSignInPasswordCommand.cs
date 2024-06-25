@@ -2,7 +2,7 @@
 using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.ValueObjects;
 
-namespace ContractorDocuments.Application.Customers.Commands.Signin
+namespace ContractorDocuments.Application.Users.Commands
 {
     public sealed class UserSignInPasswordCommand : IRequest<Result<UserEntity?>>
     {

@@ -1,9 +1,8 @@
 ﻿using ContractorDocuments.Application.Common.Models;
-using ContractorDocuments.Application.Customers;
 using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.ValueObjects;
 
-namespace ContractorDocuments.Application.Customers.Commands.Register
+namespace ContractorDocuments.Application.Users.Commands
 {
     public class RegisterUserPasswordCommand : IRequest<Result>
     {

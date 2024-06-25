@@ -1,7 +1,7 @@
 ﻿using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.ValueObjects;
 
-namespace ContractorDocuments.Application.Customers
+namespace ContractorDocuments.Application.Users
 {
     public class UserAuthenticationService
     {

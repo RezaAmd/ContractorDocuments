@@ -1,5 +1,5 @@
-﻿using ContractorDocuments.Application.Customers;
-using ContractorDocuments.Application.Projects;
+﻿using ContractorDocuments.Application.Projects;
+using ContractorDocuments.Application.Users;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 

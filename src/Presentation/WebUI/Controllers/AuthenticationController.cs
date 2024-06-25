@@ -1,4 +1,4 @@
-﻿using ContractorDocuments.Application.Customers.Commands.Signin;
+﻿using ContractorDocuments.Application.Users.Commands;
 using ContractorDocuments.WebUI.Models.InputModels;
 using ContractorDocuments.WebUI.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -56,6 +56,7 @@ namespace ContractorDocuments.WebUI.Controllers
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Name, user.PhoneNumber),
+                    new Claim("Fullname", user.Fullname.GetFullName()),
                 };
 
                 var authProperties = new AuthenticationProperties

@@ -2,7 +2,7 @@
 using ContractorDocuments.Application.Common.Models;
 using ContractorDocuments.Domain.Entities.Customers;
 
-namespace ContractorDocuments.Application.Customers
+namespace ContractorDocuments.Application.Users
 {
     public class UserService
     {
@@ -37,7 +37,7 @@ namespace ContractorDocuments.Application.Customers
         {
             await _context.Users.AddAsync(user, cancellationToken);
             if (Convert.ToBoolean(await _context.SaveChangesAsync(cancellationToken)))
-                return Result.Ok();
+                return Result.Ok(user);
             return Result.Fail();
         }
 

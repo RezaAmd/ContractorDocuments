@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<ContractorDocuments.WebUI.Areas.Admin.Models.Users.UserViewModel>
+@{
     ViewData["Title"] = "کاربران";
 }
 <div class="row">
@@ -9,207 +10,95 @@
                     <h4><i class="fa fa-users me-1"></i> کاربران</h4>
                 </div>
                 <div class="card-tools">
-                    <button class="btn btn-sm btn-primary" type="button">+ جدید</button>
+                    <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#create-user-modal">+ جدید</button>
                 </div>
             </div>
             <div class="card-body">
-                <div class="scrollable">
+                <div class="scrollable py-3">
                     <table class="table table-borderless table-striped table-hover">
                         <thead>
                             <tr class="sticky-top">
                                 <th>نام</th>
-                                <th>نام کاربری</th>
+                                <th>شماره همراه</th>
                                 <th>تاریخ عضویت</th>
-                                <th>عملیات</th>
+                                @* <th>عملیات</th> *@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>رضا احمدی</td>
-                                <td>09058089095</td>
-                                <td>22 خرداد 1403</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">حذف</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
+                            @if (Model != null)
+                            {
+                                @foreach (var user in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span>@user.Name</span>
+                                            <span>@user.Surname</span>
+                                        </td>
+                                        <td>
+                                            <span>@user.PhoneNumber</span>
+                                        </td>
+                                        <td>
+                                            <span>@user.CreatedOn</span>
+                                        </td>
+                                        @* <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                </button>
+                                                <ul class="dropdown-menu" style="z-index:2000;">
+                                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                                </ul>
+                                            </div>
+                                        </td> *@
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create User Modal -->
+<div class="modal fade" id="create-user-modal" tabindex="-1" aria-labelledby="create-user-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/Admin/User/Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h2 class="modal-title fw-bold fs-5" id="create-user-modal-label">کاربر جدید</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="mb-1">نام</label>
+                                <input class="form-control" name="Name" type="text" maxlength="50" placeholder="نام شخص" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="mb-1">نام خانوادگی</label>
+                                <input class="form-control" name="Surname" type="text" maxlength="50" placeholder="نام خانوادگی شخص" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="mb-1" for="PhoneNumber">شماره همراه</label>
+                                <input id="PhoneNumber" class="form-control" name="PhoneNumber" type="text" maxlength="11" dir="ltr" placeholder="09..." autocomplete="off" />
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="mb-1" for="PhoneNumber">رمز عبور</label>
+                                <input id="PhoneNumber" class="form-control placeholder-text-right" name="Password" type="password" maxlength="100" dir="ltr" placeholder="رمز ورود به حساب" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                    <button type="submit" class="btn btn-primary">ایجاد حساب</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

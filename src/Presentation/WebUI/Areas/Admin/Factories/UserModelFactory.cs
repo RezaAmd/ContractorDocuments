@@ -1,4 +1,4 @@
-﻿using ContractorDocuments.Application.Customers;
+﻿using ContractorDocuments.Application.Users;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Factories
 {
