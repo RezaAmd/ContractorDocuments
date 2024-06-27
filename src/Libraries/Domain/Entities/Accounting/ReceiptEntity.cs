@@ -1,10 +1,10 @@
 ﻿namespace ContractorDocuments.Domain.Entities.Accounting
 {
-    public class CashReceiptsEntity : BaseEntity
+    public class ReceiptEntity : BaseEntity
     {
         public required decimal Amount { get; set; }
-        public required DateTime PiaidOn { get; set; }
-        public required PaymentMethodType PaymentMethodTypeId { get; set; }
+        public DateTime? PiaidOn { get; set; }
+        public PaymentMethodType? PaymentMethodTypeId { get; set; }
         /// <summary>
         /// شناسه پرداخت، کد تراکنش
         /// </summary>
