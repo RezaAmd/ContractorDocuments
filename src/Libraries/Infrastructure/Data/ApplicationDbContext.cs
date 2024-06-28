@@ -1,4 +1,5 @@
 ﻿using ContractorDocuments.Application.Common.Interfaces;
+using ContractorDocuments.Application.Common.Models;
 using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.Entities.Projects;
 using System.Reflection;
@@ -20,6 +21,7 @@ namespace ContractorDocuments.Infrastructure.Data
         #region Projects
 
         public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
+        public DbSet<ConstructStageEntity> ConstructStages => Set<ConstructStageEntity>();
 
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using ContractorDocuments.Application.Projects;
+﻿using ContractorDocuments.Application.ConstructStages;
+using ContractorDocuments.Application.Projects;
 using ContractorDocuments.Application.Users;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -32,7 +33,9 @@ namespace ContractorDocuments.Application
 
             services
                 .AddScoped<ProjectService>()
-                .AddScoped<ProjectManager>()
+                // Construct Stages
+                .AddScoped<ConstructStageService>()
+                .AddScoped<ConstructStageReportService>()
                 ;
 
             #endregion

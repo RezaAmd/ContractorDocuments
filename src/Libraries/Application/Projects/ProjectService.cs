@@ -34,6 +34,11 @@ namespace ContractorDocuments.Application.Projects
             return await _context.SaveChangeAsync(cancellationToken);
         }
 
+        #region Construct Stages
+
+
+
+        #endregion
 
         #endregion
     }

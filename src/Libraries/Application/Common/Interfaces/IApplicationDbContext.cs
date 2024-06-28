@@ -17,6 +17,12 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         #endregion
 
+        #region Projects
+
+        DbSet<ConstructStageEntity> ConstructStages { get; }
+
+        #endregion
+
         Task<Result> SaveChangeAsync(CancellationToken cancellationToken);
     }
 }

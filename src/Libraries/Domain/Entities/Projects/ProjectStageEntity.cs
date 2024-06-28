@@ -1,6 +1,4 @@
-﻿using ContractorDocuments.Domain.Entities.Equipment;
-
-namespace ContractorDocuments.Domain.Entities.Projects
+﻿namespace ContractorDocuments.Domain.Entities.Projects
 {
     public class ProjectStageEntity : BaseEntity
     {
@@ -11,8 +9,8 @@ namespace ContractorDocuments.Domain.Entities.Projects
 
         public virtual ProjectEntity? Project { get; private set; }
         public virtual ConstructStageEntity? ConstructStage { get; private set; }
-        public virtual ICollection<ProjectStageEquipmentEntity>? Equipment { get; private set; }
-        public virtual ICollection<ProjectStageMaterialEntity>? Supplies { get; private set; }
+        //public virtual ICollection<ProjectStageEquipmentEntity>? Equipment { get; private set; }
+        //public virtual ICollection<ProjectStageMaterialEntity>? Supplies { get; private set; }
 
         #endregion
     }

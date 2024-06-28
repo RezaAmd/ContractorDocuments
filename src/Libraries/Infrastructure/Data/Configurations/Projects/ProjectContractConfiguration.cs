@@ -13,12 +13,13 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
                 .IsRequired();
 
             // Amount
-            builder.Property(e=> e.Amount)
-                .IsRequired(false);
+            builder.Property(e => e.Amount)
+                .HasColumnType("DECIMAL(16,2)")
+                .HasDefaultValue(0);
 
             // Percentage
-            builder.Property(e => e.Amount)
-                .IsRequired(false);
+            builder.Property(e => e.SharePercentage)
+                .HasDefaultValue(0);
 
             // ProjectId
             builder.Property(e => e.ProjectId)

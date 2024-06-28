@@ -76,6 +76,7 @@ namespace ContractorDocuments.Infrastructure.Data
             // Default users
             var administrator = new UserEntity()
             {
+                Fullname = new Fullname("رضا", "احمدی"),
                 PhoneNumber = "09058089095",
                 Password = PasswordHash.Parse("123456")
             };

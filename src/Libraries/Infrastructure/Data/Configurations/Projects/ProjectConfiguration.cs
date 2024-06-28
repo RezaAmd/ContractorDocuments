@@ -36,7 +36,8 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
 
             // Description
             b.Property(e => e.Description)
-                .IsRequired(false);
+                .IsRequired(false)
+                .HasMaxLength(1000);
 
             // CreatedOn
             b.Property(e => e.CreatedOn)
