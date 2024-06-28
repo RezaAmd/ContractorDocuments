@@ -1,20 +1,13 @@
-﻿using ContractorDocuments.Application.Common.Interfaces;
-using ContractorDocuments.Application.Common.Models;
-using ContractorDocuments.Domain.Entities.Customers;
+﻿using ContractorDocuments.Domain.Entities.Customers;
 
 namespace ContractorDocuments.Application.Users
 {
     public class UserService
     {
-        #region Fields
+        #region Fields & Ctor
 
         private readonly ILogger<UserService> _logger;
         private readonly IApplicationDbContext _context;
-
-        #endregion
-
-        #region Ctor
-
         public UserService(IApplicationDbContext context,
             ILogger<UserService> logger)
         {
@@ -36,9 +29,7 @@ namespace ContractorDocuments.Application.Users
             CancellationToken cancellationToken = default)
         {
             await _context.Users.AddAsync(user, cancellationToken);
-            if (Convert.ToBoolean(await _context.SaveChangesAsync(cancellationToken)))
-                return Result.Ok(user);
-            return Result.Fail();
+            return await _context.SaveChangeAsync(cancellationToken);
         }
 
         #endregion

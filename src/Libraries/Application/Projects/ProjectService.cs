@@ -1,19 +1,12 @@
-﻿using ContractorDocuments.Application.Common.Interfaces;
-using ContractorDocuments.Application.Common.Models;
-using ContractorDocuments.Domain.Entities.Projects;
+﻿using ContractorDocuments.Domain.Entities.Projects;
 
 namespace ContractorDocuments.Application.Projects
 {
     public class ProjectService
     {
-        #region Fields
+        #region Fields & Ctor
 
         private readonly IApplicationDbContext _context;
-
-        #endregion
-
-        #region Ctor
-
         public ProjectService(IApplicationDbContext context)
         {
             _context = context;
@@ -31,19 +24,14 @@ namespace ContractorDocuments.Application.Projects
             CancellationToken cancellationToken = default)
         {
             await _context.Projects.AddAsync(project, cancellationToken);
-            if (Convert.ToBoolean(await _context.SaveChangesAsync(cancellationToken)))
-                return Result.Ok(project);
-            return Result.Fail();
+            return await _context.SaveChangeAsync(cancellationToken);
         }
 
         public async Task<Result<ProjectEntity>> UpdateAsync(ProjectEntity project,
             CancellationToken cancellationToken = default)
         {
             _context.Projects.Update(project);
-
-            if (Convert.ToBoolean(await _context.SaveChangesAsync(cancellationToken)))
-                return Result.Ok(project);
-            return Result.Fail();
+            return await _context.SaveChangeAsync(cancellationToken);
         }
 
 

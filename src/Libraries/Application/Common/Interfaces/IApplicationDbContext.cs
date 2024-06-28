@@ -17,6 +17,6 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         #endregion
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<Result> SaveChangeAsync(CancellationToken cancellationToken);
     }
 }

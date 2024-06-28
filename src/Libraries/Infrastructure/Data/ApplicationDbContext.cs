@@ -25,6 +25,13 @@ namespace ContractorDocuments.Infrastructure.Data
 
         #endregion
 
+        public async Task<Result> SaveChangeAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            if (Convert.ToBoolean(await SaveChangesAsync(cancellationToken)))
+                return Result.Ok();
+            return Result.Fail();
+        }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             return base.SaveChangesAsync(cancellationToken);
