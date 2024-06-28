@@ -1,10 +1,8 @@
-﻿using ContractorDocuments.Domain.Entities.Customers;
-using ContractorDocuments.Domain.Entities.Projects;
-using ContractorDocuments.Domain.Enums;
+﻿using ContractorDocuments.Domain.Entities.Projects;
 
 namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
 {
-    public class ProjectConfiguration : IEntityTypeConfiguration<ProjectEntity>
+    internal class ProjectConfiguration : IEntityTypeConfiguration<ProjectEntity>
     {
         public void Configure(EntityTypeBuilder<ProjectEntity> b)
         {
@@ -26,7 +24,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
                 .HasMaxLength(15);
 
             // ProcessStatusTypeId
-            b.Property(e => e.ProcessStatusTypeId);
+            //b.Property(e => e.ProcessStatusTypeId);
 
             // StartOn
             b.Property(e => e.StartOn)

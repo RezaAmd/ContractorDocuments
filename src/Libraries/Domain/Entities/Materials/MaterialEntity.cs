@@ -1,23 +1,17 @@
-﻿namespace ContractorDocuments.Domain.Entities.Materials
+﻿using ContractorDocuments.Domain.Entities.Directory;
+
+namespace ContractorDocuments.Domain.Entities.Materials
 {
     public class MaterialEntity : BaseEntity
     {
-        public string Name { get; set; }
+        public required string Name { get; set; }
+        public Guid? ParentMaterialId { get; set; } // Foreign Key
+        public Guid MeasureId { get; private set; }
 
         #region Relations
 
-        public virtual MaterialMeasureEntity? MeasurementUnits { get; private set; }
-
-        #endregion
-
-        #region Ctor
-
-        public MaterialEntity(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("Material name cannot be null.");
-            Name = name;
-        }
+        public virtual MeasureEntity? Measure { get; private set; }
+        public virtual ICollection<MaterialEntity>? MaterialTypes { get; private set; }
 
         #endregion
     }

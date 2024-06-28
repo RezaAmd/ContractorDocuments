@@ -3,6 +3,8 @@
     public class ReceiptEntity : BaseEntity
     {
         public required decimal Amount { get; set; }
+        public required Guid EntityId { get; set; } // Foreign Key
+        public required EntityType EntityTypeId { get; set; } // Relation entity
         public DateTime? PiaidOn { get; set; }
         public PaymentMethodType? PaymentMethodTypeId { get; set; }
         /// <summary>

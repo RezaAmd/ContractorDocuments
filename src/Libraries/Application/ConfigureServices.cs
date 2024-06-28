@@ -32,6 +32,7 @@ namespace ContractorDocuments.Application
 
             services
                 .AddScoped<ProjectService>()
+                .AddScoped<ProjectManager>()
                 ;
 
             #endregion
