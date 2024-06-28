@@ -1,0 +1,29 @@
+CONTRACTORS:
+1. **General Contractors**: They oversee the entire project, coordinating various stages and specialty contractors⁶.
+2. **Excavation Contractors**: Handle site preparation, digging, and earthmoving.
+3. **Concrete Contractors**: Frame and pour foundations, floors, and other concrete surfaces.
+4. **Framing Contractors**: Construct the structural framework of buildings.
+5. **Steel Contractors**: Work with steel structures and components.
+6. **Electrical Contractors**: Install electrical systems.
+7. **Plumbing Contractors**: Handle plumbing installations.
+8. **HVAC Contractors**: Deal with heating, ventilation, and air conditioning systems.
+9. **Roofing Contractors**: Install and repair roofs.
+10. **Insulation Contractors**: Focus on insulation materials.
+11. **Drywall Contractors**: Install drywall panels.
+12. **Flooring Contractors**: Lay flooring materials.
+13. **Finish Carpentry Contractors**: Handle trim, doors, and finishing details.
+14. **Painting Contractors**: Apply paint and finishes.
+15. **Masonry Contractors**: Work with brick, stone, and concrete blocks.
+16. **Landscaping Contractors**: Design and maintain outdoor spaces.
+
+SUBCONTRACTORS:
+1. **Site Preparation Subcontractors**: Before a project begins, site preparation contractors handle tasks like clearing land, grading, and ensuring the site is ready for construction.
+2. **Concrete Subcontractors**: These experts focus on concrete work, including pouring foundations, floors, and other concrete surfaces.
+3. **Structural and Framing Subcontractors**: They construct the structural framework of buildings, ensuring stability and strength.
+4. **Roofing, Siding, and Sheet Metal Subcontractors**: Responsible for installing roofs, siding, and metal components.
+5. **Plumbing Subcontractors**: Install plumbing systems, including pipes, fixtures, and drainage.
+6. **HVAC (Heating, Ventilation, and Air Conditioning) Subcontractors**: Handle HVAC system installations.
+7. **Electrical Subcontractors**: Wire buildings for electricity, lighting, and power.
+8. **Carpentry Subcontractors**: Work on wood-based structures, trim, and finishing details.
+9. **Drywall Subcontractors**: Install drywall panels and create smooth surfaces.
+10. **Painting and Paper Hanging Subcontractors**: Apply paint and wallpaper to complete the interior finish.
