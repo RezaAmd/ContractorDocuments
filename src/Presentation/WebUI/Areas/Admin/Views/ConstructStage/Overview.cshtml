@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ContractorDocuments.WebUI.Areas.Admin.Models.ConstructStages.ConstructStageViewModel>
+@{
+    ViewData["Title"] = "مراحل پروژه";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <h4 class="card-title">مراحل پروژه</h4>
+                </div>
+                <div class="card-tools">
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#create-stage-modal">+ جدید</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="scrollable">
+                    <table class="table table-striped table-borderless table-hover">
+                        <thead>
+                            <tr>
+                                <th>نام</th>
+                                <th>نوع پروژه</th>
+                                <th>ترتیب نمایش</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Count() > 0)
+                            {
+                                foreach (var constructStage in Model)
+                                {
+                                    <tr>
+                                        <td>@constructStage.Name</td>
+                                        <td>@constructStage.ProjectType</td>
+                                        <td>@constructStage.DisplayOrder</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="text-center text-muted py-3" colspan="3">موردی یافت نشد!</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Construct Stage Modal -->
+<div class="modal fade" id="create-stage-modal" tabindex="-1" aria-labelledby="create-stage-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/Admin/ConstructStage/Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h2 class="modal-title fw-bold fs-5" id="create-stage-modal-label">مرحله ساخت جدید</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="mb-1">نام</label>
+                                <input class="form-control" name="Name" type="text" maxlength="50" placeholder="نام مرحله" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="mb-1" for="ProjectTypeId">نوع پروژه</label>
+                                <select name="ProjectTypeId" class="form-control">
+                                    <option value="" selected disabled>انتخاب کنید</option>
+                                    <option value="5">ساخت و ساز</option>
+                                    <option value="10">باز سازی</option>
+                                </select>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="mb-1" for="DisplayOrder">ترتیب نمایش</label>
+                                <input id="DisplayOrder" class="form-control placeholder-text-right" name="DisplayOrder" type="number" maxlength="100" dir="ltr" placeholder="اولویت ترتیب در نمایش" value="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                    <button type="submit" class="btn btn-primary">ایجاد حساب</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

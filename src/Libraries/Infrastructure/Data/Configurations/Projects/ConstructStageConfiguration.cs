@@ -11,7 +11,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
             // Name
             builder.Property(e => e.Name)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(50);
 
             // ProjectTypeId
             builder.Property(e => e.ProjectTypeId)

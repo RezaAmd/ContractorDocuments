@@ -22,7 +22,7 @@ namespace ContractorDocuments.Application.ConstructStages
 
         public async Task<IList<ConstructStageEntity>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _constructStageQuery.ToListAsync(cancellationToken);
+            return await _constructStageQuery.OrderBy(cs => cs.DisplayOrder).ToListAsync(cancellationToken);
         }
 
         #endregion

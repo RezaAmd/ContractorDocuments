@@ -34,7 +34,8 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 {
                     Name = cs.Name,
                     ProjectTypeId = cs.ProjectTypeId,
-                    ProjectType = cs.ProjectTypeId.ToDisplay()
+                    ProjectType = cs.ProjectTypeId.ToDisplay(),
+                    DisplayOrder = cs.DisplayOrder
                 }).ToList();
             }
 
@@ -44,10 +45,11 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         #endregion
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] CreateConstructStageInputModel constructStageModel,
             CancellationToken cancellationToken)
         {
-            var createResult = _mediator.Send(new AddConstructStageCommand
+            var createResult = await _mediator.Send(new AddConstructStageCommand
             {
                 Name = constructStageModel.Name,
                 ProjectTypeId = constructStageModel.ProjectTypeId,

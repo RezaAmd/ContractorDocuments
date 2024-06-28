@@ -5,5 +5,6 @@
         public string Name { get; set; }
         public ProjectType ProjectTypeId { get; set; }
         public string ProjectType { get; set; }
+        public int DisplayOrder { get; set; }
     }
 }
