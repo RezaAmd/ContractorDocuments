@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ContractorDocuments.Domain.Enums
+﻿namespace ContractorDocuments.Domain.Enums
 {
     public enum ProjectType
     {

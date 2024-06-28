@@ -1,6 +1,7 @@
-﻿using ContractorDocuments.Application.Projects.Commands;
-using Microsoft.AspNetCore.Mvc;
-using WebUI.Areas.Admin.Models.Projects;
+﻿using ContractorDocuments.Application.Common.Extensions;
+using ContractorDocuments.Application.Projects.Commands;
+using ContractorDocuments.Application.Projects.Queries;
+using ContractorDocuments.WebUI.Areas.Admin.Models.Projects;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
@@ -20,9 +21,19 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         #region Pages
 
         [HttpGet]
-        public IActionResult Overview()
+        public async Task<IActionResult> Overview(CancellationToken cancellationToken)
         {
-            return View();
+            var allProjects = await _mediator.Send(new GetAllProjectsQuery(),
+                cancellationToken);
+
+            return View(allProjects.Select(p => new ProjectThumbnailViewModel
+            {
+                Title = p.Title,
+                ProjectTypeId = p.ProjectTypeId,
+                ProjectType = p.ProjectTypeId.ToDisplay(),
+                StartOn = p.StartOn,
+                EndOn = p.EndOn
+            }).AsEnumerable());
         }
 
         [HttpGet]
@@ -32,6 +43,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddOrEdit([FromForm] AddOrEditProjectModel projectModel,
             CancellationToken cancellationToken)
         {
@@ -43,6 +55,24 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 TypeId = projectModel.TypeId,
                 ContractTypeId = projectModel.ContractTypeId
             };
+
+            // StartOn
+            if (projectModel.StartOn != null)
+                command.StartOn = DateTime.Parse(projectModel.StartOn);
+            // EndOn
+            if (projectModel.EndOn != null)
+                command.EndOn = DateTime.Parse(projectModel.EndOn);
+            // Amount
+            if (projectModel.Amount != null)
+                command.Amount = projectModel.Amount.Value;
+            // SharePercentage
+            if (projectModel.SharePercentage != null)
+                command.SharePercentage = projectModel.SharePercentage.Value;
+
+            var addOrEditResult = await _mediator.Send(command, cancellationToken);
+
+            if (addOrEditResult.IsSuccess)
+                return RedirectToAction("Overview");
 
             return View();
         }

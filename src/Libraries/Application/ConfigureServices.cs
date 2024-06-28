@@ -33,6 +33,7 @@ namespace ContractorDocuments.Application
 
             services
                 .AddScoped<ProjectService>()
+                .AddScoped<ProjectReportService>()
                 // Construct Stages
                 .AddScoped<ConstructStageService>()
                 .AddScoped<ConstructStageReportService>()

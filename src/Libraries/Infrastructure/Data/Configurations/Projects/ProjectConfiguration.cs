@@ -1,6 +1,6 @@
 ﻿using ContractorDocuments.Domain.Entities.Projects;
 
-namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
+namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
 {
     internal class ProjectConfiguration : IEntityTypeConfiguration<ProjectEntity>
     {

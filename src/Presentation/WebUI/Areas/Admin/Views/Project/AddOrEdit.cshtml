@@ -1,8 +1,10 @@
 ﻿@{
     ViewData["Title"] = "پروژه جدید یا ویرایش";
 }
-
 <form action="/Admin/Project/AddOrEdit" method="post">
+    <div>
+        @Html.AntiForgeryToken()
+    </div>
     <div class="card">
         <div class="card-body">
             <div class="container">
@@ -17,7 +19,7 @@
                         <label class="mb-1">
                             <i class="far fa-hammer-brush"></i> نوع پروژه <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control">
+                        <select class="form-control" name="TypeId">
                             <option value="" selected disabled>انتخاب کنید</option>
                             <option value="5">ساخت و ساز</option>
                             <option value="10">نوسازی</option>
@@ -67,7 +69,7 @@
                         <div class="small d-flex justify-content-between text-center align-items-center">
                             <div class="d-flex align-items-center gap-1">
                                 <label id="owner-percent">%</label>
-                                <input class="form-control form-control-sm" type="number" min="1" max="99" value="50" />
+                                <input class="form-control form-control-sm" name="SharePercentage" type="number" min="1" max="99" value="50" />
                                 <label>مجری</label>
                             </div>
                             <div>

@@ -15,6 +15,8 @@ namespace ContractorDocuments.Application.Projects.Commands
         public DateTime? StartOn { get; set; }
         public DateTime? EndOn { get; set; }
         public string? Description { get; set; }
+        public decimal Amount { get; set; }
+        public byte SharePercentage { get; set; }
     }
 
     public class AddOrEditProjectCommandHandler : IRequestHandler<AddOrEditProjectCommand, Result<ProjectEntity>>
