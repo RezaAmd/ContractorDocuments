@@ -77,6 +77,12 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Board()
+        {
+            return View();
+        }
+
         #endregion
     }
 }
