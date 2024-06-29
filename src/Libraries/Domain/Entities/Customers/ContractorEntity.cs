@@ -3,6 +3,7 @@
     public class ContractorEntity : BaseEntity
     {
         public required string Name { get; set; }
+        public string? PhoneNumber { get; set; }
 
         #region Relations
 
