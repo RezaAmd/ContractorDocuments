@@ -1,55 +1,314 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Board";
+    Layout = "_BoardLayout";
 }
-<div class="lists-container" style="background:#ddd;">
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="z-index:1500;background:#2125294a;backdrop-filter: blur(4px);">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bolder" href="/Admin/Dashboard" style="filter:drop-shadow(-2px 3px 5px black);">پاسداران 3</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Overview">
+                        <i class="far fa-print me-1"></i>
+                        نسخه چاپی
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item me-4">
+                    <a class="nav-link">
+                        <h5 class="fw-bold">هزینه پروژه: 890,642,000</h5>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="far fa-ellipsis"></i>
+                    </a>
+                    <ul class="dropdown-menu" style="right:auto;left:0;">
+                        <li class="nav-item">
+                            <a class="nav-link sign-out-controller" href="#" data-bs-placement="bottom">
+                                <i class="fa fa-right-from-bracket me-1"></i>
+                                خروج
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="lists-container py-3">
     <div class="list">
-        <div class="card-header">
-            <h4>اداری</h4>
+        <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
+            <div class="w-100">
+                <span class="h4 fw-bold m-0">پیش ساخت</span>
+            </div>
+            <div dir="ltr">
+                <span class="h6 fw-bold m-0">1,000,000</span>
+            </div>
         </div>
         <ul class="list-items">
-            <li class="d-flex justify-content-between py-4">
-                <div>مصالح</div>
-                <div>38,000,000</div>
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="h5 text-primary">هزینه کرد</div>
+                    <div class="fw-bold">1,000,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ کارهای اداری نمونه</span>
+                        <span>500,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ تنخواه صبحانه</span>
+                        <span>500,000</span>
+                    </div>
+                </div>
             </li>
-            <li class="d-flex py-4">پیمانکاران</li>
-            <li class="d-flex py-4">خرج کرد</li>
         </ul>
         <button class="add-card-btn btn text-start">مورد جدید...</button>
     </div>
     <div class="list">
         <div class="card-header">
-            <h4>اداری</h4>
+            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
+                <div class="w-100">
+                    <span class="h4 fw-bold m-0">اسکلت بندی	</span>
+                </div>
+                <div dir="ltr" data-bs-target="tooltip" data-bs-title="جمع هزینه">
+                    76,430,000
+                </div>
+            </div>
         </div>
+        <ul class="list-items">
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center text-primary">
+                    <div class="h5">مصالح</div>
+                    <div class="fw-bold">57,000,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>8,000,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
+                        <span>45,000,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>4,000,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item">
+                <div class="d-flex justify-content-between text-primary">
+                    <div class="h5">پیمانکاران</div>
+                    <div class="fw-bold">18,000,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>آرماتوربند: محمد اسکندری</span>
+                        <span>18,000,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item">
+                <div class="d-flex justify-content-between text-primary">
+                    <div class="h5">هزینه کرد</div>
+                    <div class="fw-bold">1,430,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>تنخواه صبحانه</span>
+                        <span>150,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید ابزار متر</span>
+                        <span>180,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ دستمزد حمل و نقل سیمان</span>
+                        <span>600,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ اجاره بالابر و داربست بمدت 5 روز</span>
+                        <span>500,000</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="add-card-btn btn text-start">مورد جدید...</button>
     </div>
     <div class="list">
         <div class="card-header">
-            <h4>اداری</h4>
+            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
+                <div class="w-100">
+                    <span class="h4 fw-bold m-0">سفت کاری</span>
+                </div>
+                <div dir="ltr">
+                    350,945,000
+                </div>
+            </div>
         </div>
+        <ul class="list-items">
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="h5 text-primary">مصالح</div>
+                    <div>38,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 2,000 کیلوگرم سیمان</span>
+                        <span>75,6500,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
+                        <span>45,800,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>8,000,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item">
+                <div class="d-flex justify-content-between">
+                    <div class="h5 text-primary">پیمانکاران</div>
+                    <div>38,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ دستمزد حمل و نقل میله گرد</span>
+                        <span>250,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="h5 text-primary">هزینه کرد</div>
+                    <div>96,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ تهیه صبحانه</span>
+                        <span>250,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ دستمزد حمل و نقل میله گرد</span>
+                        <span>250,000</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="add-card-btn btn text-start">مورد جدید...</button>
     </div>
     <div class="list">
         <div class="card-header">
-            <h4>اداری</h4>
+            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
+                <div class="w-100">
+                    <span class="h4 fw-bold m-0">تأسیسات</span>
+                </div>
+                <div dir="ltr">
+                    350,945,000
+                </div>
+            </div>
         </div>
+        <ul class="list-items">
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="h5 text-primary">مصالح</div>
+                    <div>38,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>8,000,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
+                        <span>45,800,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>8,000,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="h5 text-primary">پیمانکاران</div>
+                    <div>38,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ لوله کش</span>
+                        <span>8,000,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ برق کار</span>
+                        <span>6,800,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ نصاب در و پنجره</span>
+                        <span>8,000,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item">
+                <div class="d-flex justify-content-between">
+                    <div class="h5 text-primary">هزینه کرد</div>
+                    <div>38,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ تنخواه</span>
+                        <span>8,000,000</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="add-card-btn btn text-start">مورد جدید...</button>
     </div>
     <div class="list">
         <div class="card-header">
-            <h4>اداری</h4>
+            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
+                <div class="w-100">
+                    <span class="h3 fw-bold m-0">اسکلت بندی	</span>
+                </div>
+                <div dir="ltr">
+                    350,945,000
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <h4>اداری</h4>
-        </div>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <h4>اداری</h4>
-        </div>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <h4>اداری</h4>
-        </div>
+        <ul class="list-items">
+            <li class="list-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="h5 text-primary">مصالح</div>
+                    <div>38,653,000</div>
+                </div>
+                <div class="small">
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>8,000,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
+                        <span>45,800,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>+ خرید 800 کیلوگرم ماسه</span>
+                        <span>8,000,000</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-item d-flex justify-content-between">
+                <div class="h5 text-primary">پیمانکاران</div>
+                <div>38,653,000</div>
+            </li>
+            <li class="list-item d-flex justify-content-between">
+                <div class="h5 text-primary">هزینه کرد</div>
+                <div>38,653,000</div>
+            </li>
+        </ul>
+        <button class="add-card-btn btn text-start">مورد جدید...</button>
     </div>
 </div>
