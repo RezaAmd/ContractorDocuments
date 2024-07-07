@@ -1,7 +1,4 @@
-﻿using ContractorDocuments.Application.Common.Models;
-using ContractorDocuments.Application.Projects;
-using ContractorDocuments.Domain.Entities.Projects;
-using ContractorDocuments.Domain.Enums;
+﻿using ContractorDocuments.Domain.Entities.Projects;
 
 namespace ContractorDocuments.Application.Projects.Commands
 {
@@ -43,11 +40,20 @@ namespace ContractorDocuments.Application.Projects.Commands
             // Create new project.
             if (request.Id == Guid.Empty)
             {
+                // Prepare contract.
+                newProject.Contract = new()
+                {
+                    ContractTypeId = request.ContractTypeId,
+                    Amount = request.Amount,
+                    SharePercentage = request.SharePercentage,
+                    ProjectId = newProject.Id
+                };
                 return await _projectService.AddAsync(newProject);
             }
 
             // Update exist project.
-            var existProject = await _projectService.FindByIdAsync(request.Id, cancellationToken);
+            var existProject = await _projectService.FindByIdAsync(request.Id,
+                cancellationToken);
 
             // Checks if the project does not exist?
             if (existProject is null)

@@ -72,14 +72,15 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             var addOrEditResult = await _mediator.Send(command, cancellationToken);
 
             if (addOrEditResult.IsSuccess)
-                return RedirectToAction("Overview");
+                return RedirectToAction("Board");
 
             return View();
         }
 
         [HttpGet]
-        public IActionResult Board()
+        public IActionResult Board([FromQuery] string id)
         {
+
             return View();
         }
 

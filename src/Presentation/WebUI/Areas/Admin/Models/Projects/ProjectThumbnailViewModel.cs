@@ -2,6 +2,7 @@
 {
     public record ProjectThumbnailViewModel
     {
+        public string Id { get; set; }
         public string Title { get; set; }
         public ProjectType ProjectTypeId { get; set; }
         public string ProjectType { get; set; }

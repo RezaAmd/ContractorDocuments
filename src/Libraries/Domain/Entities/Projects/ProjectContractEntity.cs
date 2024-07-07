@@ -5,7 +5,7 @@
         public required ProjectContractType ContractTypeId { get; set; }
         public decimal Amount { get; set; }
         public byte SharePercentage { get; set; }
-        public required Guid ProjectId { get; set; } // Foreign Key
+        public Guid ProjectId { get; set; } // Foreign Key
 
         #region Relations
 
