@@ -78,10 +78,17 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Board([FromQuery] string id)
+        public async Task<IActionResult> Board([FromQuery] string id,
+            CancellationToken cancellationToken)
         {
+            // TODO:
+            // Map to view model.
+            var project = await _mediator.Send(new GetProjectBoardDetailsQuery
+            {
+                Id = Guid.Parse(id),
+            }, cancellationToken);
 
-            return View();
+            return View(project);
         }
 
         #endregion
