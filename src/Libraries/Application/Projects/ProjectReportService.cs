@@ -24,6 +24,20 @@ namespace ContractorDocuments.Application.Projects
             return await _projectNoTracking.OrderBy(p => p.StartOn).ToListAsync(cancellationToken);
         }
 
+        public async Task<ProjectEntity?> GetProjectByIdIncludeDetailsAsync(Guid Id,
+            CancellationToken cancellationToken = default)
+        {
+            var query = _projectNoTracking
+                .Where(p => p.Id == Id)
+                .Include(p => p.ConstructStages)
+                // .ThenInclude(cs => cs.Supplies).Take(3)
+                // .ThenInclude(cs => cs.Equipment).Take(3)
+                // .ThenInclude(cs => cs.Expenses).Take(3)
+                .AsQueryable();
+
+            return await query.FirstOrDefaultAsync(cancellationToken);
+        }
+
         #endregion
     }
 }
