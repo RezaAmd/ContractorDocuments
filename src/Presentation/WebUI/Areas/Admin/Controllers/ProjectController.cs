@@ -79,7 +79,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Board([FromQuery] string id,
+        public async Task<IActionResult> Board([FromRoute] string id,
             CancellationToken cancellationToken)
         {
             // TODO:
