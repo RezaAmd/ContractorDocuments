@@ -28,6 +28,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 
             return View(allProjects.Select(p => new ProjectThumbnailViewModel
             {
+                Id = p.Id.ToString(),
                 Title = p.Title,
                 ProjectTypeId = p.ProjectTypeId,
                 ProjectType = p.ProjectTypeId.ToDisplay(),
