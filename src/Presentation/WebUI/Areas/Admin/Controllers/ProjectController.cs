@@ -1,7 +1,10 @@
 ﻿using ContractorDocuments.Application.Common.Extensions;
+using ContractorDocuments.Application.ConstructStages.Queries;
 using ContractorDocuments.Application.Projects.Commands;
 using ContractorDocuments.Application.Projects.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Projects;
+using Mapster;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
@@ -92,10 +95,46 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             {
                 Id = Guid.Parse(id),
             }, cancellationToken);
+            if (project == null)
+                return RedirectToAction("Overview");
+            // TODO:
+            // Change Manual map to Auto map.
+            ProjectBoardViewModel projectBoardVM = new();
+            projectBoardVM = project.Adapt(projectBoardVM);
+            projectBoardVM.ConstructionStages = project.Stages!.Select(cs => new ProjectConstructStageViewModel
+            {
+                Id = cs.Id.ToString(),
+                Name = cs.ConstructStage!.Name,
+                DisplayOrder = cs.ConstructStage!.DisplayOrder,
+            }).OrderBy(cs => cs.DisplayOrder).ToList();
+            // Prepare construct stages can be added.
+            var constructStages = await _mediator.Send(new GetAllConstructStagesQuery
+            {
+                ProjectTypeId = project.ProjectTypeId
+            }, cancellationToken);
+            // Prepare list item.
+            projectBoardVM.ConstructionStagesCanBeAdded = new List<SelectListItem>();
+            projectBoardVM.ConstructionStagesCanBeAdded = constructStages.Select(cs => new SelectListItem
+            {
+                Value = cs.Id.ToString(),
+                Text = cs.Name
+            }).ToList();
 
-            return View(project);
+            return View(projectBoardVM);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddConstructStage([FromForm] AddConstructStageInputModel constructStageModel,
+            CancellationToken cancellationToken)
+        {
+            var addProjectStageResult = await _mediator.Send(new AddConstructStageCommand
+            {
+                ProjectId = constructStageModel.projectId,
+                ConstructStageId = constructStageModel.constructStageId
+            }, cancellationToken);
+
+            return RedirectToAction("Board", new { Id = constructStageModel.projectId });
+        }
         #endregion
     }
 }

@@ -20,9 +20,18 @@ namespace ContractorDocuments.Application.ConstructStages
 
         #region Methods
 
-        public async Task<IList<ConstructStageEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IList<ConstructStageEntity>> GetAllAsync(ProjectType? projectTypeId = null,CancellationToken cancellationToken = default)
         {
-            return await _constructStageQuery.OrderBy(cs => cs.DisplayOrder).ToListAsync(cancellationToken);
+            var query = _constructStageQuery
+                .OrderBy(cs => cs.DisplayOrder)
+                .AsQueryable();
+
+            if (projectTypeId.HasValue)
+                query = query
+                    .Where(c => c.ProjectTypeId == projectTypeId.Value)
+                    .AsQueryable();
+
+            return await query.ToListAsync(cancellationToken);
         }
 
         #endregion

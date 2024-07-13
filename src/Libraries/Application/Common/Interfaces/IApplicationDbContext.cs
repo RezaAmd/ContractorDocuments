@@ -14,10 +14,11 @@ namespace ContractorDocuments.Application.Common.Interfaces
         #region Projects
 
         DbSet<ProjectEntity> Projects { get; }
+        DbSet<ProjectStageEntity> ProjectStages { get; }
 
         #endregion
 
-        #region Projects
+        #region Basic Data
 
         DbSet<ConstructStageEntity> ConstructStages { get; }
 

@@ -26,11 +26,11 @@ small, .small {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #c8cbcf
+    background: #c8cbcfbf
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #babec4
+        background: #babec4f9
     }
 
 ::-webkit-scrollbar-track {
@@ -69,6 +69,9 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     --bs-card-border-radius: 0.8rem;
 }
 
+.modal {
+    backdrop-filter: blur(2px);
+}
 
 /* Utilities */
 
@@ -142,6 +145,7 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
 .list-item {
     background-color: #dbdbdc;
     padding: 0.5rem 0.6rem;
+    cursor: pointer;
 }
 
 

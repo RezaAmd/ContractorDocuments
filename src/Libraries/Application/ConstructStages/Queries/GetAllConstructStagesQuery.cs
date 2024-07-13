@@ -4,6 +4,7 @@ namespace ContractorDocuments.Application.ConstructStages.Queries
 {
     public class GetAllConstructStagesQuery : IRequest<IList<ConstructStageEntity>>
     {
+        public ProjectType? ProjectTypeId { get; set; } = null;
     }
 
     internal class GetAllConstructStagesQueryHandler : IRequestHandler<GetAllConstructStagesQuery, IList<ConstructStageEntity>>
@@ -24,7 +25,7 @@ namespace ContractorDocuments.Application.ConstructStages.Queries
 
         public async Task<IList<ConstructStageEntity>> Handle(GetAllConstructStagesQuery request, CancellationToken cancellationToken)
         {
-            return await _constructStageReportService.GetAllAsync(cancellationToken);
+            return await _constructStageReportService.GetAllAsync(request.ProjectTypeId, cancellationToken);
         }
     }
 }

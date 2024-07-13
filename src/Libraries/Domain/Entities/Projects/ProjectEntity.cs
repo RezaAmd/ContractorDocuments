@@ -14,7 +14,7 @@
         #region Relations
 
         public required virtual ProjectContractEntity Contract { get; set; }
-        public virtual ICollection<ProjectStageEntity>? ConstructStages { get; private set; }
+        public virtual ICollection<ProjectStageEntity>? Stages { get; private set; }
 
         #endregion
 

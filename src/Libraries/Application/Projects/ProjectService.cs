@@ -36,7 +36,22 @@ namespace ContractorDocuments.Application.Projects
 
         #region Construct Stages
 
+        public async Task<Result> AddStageAsync(Guid projectId, Guid constructStageId,
+            CancellationToken cancellationToken = default)
+        {
+            if(await _context.ProjectStages
+                .Where(ps => ps.ProjectId == projectId && ps.ConstructStageId == constructStageId)
+                .AnyAsync(cancellationToken))
+                return Result.Fail();
 
+            ProjectStageEntity newProjectStage = new()
+            {
+                ProjectId = projectId,
+                ConstructStageId = constructStageId
+            };
+            await _context.ProjectStages.AddAsync(newProjectStage, cancellationToken);
+            return await _context.SaveChangeAsync(cancellationToken);
+        }
 
         #endregion
 

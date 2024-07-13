@@ -30,7 +30,8 @@ namespace ContractorDocuments.Application.Projects
             var query = _projectNoTracking
                 .Where(p => p.Id == Id)
                 .Include(p => p.Contract)
-                .Include(p => p.ConstructStages)
+                .Include(p => p.Stages!)
+                .ThenInclude(cs => cs.ConstructStage)
                 // .ThenInclude(cs => cs.Supplies).Take(3)
                 // .ThenInclude(cs => cs.Equipment).Take(3)
                 // .ThenInclude(cs => cs.Expenses).Take(3)

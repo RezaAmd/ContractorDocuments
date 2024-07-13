@@ -1,11 +1,11 @@
-﻿
+﻿@model ContractorDocuments.WebUI.Areas.Admin.Models.Projects.ProjectBoardViewModel
 @{
-    ViewData["Title"] = "نمای تخته";
+    ViewData["Title"] = "نمای تخته " + Model.Title;
     Layout = "_BoardLayout";
 }
-<nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="z-index:1001;background:#2125294a;backdrop-filter: blur(4px);">
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="z-index:900;background:#2125294a;backdrop-filter: blur(4px);">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bolder" href="/Admin/Dashboard" style="filter:drop-shadow(-2px 3px 5px black);">پاسداران 3</a>
+        <a class="navbar-brand fw-bolder" href="/Admin/Dashboard" style="filter:drop-shadow(-2px 3px 5px black);">@Model.Title</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
@@ -18,7 +18,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item me-4">
                     <a class="nav-link">
-                        <h5 class="fw-bold">هزینه پروژه: 890,642,000</h5>
+                        <h5 class="fw-bold">هزینه کل: @Model.TotalCost</h5>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -39,295 +39,263 @@
     </div>
 </nav>
 <div class="lists-container py-3">
-    <div class="list">
-        <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
-            <div class="w-100">
-                <span class="h4 fw-bold m-0">پیش ساخت</span>
-            </div>
-            <div dir="ltr">
-                <span class="h6 fw-bold m-0">1,000,000</span>
-            </div>
-        </div>
-        <ul class="list-items">
-            <li class="list-item" data-bs-toggle="modal" data-bs-target="#expenses-card-modal">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="h5 text-primary">هزینه کرد</div>
-                    <div class="fw-bold">1,000,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ کارهای اداری نمونه</span>
-                        <span>500,000</span>
+    @if (Model.ConstructionStages != null && Model.ConstructionStages.Count > 0)
+    {
+        foreach (var constructionStage in Model.ConstructionStages)
+        {
+            <div class="list">
+                <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
+                    <div class="w-100">
+                        <span class="h4 fw-bold m-0">@constructionStage.Name</span>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ تنخواه صبحانه</span>
-                        <span>500,000</span>
+                    <div dir="ltr">
+                        <span class="h6 fw-bold m-0">@constructionStage.TotalCost</span>
                     </div>
                 </div>
-            </li>
+                <ul class="list-items">
+                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#supplies-card-modal">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="h5 text-primary">مصالح</div>
+                            <div class="fw-bold">0</div>
+                        </div>
+                        <div class="small">
+                            @* <div class="d-flex justify-content-between">
+                    <span>+ کارهای اداری نمونه</span>
+                    <span>0</span>
+                    </div> *@
+                        </div>
+                    </li>
+                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#contractors-card-modal">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="h5 text-primary">پیمانکاران</div>
+                            <div class="fw-bold">0</div>
+                        </div>
+                        <div class="small">
+                            @* <div class="d-flex justify-content-between">
+                    <span>+ کارهای اداری نمونه</span>
+                    <span>0</span>
+                    </div> *@
+                        </div>
+                    </li>
+                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#expenses-card-modal">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="h5 text-primary">دیگر مخارج</div>
+                            <div class="fw-bold">0</div>
+                        </div>
+                        <div class="small">
+                            @* <div class="d-flex justify-content-between">
+                    <span>+ کارهای اداری نمونه</span>
+                    <span>0</span>
+                    </div> *@
+                        </div>
+                    </li>
+                </ul>
+                @* <div class="dropdown">
+        <button class="add-card-btn btn text-start w-100" data-bs-toggle="dropdown">بیشتر</button>
+        <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">مصالح</a></li>
+        <li><a class="dropdown-item" href="#">پیمانکاران</a></li>
+        <li><a class="dropdown-item" href="#">مخارج دیگر</a></li>
         </ul>
-        <button class="add-card-btn btn text-start">مورد جدید...</button>
-        <!-- Expenses Card Modal -->
-        <div class="modal fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="expenses-card-modal-label">هزینه کرد</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> *@
+                <!-- Supplies Card Modal -->
+                <div class="modal modal-xl fade" id="supplies-card-modal" tabindex="-1" aria-labelledby="supplies-card-modal-label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="supplies-card-modal-label">مصالح</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 offset-lg-3">
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h5 class="accordion-header">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            تعریف مصالح جدید
+                                                        </button>
+                                                    </h5>
+                                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <div class="mb-3">
+                                                                <label>نوع</label>
+                                                                <select class="form-control">
+                                                                    <option>شن</option>
+                                                                    <option>ماسه</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label>مقدار</label>
+                                                                <input type="number" dir="ltr" class="form-control" />
+                                                            </div>
+                                                            <div>
+                                                                <button class="btn btn-primary">افزودن</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="scrollable" style="max-height:350px">
+                                    <table class="table table-borderless table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>نوع</th>
+                                                <th>نام</th>
+                                                <th>مقدار</th>
+                                                <th>مبلغ واحد</th>
+                                                <th>هزینه کل</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>شن</td>
+                                                <td>مدل 16.5</td>
+                                                <td>500 کیلوگرم</td>
+                                                <td>120,000</td>
+                                                <td>60,000,000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        ...
+                </div>
+                <!-- Contractors Card Modal -->
+                <div class="modal fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="contractors-card-modal-label">پیمانکاران</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                <!-- Expenses Card Modal -->
+                <div class="modal fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="expenses-card-modal-label">هزینه کرد</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        }
+    }
+
+    @if (Model.ConstructionStagesCanBeAdded != null && Model.ConstructionStagesCanBeAdded.Count > 0)
+    {
+        <div class="list">
+            <button class="add-card-btn btn text-start" data-bs-toggle="modal" data-bs-target="#add-stage-modal">+ مرحله جدید</button>
         </div>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
-                <div class="w-100">
-                    <span class="h4 fw-bold m-0">اسکلت بندی	</span>
-                </div>
-                <div dir="ltr" data-bs-target="tooltip" data-bs-title="جمع هزینه">
-                    76,430,000
-                </div>
-            </div>
-        </div>
-        <ul class="list-items">
-            <li class="list-item">
-                <div class="d-flex justify-content-between align-items-center text-primary">
-                    <div class="h5">مصالح</div>
-                    <div class="fw-bold">57,000,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>8,000,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
-                        <span>45,000,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>4,000,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="d-flex justify-content-between text-primary">
-                    <div class="h5">پیمانکاران</div>
-                    <div class="fw-bold">18,000,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>آرماتوربند: محمد اسکندری</span>
-                        <span>18,000,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="d-flex justify-content-between text-primary">
-                    <div class="h5">هزینه کرد</div>
-                    <div class="fw-bold">1,430,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>تنخواه صبحانه</span>
-                        <span>150,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید ابزار متر</span>
-                        <span>180,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ دستمزد حمل و نقل سیمان</span>
-                        <span>600,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ اجاره بالابر و داربست بمدت 5 روز</span>
-                        <span>500,000</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <button class="add-card-btn btn text-start">مورد جدید...</button>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
-                <div class="w-100">
-                    <span class="h4 fw-bold m-0">سفت کاری</span>
-                </div>
-                <div dir="ltr">
-                    350,945,000
-                </div>
-            </div>
-        </div>
-        <ul class="list-items">
-            <li class="list-item">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="h5 text-primary">مصالح</div>
-                    <div>38,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 2,000 کیلوگرم سیمان</span>
-                        <span>75,6500,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
-                        <span>45,800,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>8,000,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="d-flex justify-content-between">
-                    <div class="h5 text-primary">پیمانکاران</div>
-                    <div>38,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ دستمزد حمل و نقل میله گرد</span>
-                        <span>250,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="h5 text-primary">هزینه کرد</div>
-                    <div>96,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ تهیه صبحانه</span>
-                        <span>250,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ دستمزد حمل و نقل میله گرد</span>
-                        <span>250,000</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <button class="add-card-btn btn text-start">مورد جدید...</button>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
-                <div class="w-100">
-                    <span class="h4 fw-bold m-0">تأسیسات</span>
-                </div>
-                <div dir="ltr">
-                    350,945,000
-                </div>
-            </div>
-        </div>
-        <ul class="list-items">
-            <li class="list-item">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="h5 text-primary">مصالح</div>
-                    <div>38,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>8,000,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
-                        <span>45,800,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>8,000,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="h5 text-primary">پیمانکاران</div>
-                    <div>38,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ لوله کش</span>
-                        <span>8,000,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ برق کار</span>
-                        <span>6,800,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ نصاب در و پنجره</span>
-                        <span>8,000,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item">
-                <div class="d-flex justify-content-between">
-                    <div class="h5 text-primary">هزینه کرد</div>
-                    <div>38,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ تنخواه</span>
-                        <span>8,000,000</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <button class="add-card-btn btn text-start">مورد جدید...</button>
-    </div>
-    <div class="list">
-        <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
-                <div class="w-100">
-                    <span class="h3 fw-bold m-0">اسکلت بندی	</span>
-                </div>
-                <div dir="ltr">
-                    350,945,000
-                </div>
-            </div>
-        </div>
-        <ul class="list-items">
-            <li class="list-item">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="h5 text-primary">مصالح</div>
-                    <div>38,653,000</div>
-                </div>
-                <div class="small">
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>8,000,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید میله گرد 24، 6 متری، 80 شاخه</span>
-                        <span>45,800,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>+ خرید 800 کیلوگرم ماسه</span>
-                        <span>8,000,000</span>
-                    </div>
-                </div>
-            </li>
-            <li class="list-item d-flex justify-content-between">
-                <div class="h5 text-primary">پیمانکاران</div>
-                <div>38,653,000</div>
-            </li>
-            <li class="list-item d-flex justify-content-between">
-                <div class="h5 text-primary">هزینه کرد</div>
-                <div>38,653,000</div>
-            </li>
-        </ul>
-        <button class="add-card-btn btn text-start">مورد جدید...</button>
-    </div>
+    }
 </div>
+
+@if (Model.ConstructionStagesCanBeAdded != null && Model.ConstructionStagesCanBeAdded.Count > 0)
+{
+    @* Add New Stage *@
+    <div class="modal" tabindex="-1" id="add-stage-modal" aria-labelledby="AddStageLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content" method="post" action="/Admin/Project/AddConstructStage">
+                <div class="modal-header">
+                    <h5 class="modal-title">مرحله جدید</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="projectId" value="@Model.Id" />
+                    <select name="constructStageId" class="form-control">
+                        @foreach (var constructStage in Model.ConstructionStagesCanBeAdded)
+                        {
+                            <option value="@constructStage.Value">@constructStage.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                    <button type="submit" class="btn btn-primary">ذخیره</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}

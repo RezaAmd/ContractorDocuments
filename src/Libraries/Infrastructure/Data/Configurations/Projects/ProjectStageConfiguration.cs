@@ -18,7 +18,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
 
             // Project
             builder.HasOne(e => e.Project)
-                .WithMany(cs => cs.ConstructStages)
+                .WithMany(cs => cs.Stages)
                 .HasForeignKey(e => e.ProjectId);
 
             // ConstructStage
