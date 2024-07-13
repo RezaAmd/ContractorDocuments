@@ -89,6 +89,10 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     text-align: left;
 }
 
+.sticky-top {
+    z-index: 900;
+}
+
 
 /* CUSTOM */
 .lists-container {
