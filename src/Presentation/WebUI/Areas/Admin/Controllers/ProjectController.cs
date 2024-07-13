@@ -82,6 +82,10 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             CancellationToken cancellationToken)
         {
             // TODO:
+            // Validate by fluent validation.
+            if (id == null)
+                return RedirectToAction("Overview");
+            // TODO:
             // Map to view model.
             var project = await _mediator.Send(new GetProjectBoardDetailsQuery
             {
