@@ -150,8 +150,6 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     border-right: 0.6rem solid #e2e4e6;
 }
 
-
-
 .add-card-btn {
     display: block;
     color: #838c91;
@@ -163,3 +161,17 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     font-size: 1.2rem;
     background: unset;
 }*/
+
+/* Mobile screen */
+@media screen and (max-width: 425px) {
+    .list {
+        flex: 0 0 19rem;
+    }
+}
+
+/* Tablet screen */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+    .list {
+        flex: 0 0 22rem;
+    }
+}
