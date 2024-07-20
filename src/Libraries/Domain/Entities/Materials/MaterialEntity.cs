@@ -6,12 +6,12 @@ namespace ContractorDocuments.Domain.Entities.Materials
     {
         public required string Name { get; set; }
         public Guid? ParentMaterialId { get; set; } // Foreign Key
-        public Guid MeasureId { get; private set; }
+        public Guid MeasureId { get; set; }
 
         #region Relations
-
         public virtual MeasureEntity? Measure { get; private set; }
-        public virtual ICollection<MaterialEntity>? MaterialTypes { get; private set; }
+        public virtual ICollection<MaterialEntity>? ChildrenMaterial { get; private set; }
+        public virtual MaterialEntity? ParentMaterial { get; set; }
 
         #endregion
     }

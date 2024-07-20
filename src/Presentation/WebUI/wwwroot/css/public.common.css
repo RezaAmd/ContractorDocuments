@@ -69,6 +69,15 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     --bs-card-border-radius: 0.8rem;
 }
 
+.accordion-button:not(.collapsed) {
+    background-color: #dae8ee57;
+    box-shadow: unset;
+}
+
+.accordion-button:focus {
+    box-shadow: unset;
+}
+
 .modal {
     backdrop-filter: blur(2px);
 }
@@ -125,7 +134,7 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     flex: 0 0 27rem;
     display: flex;
     flex-direction: column;
-    background-color: #e2e4e6;
+    background-color: #e3e2e6;
     max-height: calc(100vh - 11.8rem);
     border-radius: 0.5rem;
     padding: 4px 8px;
@@ -137,13 +146,13 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     flex-direction: column;
     align-content: start;
     border-radius: 0.6rem;
-    gap: 15px;
+    gap: 10px;
     padding: 0;
     overflow-y: auto;
 }
 
 .list-item {
-    background-color: #dbdbdc;
+    background-color: #9590bd1c;
     padding: 0.5rem 0.6rem;
     cursor: pointer;
 }

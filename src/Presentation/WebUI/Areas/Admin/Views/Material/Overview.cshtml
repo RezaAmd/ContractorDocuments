@@ -9,7 +9,7 @@
                     <h4><i class="fa fa-truck-ramp-box me-1"></i> مصالح</h4>
                 </div>
                 <div>
-                    <button class="btn btn-sm btn-primary">+ جدید</button>
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#create-material-modal">+ جدید</button>
                 </div>
             </div>
             <div class="card-body">
@@ -41,5 +41,46 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+@* Add New Stage *@
+<div class="modal" tabindex="-1" id="create-material-modal" aria-labelledby="CreateMaterialLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" method="post" action="/Admin/Material/Create">
+            <div class="modal-header">
+                <h5 class="modal-title">متریال جدید</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label class="mb-2" for="material-name">نام</label>
+                    <input id="material-name" class="form-control" name="name" maxlength="20" />
+                </div>
+                <div class="mb-3">
+                    <label class="mb-2" for="parent-material">مواد شاخص</label>
+                    <select id="parent-material" class="form-control" name="ParentMaterialId">
+                        <option selected disabled>انتخاب کنید</option>
+                        <option>شن</option>
+                        <option>ماسه</option>
+                        <option>سیمان</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-2" for="measure">واحد اندازه گیری</label>
+                    <select id="measure" class="form-control" name="MeasureId">
+                        <option selected disabled>انتخاب کنید</option>
+                        <option>کیلوگرم</option>
+                        <option>متر</option>
+                        <option>عدد</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                <button type="submit" class="btn btn-primary">افزودن</button>
+            </div>
+        </form>
     </div>
 </div>

@@ -1,4 +1,6 @@
 ﻿using ContractorDocuments.Application.ConstructStages;
+using ContractorDocuments.Application.Materials;
+using ContractorDocuments.Application.Measures;
 using ContractorDocuments.Application.Projects;
 using ContractorDocuments.Application.Users;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,11 +34,18 @@ namespace ContractorDocuments.Application
             #region Projects
 
             services
+                // Projects
                 .AddScoped<ProjectService>()
                 .AddScoped<ProjectReportService>()
                 // Construct Stages
                 .AddScoped<ConstructStageService>()
                 .AddScoped<ConstructStageReportService>()
+                // Materials
+                .AddScoped<MaterialService>()
+                .AddScoped<MaterialReportService>()
+                // Directory
+                .AddScoped<MeasureService>()
+                .AddScoped<MeasureReportService>()
                 ;
 
             #endregion

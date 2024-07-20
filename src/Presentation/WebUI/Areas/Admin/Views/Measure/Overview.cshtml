@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ContractorDocuments.WebUI.Areas.Admin.Models.Measures.MeasureViewModel>
+@{
+    ViewData["Title"] = "واحد های اندازه گیری";
+}
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="card-title">
+            <h4><i class="fa fa-ruler"></i> واحد اندازه گیری</h4>
+        </div>
+        <div class="card-tools">
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#create-measure-modal">+ جدید</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-borderless table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>نام</th>
+                    <th>نام سیستمی</th>
+                    <th>ترتیب نمایش</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var measure in Model)
+                    {
+                        <tr>
+                            <td>@measure.Name</td>
+                            <td>@measure.SystemKeyword</td>
+                            <td>@measure.DisplayOrder</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                <td>موردی یافت نشد</td>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@* Add New Stage *@
+<div class="modal" tabindex="-1" id="create-measure-modal" aria-labelledby="CreateMeasureLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" method="post" action="/Admin/Measure/Create">
+            <div class="modal-header">
+                <h5 class="modal-title">واحد اندازه گیری</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label class="mb-2" for="measure-name">نام</label>
+                    <input id="measure-name" class="form-control" name="Name" maxlength="20" />
+                </div>
+                <div class="mb-3">
+                    <label class="mb-2" for="measure-name">کلمه سیستمی</label>
+                    <input id="measure-name" class="form-control" name="SystemKeyword" maxlength="20" />
+                </div>
+                <div class="mb-3">
+                    <label class="mb-2" for="measure-name">ترتیب نمایش</label>
+                    <input id="measure-name" class="form-control" name="DisplayOrder" maxlength="20" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                <button type="submit" class="btn btn-primary">افزودن</button>
+            </div>
+        </form>
+    </div>
+</div>

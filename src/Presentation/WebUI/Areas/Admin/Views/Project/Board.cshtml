@@ -100,7 +100,7 @@
         </div> *@
                 <!-- Supplies Card Modal -->
                 <div class="modal modal-xl fade" id="supplies-card-modal" tabindex="-1" aria-labelledby="supplies-card-modal-label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="supplies-card-modal-label">مصالح</h1>
@@ -110,18 +110,19 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-lg-6 offset-lg-3">
-                                            <div class="accordion" id="accordionExample">
+                                            <form action="/Admin/Project/AddSupply" method="post" class="accordion" id="supplies-accordion">
                                                 <div class="accordion-item">
                                                     <h5 class="accordion-header">
-                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#new-supply" aria-expanded="false" aria-controls="collapseOne">
                                                             تعریف مصالح جدید
                                                         </button>
                                                     </h5>
-                                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                    <div id="new-supply" class="accordion-collapse collapse" data-bs-parent="#supplies-accordion">
                                                         <div class="accordion-body">
                                                             <div class="mb-3">
                                                                 <label>نوع</label>
                                                                 <select class="form-control">
+                                                                    <option selected disabled>انتخاب کنید</option>
                                                                     <option>شن</option>
                                                                     <option>ماسه</option>
                                                                 </select>
@@ -130,13 +131,17 @@
                                                                 <label>مقدار</label>
                                                                 <input type="number" dir="ltr" class="form-control" />
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label>مبلغ واحد</label>
+                                                                <input type="text" dir="ltr" class="form-control" />
+                                                            </div>
                                                             <div>
                                                                 <button class="btn btn-primary">افزودن</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

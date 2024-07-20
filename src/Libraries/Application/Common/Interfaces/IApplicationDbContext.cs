@@ -1,4 +1,6 @@
 ﻿using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Domain.Entities.Directory;
+using ContractorDocuments.Domain.Entities.Materials;
 using ContractorDocuments.Domain.Entities.Projects;
 
 namespace ContractorDocuments.Application.Common.Interfaces
@@ -15,12 +17,19 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         DbSet<ProjectEntity> Projects { get; }
         DbSet<ProjectStageEntity> ProjectStages { get; }
+        DbSet<ConstructStageEntity> ConstructStages { get; }
 
         #endregion
 
-        #region Basic Data
+        #region Materials
 
-        DbSet<ConstructStageEntity> ConstructStages { get; }
+        DbSet<MaterialEntity> Materials { get; }
+
+        #endregion
+
+        #region Directory
+
+        DbSet<MeasureEntity> Measures { get; }
 
         #endregion
 

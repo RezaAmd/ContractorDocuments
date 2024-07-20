@@ -1,6 +1,8 @@
 ﻿using ContractorDocuments.Application.Common.Interfaces;
 using ContractorDocuments.Application.Common.Models;
 using ContractorDocuments.Domain.Entities.Customers;
+using ContractorDocuments.Domain.Entities.Directory;
+using ContractorDocuments.Domain.Entities.Materials;
 using ContractorDocuments.Domain.Entities.Projects;
 using System.Reflection;
 
@@ -23,6 +25,19 @@ namespace ContractorDocuments.Infrastructure.Data
         public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
         public DbSet<ProjectStageEntity> ProjectStages => Set<ProjectStageEntity>();
         public DbSet<ConstructStageEntity> ConstructStages => Set<ConstructStageEntity>();
+
+        #endregion
+
+        #region Materials
+
+        public DbSet<MaterialEntity> Materials => Set<MaterialEntity>();
+
+
+        #endregion
+
+        #region Directory
+
+        public DbSet<MeasureEntity> Measures => Set<MeasureEntity>();
 
         #endregion
 

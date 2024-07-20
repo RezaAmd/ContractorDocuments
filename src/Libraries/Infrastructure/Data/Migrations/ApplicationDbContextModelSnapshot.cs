@@ -160,7 +160,7 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Customers.UserEntity", b =>
                 {
-                    b.OwnsOne("ContractorDocuments.Domain.ValueObjects.Fullname", "Fullname", b1 =>
+                    b.OwnsOne("ContractorDocuments.Domain.Entities.Customers.UserEntity.Fullname#ContractorDocuments.Domain.ValueObjects.Fullname", "Fullname", b1 =>
                         {
                             b1.Property<Guid>("UserEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -177,13 +177,13 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
                             b1.HasKey("UserEntityId");
 
-                            b1.ToTable("Users");
+                            b1.ToTable("Users", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("UserEntityId");
                         });
 
-                    b.OwnsOne("ContractorDocuments.Domain.ValueObjects.PasswordHash", "Password", b1 =>
+                    b.OwnsOne("ContractorDocuments.Domain.Entities.Customers.UserEntity.Password#ContractorDocuments.Domain.ValueObjects.PasswordHash", "Password", b1 =>
                         {
                             b1.Property<Guid>("UserEntityId")
                                 .HasColumnType("uniqueidentifier");
@@ -195,7 +195,7 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
                             b1.HasKey("UserEntityId");
 
-                            b1.ToTable("Users");
+                            b1.ToTable("Users", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("UserEntityId");
