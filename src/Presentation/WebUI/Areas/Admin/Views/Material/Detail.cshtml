@@ -1,0 +1,105 @@
+﻿@model ContractorDocuments.WebUI.Areas.Admin.Models.Materials.MaterialWithChildrenViewModel
+@{
+    ViewData["Title"] = "جزئیات";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4 class="card-title">زیر شاخه های '@Model.Name'</h4>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createChildModal">
+                    + جدید
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div>
+            <table class="table table-borderless table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>نام</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Children != null && Model.Children.Count > 0)
+                    {
+
+                        foreach (var child in Model.Children)
+                        {
+                            <tr>
+                                <td>@child.Name</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>موردی یافت نشد</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Create Child Modal -->
+<div class="modal fade" id="createChildModal" tabindex="-1" aria-labelledby="createChildModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <form action="/admin/material/createChild" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="createChildModalLabel">افزودن زیر شاخه</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div>
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" value="@Model.Id" name="ParentMaterialId" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="name-input" class="mb-1">نام</label>
+                                <input id="name-input" class="form-control" name="Name" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="material-measure-select" class="mb-1">واحد اندازه گیری</label>
+                                <select id="material-measure-select" class="form-control" name="MeasureId">
+                                    <option selected disabled>انتخاب کنید</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                    <button type="submit" class="btn btn-primary">افزودن</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            // Fetch measures.
+            await rest.getAsync('/admin/measure/getAll', null, (isSuccess, response) => {
+                var materialMeasureSelect = document.getElementById('material-measure-select');
+                if (!materialMeasureSelect)
+                    return;
+                response.forEach((measure) => {
+                    var opt = document.createElement('option');
+                    opt.value = measure.id;
+                    opt.innerHTML = measure.name;
+                    materialMeasureSelect.appendChild(opt);
+                });
+            });
+        })
+    </script>
+}

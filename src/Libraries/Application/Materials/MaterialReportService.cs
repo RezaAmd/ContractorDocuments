@@ -32,6 +32,14 @@ namespace ContractorDocuments.Application.Materials
                 .ToListAsync(cancellationToken);
         }
 
+        public async Task<MaterialEntity?> GetMaterialByIdIncludeChildrenAsync(Guid id,
+            CancellationToken cancellationToken = default)
+        {
+            return await _queryAsNoTracking
+                .Where(m => m.Id == id)
+                .Include(m => m.ChildrenMaterial)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
         #endregion
     }
 }
