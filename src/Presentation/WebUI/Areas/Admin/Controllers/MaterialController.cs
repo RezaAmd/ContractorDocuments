@@ -2,7 +2,6 @@
 using ContractorDocuments.Application.Materials.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Materials;
 using Microsoft.AspNetCore.Authorization;
-using System.Threading;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {

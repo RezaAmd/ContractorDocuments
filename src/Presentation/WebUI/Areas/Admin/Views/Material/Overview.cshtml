@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>@material.Name</td>
                                         <td>
-                                            <a class="btn btn-sm"></a>
+                                            <a class="btn btn-sm">مشاهده</a>
                                         </td>
                                     </tr>
                                 }
@@ -38,7 +38,7 @@
                             else
                             {
                                 <tr>
-                                    <td class="text-center text-muted" colspan="2">موردی یافت نشد</td>
+                                    <td class="text-center text-muted py-3" colspan="2">موردی یافت نشد</td>
                                 </tr>
                             }
                         </tbody>
@@ -63,26 +63,10 @@
                     <label class="mb-2" for="material-name">نام</label>
                     <input id="material-name" class="form-control" name="name" maxlength="20" />
                 </div>
-                @if (Model != null && Model.Count() > 0)
-                {
-                    <div class="mb-3">
-                        <label class="mb-2" for="parent-material">مواد شاخص</label>
-                        <select id="parent-material" class="form-control" name="ParentMaterialId">
-                            <option selected disabled>انتخاب کنید</option>
-                            @foreach(var parentMaterial in Model)
-                            {
-                                <option>@parentMaterial.Name</option>
-                            }
-                        </select>
-                    </div>
-                }
                 <div class="mb-3">
-                    <label class="mb-2" for="measure">واحد اندازه گیری</label>
-                    <select id="measure" class="form-control" name="MeasureId">
+                    <label class="mb-2" for="material-measure-select">واحد اندازه گیری</label>
+                    <select id="material-measure-select" class="form-control" name="MeasureId">
                         <option selected disabled>انتخاب کنید</option>
-                        <option>کیلوگرم</option>
-                        <option>متر</option>
-                        <option>عدد</option>
                     </select>
                 </div>
             </div>
@@ -93,3 +77,22 @@
         </form>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            // Fetch measures.
+            await rest.getAsync('/admin/measure/getAll', null, (isSuccess, response) => {
+                var materialMeasureSelect = document.getElementById('material-measure-select');
+                if (!materialMeasureSelect)
+                    return;
+                response.forEach((measure) => {
+                    var opt = document.createElement('option');
+                    opt.value = measure.id;
+                    opt.innerHTML = measure.name;
+                    materialMeasureSelect.appendChild(opt);
+                });
+            });
+        })
+    </script>
+}

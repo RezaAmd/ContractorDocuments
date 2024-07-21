@@ -2,6 +2,7 @@
 using ContractorDocuments.Application.Measures.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Measures;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
@@ -40,6 +41,25 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             }, cancellationToken);
 
             return RedirectToAction("Overview");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
+            var measures = await _mediator.Send(new GetAllMeasureQuery(),
+                cancellationToken);
+            if (measures == null)
+                return NoContent();
+            var measuresVM = measures.Select(m => new MeasureViewModel
+            {
+                Id = m.Id.ToString(),
+                Name = m.Name,
+                SystemKeyword = m.SystemKeyword,
+                DisplayOrder = m.DisplayOrder
+            }).ToList();
+
+            return Ok(measuresVM);
         }
     }
 }
