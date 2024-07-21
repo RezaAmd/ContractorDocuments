@@ -28,7 +28,10 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
 
             // Equipment
 
-            // Supplies
+            // Materials
+            builder.HasMany(b => b.Materials)
+                .WithOne(psm => psm.ProjectStep)
+                .HasForeignKey(b => b.ProjectStepId);
 
             #endregion
         }

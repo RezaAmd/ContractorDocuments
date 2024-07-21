@@ -104,7 +104,11 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 Id = cs.Id.ToString(),
                 Name = cs.ConstructStage!.Name,
                 DisplayOrder = cs.ConstructStage!.DisplayOrder,
+                Materials = cs.Supplies
             }).OrderBy(cs => cs.DisplayOrder).ToList();
+
+            // Prepare Materials of construct stages.
+
             // Prepare construct stages can be added.
             var constructStages = await _mediator.Send(new GetAllConstructStagesQuery
             {
