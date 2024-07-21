@@ -1,6 +1,8 @@
 ﻿using ContractorDocuments.Application.Materials.Commands;
 using ContractorDocuments.Application.Materials.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Materials;
+using Microsoft.AspNetCore.Authorization;
+using System.Threading;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
@@ -19,9 +21,18 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         #region Pages
 
         [HttpGet]
-        public IActionResult Overview()
+        public async Task<IActionResult> Overview(CancellationToken cancellationToken)
         {
-            return View();
+            var parentMaterials = await _mediator.Send(new GetAllParentMaterialQuery(),
+                cancellationToken);
+
+            var materials = parentMaterials.Select(m => new MaterialViewModel
+            {
+                Id = m.Id.ToString(),
+                Name = m.Name
+            }).ToList();
+
+            return View(materials);
         }
 
         [HttpPost]
@@ -39,11 +50,12 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetParents(CancellationToken cancellationToken)
         {
             var parentMaterials = await _mediator.Send(new GetAllParentMaterialQuery(),
                 cancellationToken);
-            return Ok();
+            return Ok(parentMaterials);
         }
 
         #endregion

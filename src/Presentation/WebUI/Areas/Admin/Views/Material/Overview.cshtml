@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<ContractorDocuments.WebUI.Areas.Admin.Models.Materials.MaterialViewModel>
+@{
     ViewData["Title"] = "قرارداد";
 }
 <div class="row">
@@ -18,24 +19,28 @@
                         <thead>
                             <tr class="sticky-top">
                                 <th>نوع</th>
+                                <th>عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>سیمان</td>
-                            </tr>
-                            <tr>
-                                <td>آجر</td>
-                            </tr>
-                            <tr>
-                                <td>شن</td>
-                            </tr>
-                            <tr>
-                                <td>ماسه</td>
-                            </tr>
-                            <tr>
-                                <td>گچ</td>
-                            </tr>
+                            @if (Model != null && Model.Count() > 0)
+                            {
+                                foreach (var material in Model)
+                                {
+                                    <tr>
+                                        <td>@material.Name</td>
+                                        <td>
+                                            <a class="btn btn-sm"></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="text-center text-muted" colspan="2">موردی یافت نشد</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -58,15 +63,19 @@
                     <label class="mb-2" for="material-name">نام</label>
                     <input id="material-name" class="form-control" name="name" maxlength="20" />
                 </div>
-                <div class="mb-3">
-                    <label class="mb-2" for="parent-material">مواد شاخص</label>
-                    <select id="parent-material" class="form-control" name="ParentMaterialId">
-                        <option selected disabled>انتخاب کنید</option>
-                        <option>شن</option>
-                        <option>ماسه</option>
-                        <option>سیمان</option>
-                    </select>
-                </div>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    <div class="mb-3">
+                        <label class="mb-2" for="parent-material">مواد شاخص</label>
+                        <select id="parent-material" class="form-control" name="ParentMaterialId">
+                            <option selected disabled>انتخاب کنید</option>
+                            @foreach(var parentMaterial in Model)
+                            {
+                                <option>@parentMaterial.Name</option>
+                            }
+                        </select>
+                    </div>
+                }
                 <div class="mb-3">
                     <label class="mb-2" for="measure">واحد اندازه گیری</label>
                     <select id="measure" class="form-control" name="MeasureId">
