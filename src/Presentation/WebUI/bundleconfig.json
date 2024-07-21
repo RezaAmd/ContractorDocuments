@@ -10,5 +10,11 @@
     "inputFiles": [
       "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/rest.min.js",
+    "inputFiles": [
+      "wwwroot/js/rest.js"
+    ]
   }
 ]

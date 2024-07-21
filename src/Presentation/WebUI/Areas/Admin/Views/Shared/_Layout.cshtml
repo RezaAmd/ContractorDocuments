@@ -11,90 +11,7 @@
     <link rel="stylesheet" href="~/css/public.common.css" asp-append-version="true" />
 </head>
 <body class="text-start pb-5">
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="z-index:1000;">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bolder" href="/Admin/Dashboard">پنل مدیریت</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Overview">
-                            <i class="far fa-gauge me-1"></i>
-                            داشبورد
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Project" asp-action="Overview">
-                            <i class="far fa-building-memo me-1"></i>
-                            پروژه ها
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-memo-circle-info"></i>
-                            اطلاعات پایه
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="Overview">
-                                    <i class="far fa-users me-1"></i>
-                                    کاربران
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="Material" asp-action="Overview">
-                                    <i class="far fa-truck-ramp-box me-1"></i>
-                                    مصالح
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="ConstructStage" asp-action="Overview">
-                                    <i class="far fa-layer-group me-1"></i>
-                                    مراحل پروژه
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="Admin" asp-controller="Measure" asp-action="Overview">
-                                    <i class="far fa-layer-group me-1"></i>
-                                    واحد اندازه گیری
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="btn btn-sm btn-primary" asp-area="Admin" asp-controller="Project" asp-action="AddOrEdit">
-                            <i class="far fa-plus me-1"></i>
-                            پروژه جدید
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    @* <li class="nav-item">
-                    <a class="nav-link" href="#" data-theme="dark" data-bs-title="تاریک" data-bs-placement="bottom"><i class="fa fa-moon"></i></a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#" data-theme="light" data-bs-title="روشن" data-bs-placement="bottom"><i class="fa fa-sun"></i></a>
-                    </li> *@
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-user"></i>
-                            @User.GetDisplayName()
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="nav-item">
-                                <a class="nav-link sign-out-controller" href="#" data-bs-placement="bottom">
-                                    <i class="fa fa-right-from-bracket me-1"></i>
-                                    خروج
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @await Html.PartialAsync("_Navbar");
     <main class="h-100" role="main">
         <div class="container-fluid h-100 py-4">
             @RenderBody()
@@ -109,7 +26,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/rest.js" asp-append-version="true"></script>
+    <script src="~/js/rest.min.js" asp-append-version="true"></script>
     <script src="~/js/multiple-theme.js" asp-append-version="true"></script>
     <script src="~/js/public.common.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
