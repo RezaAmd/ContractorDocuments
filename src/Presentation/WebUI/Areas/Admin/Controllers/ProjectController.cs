@@ -3,8 +3,6 @@ using ContractorDocuments.Application.ConstructStages.Queries;
 using ContractorDocuments.Application.Projects.Commands;
 using ContractorDocuments.Application.Projects.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Projects;
-using Mapster;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {

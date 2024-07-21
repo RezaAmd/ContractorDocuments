@@ -1,8 +1,6 @@
 ﻿using ContractorDocuments.Application.Measures.Commands;
 using ContractorDocuments.Application.Measures.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Measures;
-using Mapster;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {

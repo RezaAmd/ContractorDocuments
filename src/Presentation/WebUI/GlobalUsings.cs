@@ -7,3 +7,6 @@ global using ContractorDocuments.Infrastructure.Data;
 global using ContractorDocuments.Infrastructure;
 global using System.Security.Claims;
 global using ContractorDocuments.Framework.Models;
+global using Microsoft.AspNetCore.Authorization;
+global using Mapster;
+global using System.Globalization;

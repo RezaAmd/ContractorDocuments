@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
+﻿namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
     public class DashboardController : AdminBaseController
     {

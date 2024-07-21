@@ -1,7 +1,6 @@
 ﻿using ContractorDocuments.Application.Materials.Commands;
 using ContractorDocuments.Application.Materials.Queries;
 using ContractorDocuments.WebUI.Areas.Admin.Models.Materials;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 {
@@ -75,19 +74,6 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             return View(parentMaterialWithChildren);
         }
 
-        #endregion
-
-        #region Json
-
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> GetParents(CancellationToken cancellationToken)
-        {
-            var parentMaterials = await _mediator.Send(new GetAllParentMaterialQuery(),
-                cancellationToken);
-            return Ok(parentMaterials);
-        }
-
         [HttpPost]
         public async Task<IActionResult> CreateChild([FromForm] CreateMaterialInputModel materialInputModel,
             CancellationToken cancellationToken)
@@ -100,6 +86,19 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             }, cancellationToken);
 
             return RedirectToAction("Detail", new { id = materialInputModel.ParentMaterialId });
+        }
+
+        #endregion
+
+        #region Json
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetParents(CancellationToken cancellationToken)
+        {
+            var parentMaterials = await _mediator.Send(new GetAllParentMaterialQuery(),
+                cancellationToken);
+            return Ok(parentMaterials);
         }
 
         #endregion

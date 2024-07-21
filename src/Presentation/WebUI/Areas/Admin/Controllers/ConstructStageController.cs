@@ -28,7 +28,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 
             // Map to view model
             IList<ConstructStageViewModel> stagesViewModel = new List<ConstructStageViewModel>();
-            if(getAllStages != null)
+            if (getAllStages != null)
             {
                 stagesViewModel = getAllStages.Select(cs => new ConstructStageViewModel
                 {
