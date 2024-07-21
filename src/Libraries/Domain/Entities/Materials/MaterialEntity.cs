@@ -9,6 +9,7 @@ namespace ContractorDocuments.Domain.Entities.Materials
         public Guid MeasureId { get; set; }
 
         #region Relations
+
         public virtual MeasureEntity? Measure { get; private set; }
         public virtual ICollection<MaterialEntity>? ChildrenMaterial { get; private set; }
         public virtual MaterialEntity? ParentMaterial { get; set; }

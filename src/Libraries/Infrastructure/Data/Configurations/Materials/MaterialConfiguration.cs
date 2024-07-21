@@ -1,9 +1,4 @@
 ﻿using ContractorDocuments.Domain.Entities.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContractorDocuments.Infrastructure.Data.Configurations.Materials
 {
@@ -21,8 +16,19 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Materials
             #region Relations
 
             // ParentMaterial
+            builder.HasOne(b => b.ParentMaterial)
+                .WithMany(b => b.ChildrenMaterial)
+                .HasForeignKey(b => b.ParentMaterialId);
 
-            // 
+            // ChildrenMaterial
+            builder.HasMany(b => b.ChildrenMaterial)
+                .WithOne(b => b.ParentMaterial)
+                .HasForeignKey(b => b.ParentMaterialId);
+
+            // Measure
+            builder.HasOne(b => b.Measure)
+                .WithMany(m => m.Materials)
+                .HasForeignKey(b => b.MeasureId);
 
             #endregion
         }

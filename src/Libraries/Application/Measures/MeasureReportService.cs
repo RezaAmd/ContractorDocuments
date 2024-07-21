@@ -20,7 +20,9 @@ namespace ContractorDocuments.Application.Measures
         #region Methods
 
         public async Task<IList<MeasureEntity>> GetAllAsync(CancellationToken cancellationToken = default)
-            => await _queryAsNoTrack.ToListAsync(cancellationToken);
+            => await _queryAsNoTrack
+            .OrderBy(m => m.DisplayOrder)
+            .ToListAsync(cancellationToken);
 
         #endregion
     }
