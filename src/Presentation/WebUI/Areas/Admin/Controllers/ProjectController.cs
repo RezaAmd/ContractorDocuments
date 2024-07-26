@@ -104,7 +104,15 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 Id = cs.Id.ToString(),
                 Name = cs.ConstructStage!.Name,
                 DisplayOrder = cs.ConstructStage!.DisplayOrder,
-                Materials = cs.Supplies
+                Materials = cs.Materials == null ? new() :
+                cs.Materials.Select(psm => new ProjectConstructStageMaterialViewModel
+                {
+                    Name = psm.Material!.Name,
+                    Amount = psm.Amount,
+                    UnitPrice = psm.UnitPrice,
+                    TotalNetProfit = psm.TotalNetProfit,
+                    CreatedOn = psm.CreatedOn
+                }).ToList()
             }).OrderBy(cs => cs.DisplayOrder).ToList();
 
             // Prepare Materials of construct stages.
@@ -137,6 +145,38 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 
             return RedirectToAction("Board", new { Id = constructStageModel.projectId });
         }
+        #endregion
+
+        #region Json
+
+        [HttpPost]
+        public async Task<IActionResult> AddStageMaterial([FromBody] CreateStageMaterialInputModel stageMaterialModel,
+            CancellationToken cancellationToken)
+        {
+            var addSupplyResult = await _mediator.Send(new AddStageMaterialCommand
+            {
+                StageId = stageMaterialModel.StageId,
+                MaterialId = stageMaterialModel.MaterialId,
+                Amount = stageMaterialModel.Amount,
+                UnitPrice = stageMaterialModel.UnitPrice,
+                TotalNetProfit = stageMaterialModel.TotalNetProfit
+            }, cancellationToken);
+            if (addSupplyResult.IsSuccess == false)
+                return BadRequest();
+            return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetStageMaterials(string stageId,
+            CancellationToken cancellationToken)
+        {
+            var stageMaterials = await _mediator.Send(new GetStageMaterialsQuery
+            {
+                StageId = Guid.Parse(stageId)
+            }, cancellationToken);
+            return Ok(stageMaterials);
+        }
+
         #endregion
     }
 }

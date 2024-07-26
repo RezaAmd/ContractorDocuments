@@ -93,7 +93,14 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         #region Json
 
         [HttpGet]
-        [AllowAnonymous]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
+            var parentMaterials = await _mediator.Send(new GetAllMaterialsTreeQuery(),
+                cancellationToken);
+            return Ok(parentMaterials);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetParents(CancellationToken cancellationToken)
         {
             var parentMaterials = await _mediator.Send(new GetAllParentMaterialQuery(),

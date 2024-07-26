@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorDocuments.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240628201221_InitializeTables")]
-    partial class InitializeTables
+    [Migration("20240725123008_initializeTables")]
+    partial class initializeTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,56 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("SystemKeyword")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Measures", (string)null);
+                });
+
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MeasureId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid?>("ParentMaterialId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MeasureId");
+
+                    b.HasIndex("ParentMaterialId");
+
+                    b.ToTable("Materials", (string)null);
+                });
+
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ConstructStageEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -61,8 +111,8 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<byte>("ProjectTypeId")
                         .HasColumnType("tinyint");
@@ -161,6 +211,40 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.ToTable("ProjectStages", (string)null);
                 });
 
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectStageMaterialEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MaterialId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProjectStepId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal?>("TotalNetProfit")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("ProjectStepId");
+
+                    b.ToTable("ProjectStageMaterials", (string)null);
+                });
+
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Customers.UserEntity", b =>
                 {
                     b.OwnsOne("ContractorDocuments.Domain.ValueObjects.Fullname", "Fullname", b1 =>
@@ -211,6 +295,23 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", b =>
+                {
+                    b.HasOne("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", "Measure")
+                        .WithMany("Materials")
+                        .HasForeignKey("MeasureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", "ParentMaterial")
+                        .WithMany("ChildrenMaterial")
+                        .HasForeignKey("ParentMaterialId");
+
+                    b.Navigation("Measure");
+
+                    b.Navigation("ParentMaterial");
+                });
+
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectEntity", b =>
                 {
                     b.HasOne("ContractorDocuments.Domain.Entities.Projects.ProjectContractEntity", "Contract")
@@ -231,7 +332,7 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("ContractorDocuments.Domain.Entities.Projects.ProjectEntity", "Project")
-                        .WithMany("ConstructStages")
+                        .WithMany("Stages")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -239,6 +340,37 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.Navigation("ConstructStage");
 
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectStageMaterialEntity", b =>
+                {
+                    b.HasOne("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", "Material")
+                        .WithMany("ProjectStageMaterials")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ContractorDocuments.Domain.Entities.Projects.ProjectStageEntity", "ProjectStep")
+                        .WithMany("Materials")
+                        .HasForeignKey("ProjectStepId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Material");
+
+                    b.Navigation("ProjectStep");
+                });
+
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", b =>
+                {
+                    b.Navigation("Materials");
+                });
+
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", b =>
+                {
+                    b.Navigation("ChildrenMaterial");
+
+                    b.Navigation("ProjectStageMaterials");
                 });
 
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ConstructStageEntity", b =>
@@ -253,7 +385,12 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectEntity", b =>
                 {
-                    b.Navigation("ConstructStages");
+                    b.Navigation("Stages");
+                });
+
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectStageEntity", b =>
+                {
+                    b.Navigation("Materials");
                 });
 #pragma warning restore 612, 618
         }

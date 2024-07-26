@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <ul class="list-items">
-                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#supplies-card-modal">
+                    <li class="list-item material-list-item" data-stage-id="@constructionStage.Id">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h5 text-primary">مصالح</div>
                             <div class="fw-bold">0</div>
@@ -65,7 +65,7 @@
                     </div> *@
                         </div>
                     </li>
-                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#contractors-card-modal">
+                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#contractors-card-modal" data-stage-id="@constructionStage.Id">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h5 text-primary">پیمانکاران</div>
                             <div class="fw-bold">0</div>
@@ -77,7 +77,7 @@
                     </div> *@
                         </div>
                     </li>
-                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#expenses-card-modal">
+                    <li class="list-item" data-bs-toggle="modal" data-bs-target="#expenses-card-modal" data-stage-id="@constructionStage.Id">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h5 text-primary">دیگر مخارج</div>
                             <div class="fw-bold">0</div>
@@ -98,173 +98,6 @@
         <li><a class="dropdown-item" href="#">مخارج دیگر</a></li>
         </ul>
         </div> *@
-                <!-- Supplies Card Modal -->
-                <div class="modal modal-xl fade" id="supplies-card-modal" tabindex="-1" aria-labelledby="supplies-card-modal-label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="supplies-card-modal-label">مصالح</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-6 offset-lg-3">
-                                            <form action="/Admin/Project/AddSupply" method="post" class="accordion" id="supplies-accordion">
-                                                <div class="accordion-item">
-                                                    <h5 class="accordion-header">
-                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#new-supply" aria-expanded="false" aria-controls="collapseOne">
-                                                            تعریف مصالح جدید
-                                                        </button>
-                                                    </h5>
-                                                    <div id="new-supply" class="accordion-collapse collapse" data-bs-parent="#supplies-accordion">
-                                                        <div class="accordion-body">
-                                                            <div class="mb-3">
-                                                                <label>نوع</label>
-                                                                <select class="form-control">
-                                                                    <option selected disabled>انتخاب کنید</option>
-                                                                    <option>شن</option>
-                                                                    <option>ماسه</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label>مقدار</label>
-                                                                <input type="number" dir="ltr" class="form-control" />
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label>مبلغ واحد</label>
-                                                                <input type="text" dir="ltr" class="form-control" />
-                                                            </div>
-                                                            <div>
-                                                                <button class="btn btn-primary">افزودن</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="scrollable" style="max-height:350px">
-                                    <table class="table table-borderless table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>نوع</th>
-                                                <th>نام</th>
-                                                <th>مقدار</th>
-                                                <th>مبلغ واحد</th>
-                                                <th>هزینه کل</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>شن</td>
-                                                <td>مدل 16.5</td>
-                                                <td>500 کیلوگرم</td>
-                                                <td>120,000</td>
-                                                <td>60,000,000</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Contractors Card Modal -->
-                <div class="modal fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="contractors-card-modal-label">پیمانکاران</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Expenses Card Modal -->
-                <div class="modal fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="expenses-card-modal-label">هزینه کرد</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         }
     }
@@ -303,4 +136,120 @@
             </form>
         </div>
     </div>
+}
+
+<!-- Supplies Card Modal -->
+<div class="modal modal-xl fade" id="supplies-card-modal" tabindex="-1" aria-labelledby="supplies-card-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="supplies-card-modal-label">مصالح</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3">
+                            <div class="accordion" id="supplies-accordion">
+                                <div class="accordion-item">
+                                    <h5 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#new-supply" aria-expanded="false" aria-controls="collapseOne">
+                                            تعریف مصالح جدید
+                                        </button>
+                                    </h5>
+                                    <div id="new-supply" class="accordion-collapse collapse" data-bs-parent="#supplies-accordion">
+                                        <div class="accordion-body">
+                                            <div id="material-select-placement" class="mb-3">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label>مقدار</label>
+                                                    <input type="number" dir="ltr" class="form-control" name="Amount" />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label>مبلغ واحد</label>
+                                                    <input type="text" dir="ltr" class="form-control" name="UnitPrice" />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>سود خالص</label>
+                                                <input type="text" dir="ltr" class="form-control" name="TotalNetProfit" />
+                                            </div>
+                                            <div>
+                                                <button id="add-new-stage-material-btn" class="btn btn-primary">افزودن</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="scrollable" style="max-height:350px">
+                    <table class="table table-borderless table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>نوع</th>
+                                <th>نام</th>
+                                <th>مقدار</th>
+                                <th>مبلغ واحد</th>
+                                <th>هزینه کل</th>
+                                <th>سود خالص</th>
+                            </tr>
+                        </thead>
+                        <tbody id="material-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contractors Card Modal -->
+<div class="modal fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="contractors-card-modal-label">پیمانکاران</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Expenses Card Modal -->
+<div class="modal fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="expenses-card-modal-label">هزینه کرد</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/material-provider.js"></script>
+    <script src="~/js/board.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            board.init();
+        });
+    </script>
 }

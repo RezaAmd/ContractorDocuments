@@ -17,6 +17,7 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         DbSet<ProjectEntity> Projects { get; }
         DbSet<ProjectStageEntity> ProjectStages { get; }
+        DbSet<ProjectStageMaterialEntity> ProjectStageMaterials { get; }
         DbSet<ConstructStageEntity> ConstructStages { get; }
 
         #endregion

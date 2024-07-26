@@ -208,6 +208,40 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.ToTable("ProjectStages", (string)null);
                 });
 
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectStageMaterialEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MaterialId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProjectStepId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal?>("TotalNetProfit")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.HasIndex("ProjectStepId");
+
+                    b.ToTable("ProjectStageMaterials", (string)null);
+                });
+
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Customers.UserEntity", b =>
                 {
                     b.OwnsOne("ContractorDocuments.Domain.ValueObjects.Fullname", "Fullname", b1 =>
@@ -305,6 +339,25 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectStageMaterialEntity", b =>
+                {
+                    b.HasOne("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", "Material")
+                        .WithMany("ProjectStageMaterials")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ContractorDocuments.Domain.Entities.Projects.ProjectStageEntity", "ProjectStep")
+                        .WithMany("Materials")
+                        .HasForeignKey("ProjectStepId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Material");
+
+                    b.Navigation("ProjectStep");
+                });
+
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", b =>
                 {
                     b.Navigation("Materials");
@@ -313,6 +366,8 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Materials.MaterialEntity", b =>
                 {
                     b.Navigation("ChildrenMaterial");
+
+                    b.Navigation("ProjectStageMaterials");
                 });
 
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ConstructStageEntity", b =>
@@ -328,6 +383,11 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectEntity", b =>
                 {
                     b.Navigation("Stages");
+                });
+
+            modelBuilder.Entity("ContractorDocuments.Domain.Entities.Projects.ProjectStageEntity", b =>
+                {
+                    b.Navigation("Materials");
                 });
 #pragma warning restore 612, 618
         }

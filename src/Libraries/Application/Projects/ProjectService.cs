@@ -53,6 +53,13 @@ namespace ContractorDocuments.Application.Projects
             return await _context.SaveChangeAsync(cancellationToken);
         }
 
+        public async Task<Result> AddStageMaterialAsync(ProjectStageMaterialEntity stageMaterial,
+            CancellationToken cancellationToken = default)
+        {
+            await _context.ProjectStageMaterials.AddAsync(stageMaterial, cancellationToken);
+            return await _context.SaveChangeAsync(cancellationToken);
+        }
+
         #endregion
 
         #endregion
