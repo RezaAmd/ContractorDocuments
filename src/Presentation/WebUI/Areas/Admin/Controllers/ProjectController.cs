@@ -87,50 +87,14 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             // Validate by fluent validation.
             if (id == null)
                 return RedirectToAction("Overview");
-            // TODO:
+
             // Map to view model.
-            var project = await _mediator.Send(new GetProjectBoardDetailsQuery
+            var projectBoardViewModel = await _mediator.Send(new GetProjectBoardDetailsQuery
             {
                 Id = Guid.Parse(id),
             }, cancellationToken);
-            if (project == null)
-                return RedirectToAction("Overview");
-            // TODO:
-            // Change Manual map to Auto map.
-            ProjectBoardViewModel projectBoardVM = new();
-            projectBoardVM = project.Adapt(projectBoardVM);
-            projectBoardVM.ConstructionStages = project.Stages!.Select(cs => new ProjectConstructStageViewModel
-            {
-                Id = cs.Id.ToString(),
-                Name = cs.ConstructStage!.Name,
-                DisplayOrder = cs.ConstructStage!.DisplayOrder,
-                Materials = cs.Materials == null ? new() :
-                cs.Materials.Select(psm => new ProjectConstructStageMaterialViewModel
-                {
-                    Name = psm.Material!.Name,
-                    Amount = psm.Amount,
-                    UnitPrice = psm.UnitPrice,
-                    TotalNetProfit = psm.TotalNetProfit,
-                    CreatedOn = psm.CreatedOn
-                }).ToList()
-            }).OrderBy(cs => cs.DisplayOrder).ToList();
 
-            // Prepare Materials of construct stages.
-
-            // Prepare construct stages can be added.
-            var constructStages = await _mediator.Send(new GetAllConstructStagesQuery
-            {
-                ProjectTypeId = project.ProjectTypeId
-            }, cancellationToken);
-            // Prepare list item.
-            projectBoardVM.ConstructionStagesCanBeAdded = new List<SelectListItem>();
-            projectBoardVM.ConstructionStagesCanBeAdded = constructStages.Select(cs => new SelectListItem
-            {
-                Value = cs.Id.ToString(),
-                Text = cs.Name
-            }).ToList();
-
-            return View(projectBoardVM);
+            return View(projectBoardViewModel);
         }
 
         [HttpPost]
@@ -162,8 +126,8 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 TotalNetProfit = stageMaterialModel.TotalNetProfit
             }, cancellationToken);
             if (addSupplyResult.IsSuccess == false)
-                return BadRequest();
-            return Ok();
+                return BadRequest(addSupplyResult);
+            return Ok(addSupplyResult);
         }
 
         [HttpGet]
@@ -175,6 +139,18 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 StageId = Guid.Parse(stageId)
             }, cancellationToken);
             return Ok(stageMaterials);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetRemaningStages(string projectId,
+            CancellationToken cancellationToken = default)
+        {
+            var remaningStages = await _mediator.Send(new GetRemaningStagesQuery
+            {
+                ProjectId = Guid.Parse(projectId)
+            }, cancellationToken);
+
+            return Ok(remaningStages);
         }
 
         #endregion

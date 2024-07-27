@@ -1,10 +1,16 @@
 var board = {};
 board = {
     props: {
+        projectId: null,
         stageId: null,
         materials: []
     },
     methods: {
+        prepareProjectProperties: () => {
+            const projectIdInput = document.getElementById('project-id');
+            if (projectIdInput)
+                board.props.projectId = projectIdInput.value;
+        },
         // material
         prepareMaterialSelectInput: async () => {
             //materialProvider.setupTreeInputs();
@@ -58,11 +64,44 @@ board = {
             await rest.postAsync('/admin/project/addStageMaterial',
                 null, stageMaterialData,
                 (isSuccess, response) => {
-                    debugger
                     if (isSuccess == true) {
                         board.methods.loadMaterialModal();
                     }
                 });
+        },
+        // Construction stages
+        prepareRemaningStages: async () => {
+            await board.methods._fetchRemaningStages();
+        },
+        _fetchRemaningStages: async () => {
+            rest.getAsync('/admin/project/getRemaningStages',
+                {
+                    projectId: board.props.projectId
+                },
+                (isSuccess, response) => {
+                    board.methods._fetchRemaningStagesHandler(isSuccess, response);
+                }
+            );
+        },
+        _fetchRemaningStagesHandler: (isSuccess, response) => {
+            if (!isSuccess) {
+                console.error("An error has occured on fetching remaning construction stages!");
+                return;
+            }
+            if (!response.data || response.data.length == 0) return;
+            // Find stage select input.
+            const stageSelectControl = document.getElementById('stages-select-control');
+            if (!stageSelectControl) {
+                console.error('Stage select input not found!');
+                return;
+            }
+            // Append option to select.
+            response.data.forEach((stage) => {
+                const stageOption = document.createElement('option');
+                stageOption.value = stage.id;
+                stageOption.text = stage.name;
+                stageSelectControl.appendChild(stageOption);
+            });
         }
     },
     events: {
@@ -85,7 +124,11 @@ board = {
             });
         }
     },
-    init: () => {
+    init: async () => {
+        // Prepare project properties.
+        board.methods.prepareProjectProperties();
+        // Fetch remaning stages.
+        board.methods.prepareRemaningStages();
         // Prepare material modal event.
         board.events.materialModalEventTrigger();
         board.events.addStageMaterialEventListener();
@@ -93,5 +136,18 @@ board = {
         // Setup material input.
         materialProvider.setupTreeInputs('material-select-placement');
 
+        // Load page when modal closed.
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach((modal) => {
+            modal.addEventListener('hide.bs.modal', () => {
+                window.location.reload();
+            })
+        });
+
+        // Money Split
+        const moneyElements = document.querySelectorAll('[data-money]');
+        moneyElements.forEach((moneyElement) => {
+            moneyElement.innerHTML = separateMoney(moneyElement.getAttribute('data-money'));
+        });
     }
 }

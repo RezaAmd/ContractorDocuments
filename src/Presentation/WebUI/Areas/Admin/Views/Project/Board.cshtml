@@ -1,4 +1,4 @@
-﻿@model ContractorDocuments.WebUI.Areas.Admin.Models.Projects.ProjectBoardViewModel
+﻿@model ContractorDocuments.Application.Projects.ViewModels.BoardViewModel
 @{
     ViewData["Title"] = "نمای تخته " + Model.Title;
     Layout = "_BoardLayout";
@@ -18,7 +18,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item me-4">
                     <a class="nav-link">
-                        <h5 class="fw-bold">هزینه کل: @Model.TotalCost</h5>
+                        <h5 class="fw-bold">هزینه کل: @Model.TotalExpense.ToString("N0")</h5>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -39,9 +39,9 @@
     </div>
 </nav>
 <div class="lists-container py-3">
-    @if (Model.ConstructionStages != null && Model.ConstructionStages.Count > 0)
+    @if (Model.Stages != null && Model.Stages.Count > 0)
     {
-        foreach (var constructionStage in Model.ConstructionStages)
+        foreach (var constructionStage in Model.Stages)
         {
             <div class="list">
                 <div class="d-flex justify-content-between align-items-center px-1 py-2 fw-bold">
@@ -49,20 +49,27 @@
                         <span class="h4 fw-bold m-0">@constructionStage.Name</span>
                     </div>
                     <div dir="ltr">
-                        <span class="h6 fw-bold m-0">@constructionStage.TotalCost</span>
+                        <span class="h6 fw-bold m-0" data-money="@constructionStage.TotalExpense.ToString("N0")"></span>
                     </div>
                 </div>
                 <ul class="list-items">
                     <li class="list-item material-list-item" data-stage-id="@constructionStage.Id">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h5 text-primary">مصالح</div>
-                            <div class="fw-bold">0</div>
+                            @* <div class="fw-bold">0</div> *@
                         </div>
                         <div class="small">
-                            @* <div class="d-flex justify-content-between">
-                    <span>+ کارهای اداری نمونه</span>
-                    <span>0</span>
-                    </div> *@
+                            @if (constructionStage.Materials != null && constructionStage.Materials.Count > 0)
+                            {
+
+                                @foreach (var material in constructionStage.Materials)
+                                {
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>@material.Name</span>
+                                        <span>@((material.UnitPrice * material.Amount).ToString("N0"))</span>
+                                    </div>
+                                }
+                            }
                         </div>
                     </li>
                     <li class="list-item" data-bs-toggle="modal" data-bs-target="#contractors-card-modal" data-stage-id="@constructionStage.Id">
@@ -71,10 +78,6 @@
                             <div class="fw-bold">0</div>
                         </div>
                         <div class="small">
-                            @* <div class="d-flex justify-content-between">
-                    <span>+ کارهای اداری نمونه</span>
-                    <span>0</span>
-                    </div> *@
                         </div>
                     </li>
                     <li class="list-item" data-bs-toggle="modal" data-bs-target="#expenses-card-modal" data-stage-id="@constructionStage.Id">
@@ -83,61 +86,38 @@
                             <div class="fw-bold">0</div>
                         </div>
                         <div class="small">
-                            @* <div class="d-flex justify-content-between">
-                    <span>+ کارهای اداری نمونه</span>
-                    <span>0</span>
-                    </div> *@
                         </div>
                     </li>
                 </ul>
-                @* <div class="dropdown">
-        <button class="add-card-btn btn text-start w-100" data-bs-toggle="dropdown">بیشتر</button>
-        <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">مصالح</a></li>
-        <li><a class="dropdown-item" href="#">پیمانکاران</a></li>
-        <li><a class="dropdown-item" href="#">مخارج دیگر</a></li>
-        </ul>
-        </div> *@
             </div>
         }
     }
-
-    @if (Model.ConstructionStagesCanBeAdded != null && Model.ConstructionStagesCanBeAdded.Count > 0)
-    {
-        <div class="list">
-            <button class="add-card-btn btn text-start" data-bs-toggle="modal" data-bs-target="#add-stage-modal">+ مرحله جدید</button>
-        </div>
-    }
-</div>
-
-@if (Model.ConstructionStagesCanBeAdded != null && Model.ConstructionStagesCanBeAdded.Count > 0)
-{
-    @* Add New Stage *@
-    <div class="modal" tabindex="-1" id="add-stage-modal" aria-labelledby="AddStageLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <form class="modal-content" method="post" action="/Admin/Project/AddConstructStage">
-                <div class="modal-header">
-                    <h5 class="modal-title">مرحله جدید</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="projectId" value="@Model.Id" />
-                    <select name="constructStageId" class="form-control">
-                        @foreach (var constructStage in Model.ConstructionStagesCanBeAdded)
-                        {
-                            <option value="@constructStage.Value">@constructStage.Text</option>
-                        }
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
-                    <button type="submit" class="btn btn-primary">ذخیره</button>
-                </div>
-            </form>
-        </div>
+    <div class="list">
+        <button class="add-card-btn btn text-start" data-bs-toggle="modal" data-bs-target="#add-stage-modal">+ مرحله جدید</button>
     </div>
-}
-
+</div>
+<div>
+    <input id="project-id" name="ProjectId" value="@Model.Id" />
+</div>
+@* Add New Stage *@
+<div class="modal" tabindex="-1" id="add-stage-modal" aria-labelledby="AddStageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" method="post" action="/Admin/Project/AddConstructStage">
+            <div class="modal-header">
+                <h5 class="modal-title">مرحله جدید</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="projectId" value="@Model.Id" />
+                <select id="stages-select-control" name="constructStageId" class="form-control"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                <button type="submit" class="btn btn-primary">ذخیره</button>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- Supplies Card Modal -->
 <div class="modal modal-xl fade" id="supplies-card-modal" tabindex="-1" aria-labelledby="supplies-card-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

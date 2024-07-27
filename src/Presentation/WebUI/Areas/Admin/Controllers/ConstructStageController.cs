@@ -58,5 +58,9 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 
             return RedirectToAction("Overview");
         }
+
+        #region Json
+
+        #endregion
     }
 }
