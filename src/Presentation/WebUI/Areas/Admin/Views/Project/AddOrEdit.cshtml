@@ -31,21 +31,21 @@
                         <label class="mb-1">
                             <i class="far fa-calendar"></i> تاریخ شروع
                         </label>
-                        <input class="form-control" dir="ltr" name="StartIn" placeholder="yyyy/mm/dd" maxlength="10" />
+                        <input class="form-control" dir="ltr" name="StartOn" placeholder="yyyy/mm/dd" maxlength="10" />
                     </div>
                     @* End Date *@
                     <div class="col-md-4 mb-3">
                         <label class="mb-1">
                             <i class="far fa-calendar"></i> تاریخ پایان
                         </label>
-                        <input class="form-control" name="EndIn" dir="ltr" placeholder="yyyy/mm/dd" maxlength="10" />
+                        <input class="form-control" name="EndOn" dir="ltr" placeholder="yyyy/mm/dd" maxlength="10" />
                     </div>
                 </div>
                 <br />
                 <h3 class="fw-bold">اطلاعات قرارداد</h3>
                 <hr />
                 @* Contract *@
-                <div class="row">
+                <div class="row" id="contract-amount-form">
                     <div class="col-md-6 mb-3">
                         <label for="contract-type" class="mb-1">
                             <i class="far fa-file-contract"></i> نوع قرارداد <span class="text-danger">*</span>
@@ -60,20 +60,25 @@
                         </select>
                         <span class="small text-muted ms-1"><i class="far fa-triangle-exclamation"></i> بعدا قابل ویرایش نیست.</span>
                     </div>
-                    @* <div class="col mb-3">
-                    <label class="mb-1">دستمزد</label>
-                    <input class="form-control" name="Amount" dir="ltr" placeholder="ساعتی یا روزانه" />
-                    </div> *@
-                    <div class="col align-content-center">
-                        <input type="range" class="form-range" min="1" max="99" id="customRange2">
+                    <div id="wages-control" class="col mb-3" style="display: none;">
+                        <label class="mb-1">دستمزد</label>
+                        <input class="form-control placeholder-text-right" name="Amount" dir="ltr" placeholder="ساعتی، روزانه یا ماهانه" />
+                    </div>
+                    <div id="amount-control" class="col mb-3" style="display: none;">
+                        <label class="mb-1">مبلغ کل دریافتی</label>
+                        <input class="form-control placeholder-text-right" name="Amount" dir="ltr" placeholder="مبلغ کل سهم مجری" />
+                    </div>
+                    <div id="percentage-control" class="col align-content-center" style="display: none;">
+                        <input id="share-percent-range" type="range" class="form-range" min="1" max="99">
                         <div class="small d-flex justify-content-between text-center align-items-center">
                             <div class="d-flex align-items-center gap-1">
-                                <label id="owner-percent">%</label>
-                                <input class="form-control form-control-sm" name="SharePercentage" type="number" min="1" max="99" value="50" />
+                                <label>%</label>
+                                <input id="presenter-percent" class="form-control form-control-sm" name="SharePercentage" type="number" min="1" max="99" value="50" />
                                 <label>مجری</label>
                             </div>
                             <div>
-                                <label id="presenter-percent">50%</label>
+                                <span>%</span>
+                                <span id="owner-percent">50</span>
                                 <label>مالک</label>
                             </div>
                         </div>
@@ -110,3 +115,7 @@
         </div>
     </div>
 </form>
+
+@section scripts {
+    <script src="~/js/project-add-edit.js"></script>
+}
