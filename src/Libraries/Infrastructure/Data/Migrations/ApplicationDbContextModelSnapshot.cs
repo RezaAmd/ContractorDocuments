@@ -215,6 +215,7 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -228,9 +229,11 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
                     b.Property<decimal?>("TotalNetProfit")
                         .IsRequired()
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

@@ -9,13 +9,16 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
             builder.ToTable("ProjectStageMaterials");
 
             // Amount
-            builder.Property(b => b.Amount);
+            builder.Property(b => b.Amount)
+                .HasPrecision(18, 2);
 
             // UnitPrice
-            builder.Property(b => b.UnitPrice);
+            builder.Property(b => b.UnitPrice)
+                .HasPrecision(18, 2);
 
             // TotalNetProfit
             builder.Property(b => b.TotalNetProfit)
+                .HasPrecision(18, 2)
                 .IsRequired();
 
             // CreatedOn
