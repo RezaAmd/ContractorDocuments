@@ -1,7 +1,3 @@
-using ContractorDocuments.Application;
-using ContractorDocuments.Infrastructure;
-using ContractorDocuments.Infrastructure.Data;
-using ContractorDocuments.WebUI.Infrastructure;
 using ContractorDocuments.WebUI.Models.InputModels;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
