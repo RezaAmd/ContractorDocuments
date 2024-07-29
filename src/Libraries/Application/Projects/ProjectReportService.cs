@@ -33,7 +33,9 @@ namespace ContractorDocuments.Application.Projects
 
         public async Task<IList<ProjectEntity>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _projectNoTracking.OrderBy(p => p.StartOn).ToListAsync(cancellationToken);
+            return await _projectNoTracking
+                .OrderByDescending(p => p.StartOn)
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<BoardViewModel?> GetProjectBoardAsync(Guid projectId,

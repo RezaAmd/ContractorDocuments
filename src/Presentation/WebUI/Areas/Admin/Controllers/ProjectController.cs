@@ -49,21 +49,22 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> AddOrEdit([FromForm] AddOrEditProjectModel projectModel,
             CancellationToken cancellationToken)
         {
+
             // Prepare project entity model.
             var command = new AddOrEditProjectCommand
             {
                 Title = projectModel.Title,
                 Description = projectModel.Description,
                 TypeId = projectModel.TypeId,
-                ContractTypeId = projectModel.ContractTypeId
+                ContractTypeId = projectModel.ContractTypeId,
             };
 
             // StartOn
             if (projectModel.StartOn != null)
-                command.StartOn = DateTime.Parse(projectModel.StartOn);
+                command.StartOn = DateTime.Parse(projectModel.StartOn, new CultureInfo("fa-IR"));
             // EndOn
             if (projectModel.EndOn != null)
-                command.EndOn = DateTime.Parse(projectModel.EndOn);
+                command.EndOn = DateTime.Parse(projectModel.EndOn, new CultureInfo("fa-IR"));
             // Amount
             if (projectModel.Amount != null)
                 command.Amount = projectModel.Amount.Value;

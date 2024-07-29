@@ -35,8 +35,18 @@
                                     <tr class="floating-hover">
                                         <td>@project.Title</td>
                                         <td>@project.ProjectType</td>
-                                        <td>@project.StartOn</td>
-                                        <td>@project.EndOn</td>
+                                        <td>
+                                            @if (project.StartOn.HasValue)
+                                            {
+                                                <span>@project.StartOn.Value.ToString("yyyy/MM/dd", new CultureInfo("fa-IR"))</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (project.EndOn.HasValue)
+                                            {
+                                                <span>@project.EndOn.Value.ToString("dd MMMM yyyy", new CultureInfo("fa-IR"))</span>
+                                            }
+                                        </td>
                                         <td>
                                             <div class="floating-hover-child">
                                                 <a href="/Admin/Project/Board/@project.Id" class="btn btn-sm"><i class="fa fa-eye"></i></a>
