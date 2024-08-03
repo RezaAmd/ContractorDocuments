@@ -21,6 +21,15 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
                 .HasPrecision(18, 2)
                 .IsRequired();
 
+            // TransportCost
+            builder.Property(b => b.TransportCost)
+                .HasPrecision(18, 2)
+                .IsRequired(false);
+
+            // PurchacedOn
+            builder.Property(b => b.PurchacedOn)
+                .IsRequired(false);
+
             // CreatedOn
             builder.Property(b => b.CreatedOn);
 

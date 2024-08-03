@@ -55,8 +55,10 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             {
                 Id = Guid.Parse(id)
             });
+
             if (materialWithChildren == null)
                 return RedirectToAction("Overview");
+
             // Prepare to view model.
             MaterialWithChildrenViewModel parentMaterialWithChildren = new();
             parentMaterialWithChildren.Id = materialWithChildren.Id.ToString();
@@ -86,6 +88,21 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             }, cancellationToken);
 
             return RedirectToAction("Detail", new { id = materialInputModel.ParentMaterialId });
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string id,
+            CancellationToken cancellationToken)
+        {
+            var deleteMaterialResult = await _mediator.Send(new DeleteMaterialCommand
+            {
+                Id = Guid.Parse(id)
+            }, cancellationToken);
+
+            if (deleteMaterialResult.IsSuccess == false)
+                return BadRequest();
+
+            return Ok();
         }
 
         #endregion

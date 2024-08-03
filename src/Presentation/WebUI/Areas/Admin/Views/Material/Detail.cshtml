@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>نام</th>
+                        <th>عملیات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,14 @@
                         {
                             <tr>
                                 <td>@child.Name</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="/admin/material/delete/@child.Id">حذف</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         }
                     }
@@ -82,8 +91,6 @@
         </div>
     </div>
 </div>
-
-
 
 @section scripts {
     <script>

@@ -118,14 +118,20 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> AddStageMaterial([FromBody] CreateStageMaterialInputModel stageMaterialModel,
             CancellationToken cancellationToken)
         {
-            var addSupplyResult = await _mediator.Send(new AddStageMaterialCommand
+            if (stageMaterialModel == null)
+                return BadRequest();
+            var addStageMaterialCommand = new AddStageMaterialCommand
             {
                 StageId = stageMaterialModel.StageId,
                 MaterialId = stageMaterialModel.MaterialId,
                 Amount = stageMaterialModel.Amount,
                 UnitPrice = stageMaterialModel.UnitPrice,
                 TotalNetProfit = stageMaterialModel.TotalNetProfit
-            }, cancellationToken);
+            };
+
+            if (!string.IsNullOrEmpty(stageMaterialModel.PurchasedOn))
+                addStageMaterialCommand.PurchasedOn = DateTime.Parse(stageMaterialModel.PurchasedOn, new CultureInfo("fa-IR"));
+            var addSupplyResult = await _mediator.Send(addStageMaterialCommand, cancellationToken);
             if (addSupplyResult.IsSuccess == false)
                 return BadRequest(addSupplyResult);
             return Ok(addSupplyResult);

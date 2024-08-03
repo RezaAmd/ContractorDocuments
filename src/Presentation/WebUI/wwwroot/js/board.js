@@ -51,16 +51,22 @@ board = {
             const newSypplyForm = document.getElementById('new-supply');
             const materialSelect = newSypplyForm.querySelectorAll('select[name="MaterialId"]');
             const materialId = materialSelect[materialSelect.length - 1].value;
+            const purchasedOn = newSypplyForm.querySelector('input[name="PurchasedOn"]').value;
             const amount = newSypplyForm.querySelector('input[name="Amount"]').value;
             const unitPrice = newSypplyForm.querySelector('input[name="UnitPrice"]').value;
+            const transportCost = newSypplyForm.querySelector('input[name="TransportCost"]').value;
             const totalNetProfit = newSypplyForm.querySelector('input[name="TotalNetProfit"]').value;
+
             const stageMaterialData = {
-                stageId: board.props.stageId,
+                StageId: board.props.stageId,
                 MaterialId: materialId,
-                Amount: amount,
-                UnitPrice: unitPrice,
+                PurchasedOn: purchasedOn,
+                Amount: amount * 1,
+                UnitPrice: unitPrice * 1,
+                TransportCost: transportCost * 1,
                 TotalNetProfit: totalNetProfit
             }
+            debugger
             await rest.postAsync('/admin/project/addStageMaterial',
                 null, stageMaterialData,
                 (isSuccess, response) => {

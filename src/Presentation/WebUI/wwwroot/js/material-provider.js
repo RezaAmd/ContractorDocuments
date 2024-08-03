@@ -23,7 +23,7 @@ materialProvider = {
         selectInput.classList.add('mb-3');
         // Prepare default option.
         const defaultOption = document.createElement('option');
-        defaultOption.text = 'انتخاب کنید'
+        defaultOption.text = 'انتخاب مواد شاخص'
         defaultOption.setAttribute('selected', 'selected');
         defaultOption.setAttribute('disabled', 'disabled');
         selectInput.append(defaultOption);
@@ -37,8 +37,8 @@ materialProvider = {
         });
         selectInput.addEventListener('change', materialProvider._handleSelectChange);
         const label = document.createElement('label');
-        label.textContent = 'نوع مواد';
-        label.classList.add('mb-2');
+        label.textContent = 'مواد شاخص';
+        label.classList.add('mb-1');
         materialProvider._props.placementElement.appendChild(label);
         // Append to placement element.
         materialProvider._props.placementElement.appendChild(selectInput);
@@ -61,7 +61,7 @@ materialProvider = {
         selectInput.classList.add('mb-3');
         // Prepare default option.
         const defaultOption = document.createElement('option');
-        defaultOption.text = 'انتخاب کنید';
+        defaultOption.text = 'انتخاب نوع مواد';
         defaultOption.setAttribute('selected', 'selected');
         defaultOption.setAttribute('disabled', 'disabled');
         selectInput.appendChild(defaultOption);

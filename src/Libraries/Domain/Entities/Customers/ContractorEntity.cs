@@ -2,12 +2,16 @@
 {
     public class ContractorEntity : BaseEntity
     {
-        public required string Name { get; set; }
-        public string? PhoneNumber { get; set; }
+        public Fullname? Fullname { get; set; }
+        public string? Email { get; set; }
+
+        // Organization
+        public string? CompanyName { get; set; }
+        public DateTime CreatedOn { get; private set; } = DateTime.Now;
 
         #region Relations
 
-        public virtual ICollection<ContractorSpecialtyEntity>? Specialties { get; private set; }
+        public virtual ICollection<ContractorPhoneEntity>? Phones { get; private set; }
 
         #endregion
     }

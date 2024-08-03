@@ -1,5 +1,6 @@
 ﻿using ContractorDocuments.Application.Projects.ViewModels;
 using ContractorDocuments.Domain.Entities.Projects;
+using System.Globalization;
 using System.Net.Http.Headers;
 
 namespace ContractorDocuments.Application.Projects
@@ -107,7 +108,10 @@ namespace ContractorDocuments.Application.Projects
                     Name = psm.Material!.Name,
                     Amount = psm.Amount,
                     UnitPrice = psm.UnitPrice,
-                    TotalNetProfit = psm.TotalNetProfit
+                    PurchasedOn = psm.PurchacedOn.HasValue ? psm.PurchacedOn.Value.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")) : 
+                    null,
+                    TransportCost = psm.TransportCost,
+                    TotalNetProfit = psm.TotalNetProfit,
                 }).ToListAsync(cancellationToken);
         }
         #endregion

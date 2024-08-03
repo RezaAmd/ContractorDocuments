@@ -10,6 +10,8 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public required decimal Amount { get; set; }
         public required decimal UnitPrice { get; set; }
         public decimal? TotalNetProfit { get; set; }
+        public decimal? TransportCost { get; set; }
+        public DateTime? PurchacedOn { get; set; }
         public DateTime CreatedOn { get; private set; } = DateTime.Now;
         public required Guid MaterialId { get; set; } // Foreign Key
         public required Guid ProjectStepId { get; set; } // Foreign Key

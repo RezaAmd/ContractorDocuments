@@ -17,6 +17,9 @@ namespace ContractorDocuments.Infrastructure.Data
         #region Customers
 
         public DbSet<UserEntity> Users => Set<UserEntity>();
+        public DbSet<ContractorEntity> Contractors => Set<ContractorEntity>();
+        public DbSet<ContractorPhoneEntity> ContractorPhones => Set<ContractorPhoneEntity>();
+
 
         #endregion
 

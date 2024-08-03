@@ -97,7 +97,7 @@
     </div>
 </div>
 <div>
-    <input id="project-id" name="ProjectId" value="@Model.Id" />
+    <input id="project-id" name="ProjectId" value="@Model.Id" type="hidden" />
 </div>
 @* Add New Stage *@
 <div class="modal" tabindex="-1" id="add-stage-modal" aria-labelledby="AddStageLabel" aria-hidden="true">
@@ -139,21 +139,29 @@
                                     </h5>
                                     <div id="new-supply" class="accordion-collapse collapse" data-bs-parent="#supplies-accordion">
                                         <div class="accordion-body">
-                                            <div id="material-select-placement" class="mb-3">
-                                            </div>
                                             <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label>مقدار</label>
-                                                    <input type="number" dir="ltr" class="form-control" name="Amount" />
+                                                <div id="material-select-placement" class="col-md-6 mb-3">
                                                 </div>
                                                 <div class="col-md-6 mb-3">
-                                                    <label>مبلغ واحد</label>
-                                                    <input type="text" dir="ltr" class="form-control" name="UnitPrice" />
+                                                    <label for="new-material-purchased-on" class="mb-1">تاریخ خرید</label>
+                                                    <input name="PurchasedOn" class="form-control text-left" id="new-material-purchased-on" placeholder="yyyy/mm/dd" dir="ltr" />
                                                 </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label>سود خالص</label>
-                                                <input type="text" dir="ltr" class="form-control" name="TotalNetProfit" />
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="new-material-amount" class="mb-1">مقدار</label>
+                                                    <input id="new-material-amount" type="number" dir="ltr" class="form-control" name="Amount" />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="new-material-unit-price" class="mb-1">مبلغ واحد</label>
+                                                    <input id="new-material-unit-price" type="number" dir="ltr" class="form-control" name="UnitPrice" />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="new-material-transport-cost" class="mb-1">هزینه حمل و نقل</label>
+                                                    <input name="TransportCost" class="form-control ltr text-left" type="number" dir="ltr" id="new-material-transport-cost" placeholder="0" />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="new-material-total-net-profit" class="mb-1">سود خالص</label>
+                                                    <input class="form-control text-left" name="TotalNetProfit" type="number" dir="ltr" id="new-material-total-net-profit" placeholder="0" />
+                                                </div>
                                             </div>
                                             <div>
                                                 <button id="add-new-stage-material-btn" class="btn btn-primary">افزودن</button>
@@ -190,7 +198,7 @@
     </div>
 </div>
 <!-- Contractors Card Modal -->
-<div class="modal fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
+<div class="modal modal-xl fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -207,7 +215,7 @@
     </div>
 </div>
 <!-- Expenses Card Modal -->
-<div class="modal fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
+<div class="modal modal-xl fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

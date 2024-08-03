@@ -1,6 +1,4 @@
-﻿using ContractorDocuments.Domain.ValueObjects;
-
-namespace ContractorDocuments.Domain.Entities.Customers
+﻿namespace ContractorDocuments.Domain.Entities.Customers
 {
     public class UserEntity : BaseEntity
     {

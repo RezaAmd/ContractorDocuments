@@ -2,7 +2,7 @@
 
 namespace ContractorDocuments.Infrastructure.Data.Configurations.Customers
 {
-    public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
+    internal class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {
         public void Configure(EntityTypeBuilder<UserEntity> b)
         {

@@ -39,6 +39,7 @@ namespace ContractorDocuments.Application.Materials
             return await _queryAsNoTracking
                 .Where(m => m.Id == id)
                 .Include(m => m.ChildrenMaterial)
+                .OrderBy(m => m.Name)
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
