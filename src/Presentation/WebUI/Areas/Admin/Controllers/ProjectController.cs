@@ -115,6 +115,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         #region Json
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> AddStageMaterial([FromBody] CreateStageMaterialInputModel stageMaterialModel,
             CancellationToken cancellationToken)
         {
@@ -125,10 +126,13 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 StageId = stageMaterialModel.StageId,
                 MaterialId = stageMaterialModel.MaterialId,
                 Amount = stageMaterialModel.Amount,
-                UnitPrice = stageMaterialModel.UnitPrice,
-                TotalNetProfit = stageMaterialModel.TotalNetProfit
+                UnitPrice = stageMaterialModel.UnitPrice 
             };
 
+            if(stageMaterialModel.TransportCost.HasValue)
+                addStageMaterialCommand.TransportCost = stageMaterialModel.TransportCost.Value;
+            if (stageMaterialModel.TotalNetProfit.HasValue)
+                addStageMaterialCommand.TotalNetProfit = stageMaterialModel.TotalNetProfit.Value;
             if (!string.IsNullOrEmpty(stageMaterialModel.PurchasedOn))
                 addStageMaterialCommand.PurchasedOn = DateTime.Parse(stageMaterialModel.PurchasedOn, new CultureInfo("fa-IR"));
             var addSupplyResult = await _mediator.Send(addStageMaterialCommand, cancellationToken);

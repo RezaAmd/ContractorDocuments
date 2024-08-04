@@ -9,5 +9,6 @@
         public string? PurchasedOn { get; set; }
         public decimal? TransportCost { get; set; }
         public decimal? TotalNetProfit { get; set; }
+        public decimal TotalCost { get; set; } = 0;
     }
 }

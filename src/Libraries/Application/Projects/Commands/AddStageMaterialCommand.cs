@@ -33,7 +33,8 @@ namespace ContractorDocuments.Application.Projects.Commands
                 ProjectStepId = Guid.Parse(request.StageId),
                 UnitPrice = request.UnitPrice,
                 TransportCost = request.TransportCost,
-                TotalNetProfit = request.TotalNetProfit
+                TotalNetProfit = request.TotalNetProfit,
+                PurchacedOn = request.PurchasedOn
             };
             return await _projectService.AddStageMaterialAsync(newSupply, cancellationToken);
         }

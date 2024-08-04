@@ -1,4 +1,4 @@
-var board = {};
+﻿var board = {};
 board = {
     props: {
         projectId: null,
@@ -36,11 +36,15 @@ board = {
                 { stageId: stageId }, (isSuccess, response) => {
                     if (response) {
                         response.forEach((material) => {
-                            materialTableBody.innerHTML += `<tr><td>-</td><td>${material.name}</td>
+                            materialTableBody.innerHTML += `
+                            <tr>
+                            <td>${material.name}</td>
                             <td>${separateMoney(material.amount)}</td>
                             <td>${separateMoney(material.unitPrice)}</td>
-                            <td>${separateMoney(material.amount * material.unitPrice)}</td>
+                            <td>${separateMoney(material.transportCost)}</td>
+                            <td>${separateMoney(material.totalCost)}</td>
                             <td>${separateMoney(material.totalNetProfit)}</td>
+                            <td>${material.purchasedOn ? material.purchasedOn : '-'}</td>
                             </tr>`
                         });
                     }
@@ -48,25 +52,45 @@ board = {
         },
         addStageMaterial: async () => {
             // prepare stage material data.
-            const newSypplyForm = document.getElementById('new-supply');
-            const materialSelect = newSypplyForm.querySelectorAll('select[name="MaterialId"]');
+            const newSupplyForm = document.getElementById('new-supply');
+            if (!newSupplyForm) {
+                console.error('New supply form was not found!');
+                return;
+            }
+            const materialSelect = newSupplyForm.querySelectorAll('select[name="MaterialId"]');
             const materialId = materialSelect[materialSelect.length - 1].value;
-            const purchasedOn = newSypplyForm.querySelector('input[name="PurchasedOn"]').value;
-            const amount = newSypplyForm.querySelector('input[name="Amount"]').value;
-            const unitPrice = newSypplyForm.querySelector('input[name="UnitPrice"]').value;
-            const transportCost = newSypplyForm.querySelector('input[name="TransportCost"]').value;
-            const totalNetProfit = newSypplyForm.querySelector('input[name="TotalNetProfit"]').value;
+            if (!materialId) {
+                alert('لطفا نوع مصالح را مشخص نمایید.');
+                return;
+            }
+            const amount = newSupplyForm.querySelector('input[name="Amount"]').value;
+            if (!amount) {
+                alert('لطفا مقدار مواد تهیه شده را مشخص نمایید.');
+                return;
+            }
+            const unitPrice = newSupplyForm.querySelector('input[name="UnitPrice"]').value;
+            if (!unitPrice) {
+                alert('لطفا قیمت واحد را وارد نمایید..');
+                return;
+            }
+
+            const purchasedOn = newSupplyForm.querySelector('input[name="PurchasedOn"]').value;
+            const transportCost = newSupplyForm.querySelector('input[name="TransportCost"]').value;
+            const totalNetProfit = newSupplyForm.querySelector('input[name="TotalNetProfit"]').value;
 
             const stageMaterialData = {
                 StageId: board.props.stageId,
                 MaterialId: materialId,
-                PurchasedOn: purchasedOn,
                 Amount: amount * 1,
-                UnitPrice: unitPrice * 1,
-                TransportCost: transportCost * 1,
-                TotalNetProfit: totalNetProfit
+                UnitPrice: unitPrice * 1
             }
-            debugger
+            if (purchasedOn)
+                stageMaterialData.PurchasedOn = purchasedOn;
+            if (transportCost && transportCost > 0)
+                stageMaterialData.TransportCost = transportCost * 1;
+            if (totalNetProfit && totalNetProfit > 0)
+                stageMaterialData.TotalNetProfit = totalNetProfit * 1;
+
             await rest.postAsync('/admin/project/addStageMaterial',
                 null, stageMaterialData,
                 (isSuccess, response) => {

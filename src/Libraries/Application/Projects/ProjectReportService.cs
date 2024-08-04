@@ -112,6 +112,7 @@ namespace ContractorDocuments.Application.Projects
                     null,
                     TransportCost = psm.TransportCost,
                     TotalNetProfit = psm.TotalNetProfit,
+                    TotalCost = psm.UnitPrice * psm.Amount + (psm.TransportCost.HasValue ? psm.TransportCost.Value : 0)
                 }).ToListAsync(cancellationToken);
         }
         #endregion
