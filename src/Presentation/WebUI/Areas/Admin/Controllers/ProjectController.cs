@@ -164,6 +164,23 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             return Ok(remaningStages);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DeleteMaterial(string id,
+            CancellationToken cancellationToken = default)
+        {
+            Guid stageMaterialId = Guid.Parse(id);
+            var deleteStageMaterialCommand = new DeleteStageMaterialCommand
+            {
+                StageMaterialId = stageMaterialId
+            };
+
+            var deleteStageMaterialResult = await _mediator.Send(deleteStageMaterialCommand, cancellationToken);
+
+            if (deleteStageMaterialResult.IsSuccess == false)
+                return BadRequest();
+
+            return Ok();
+        }
         #endregion
     }
 }

@@ -185,6 +185,7 @@
                                 <th>هزینه کل</th>
                                 <th>سود خالص</th>
                                 <th>تاریخ خرید</th>
+                                <th>عملیات</th>
                             </tr>
                         </thead>
                         <tbody id="material-table-body">
@@ -228,6 +229,41 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Remove Stage Material Modal -->
+<div class="modal fade" id="remove-material-modal" tabindex="-1" aria-labelledby="remove-material-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="remove-material-modal-label">آیا مطمعنید که می خواهید این رکورد را حذف کنید؟</h5>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                <button id="remove-stage-material-btn" type="button" class="btn btn-danger">حذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Transfer Stage Material Modal -->
+<div class="modal fade" id="transfer-material-modal" tabindex="-1" aria-labelledby="transfer-material-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="transfer-material-modal-label">جابجایی در مرحله دیگر</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <select class="form-control">
+                        <option>انتخاب کنید</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                <button type="button" class="btn btn-primary">ذخیره</button>
             </div>
         </div>
     </div>

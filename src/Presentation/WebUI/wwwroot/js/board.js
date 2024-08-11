@@ -3,13 +3,25 @@ board = {
     props: {
         projectId: null,
         stageId: null,
-        materials: []
+        materials: [],
+        stageModal: null,
+        removeStageMaterialModal: null,
+        transferMaterialModal: null,
+        materialRemoveId: null
     },
     methods: {
         prepareProjectProperties: () => {
             const projectIdInput = document.getElementById('project-id');
             if (projectIdInput)
                 board.props.projectId = projectIdInput.value;
+            // Prepare remove material modal.
+            const removeMaterialModal = document.getElementById('remove-material-modal');
+            if (removeMaterialModal)
+                board.props.removeStageMaterialModal = new bootstrap.Modal(removeMaterialModal);
+            // Prepare transfer material modal.
+            const transferMaterialModal = document.getElementById('transfer-material-modal');
+            if (transferMaterialModal)
+                board.props.transferMaterialModal = new bootstrap.Modal(transferMaterialModal);
         },
         // material
         prepareMaterialSelectInput: async () => {
@@ -22,8 +34,8 @@ board = {
                 return;
             }
             board.props.stageId = board.props.stageId;
-            const materialModal = new bootstrap.Modal(document.getElementById('supplies-card-modal'))
-            materialModal.show();
+            board.props.stageModal = new bootstrap.Modal(document.getElementById('supplies-card-modal'))
+            board.props.stageModal.show();
             board.methods.loadMaterialModalData(board.props.stageId);
         },
         loadMaterialModalData: async (stageId) => {
@@ -36,6 +48,14 @@ board = {
                 { stageId: stageId }, (isSuccess, response) => {
                     if (response) {
                         response.forEach((material) => {
+                            // Remove link
+                            let removeLink = document.createElement('a');
+                            removeLink.classList.add('dropdown-item');
+                            removeLink.innerText = 'حذف';
+                            removeLink.href = '#';
+                            removeLink.addEventListener('click', () => {
+                                debugger
+                            });
                             materialTableBody.innerHTML += `
                             <tr>
                             <td>${material.name}</td>
@@ -45,6 +65,21 @@ board = {
                             <td>${separateMoney(material.totalCost)}</td>
                             <td>${separateMoney(material.totalNetProfit)}</td>
                             <td>${material.purchasedOn ? material.purchasedOn : '-'}</td>
+                            <td>
+                            <div class="dropdown dropend">
+                              <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                بیشتر
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li onClick="board.events.removeSupplyItemClickEventListener('${material.id}')">
+                                <a class="dropdown-item" href="#">حذف</a>
+                                </li>
+                                <li onClick="board.events.changeSupplyStageItemClickEventListener()">
+                                <a class="dropdown-item" href="#">جابجا کردن</a>
+                                </li>
+                              </ul>
+                            </div>
+                            </td>
                             </tr>`
                         });
                     }
@@ -99,6 +134,9 @@ board = {
                     }
                 });
         },
+        removeStageMaterial: async (id) => {
+            debugger
+        },
         // Construction stages
         prepareRemaningStages: async () => {
             await board.methods._fetchRemaningStages();
@@ -144,6 +182,28 @@ board = {
                     board.methods.loadMaterialModal();
                 });
             });
+            // Remove material confirm button
+            const materialRemoveConfirmBtn = document.getElementById('remove-stage-material-btn');
+            if (materialRemoveConfirmBtn) {
+                materialRemoveConfirmBtn.addEventListener('click', async (e) => {
+                    if (!board.props.materialRemoveId) {
+                        console.error("Material id was not found!");
+                        return;
+                    }
+                    await rest.getAsync('/admin/project/deleteMaterial?id=' + board.props.materialRemoveId, null,
+                        (isSuccess, response) => {
+                            board.props.removeStageMaterialModal.hide();
+                            board.methods.loadMaterialModal();
+                        });
+                });
+            }
+
+            const removeMaterialModal = document.getElementById('remove-material-modal');
+            if (removeMaterialModal) {
+                removeMaterialModal.addEventListener('hidden.bs.modal', () => {
+                    board.props.stageModal.show();
+                })
+            }
         },
         addStageMaterialEventListener: () => {
             const addBtn = document.getElementById('add-new-stage-material-btn');
@@ -152,6 +212,18 @@ board = {
             addBtn.addEventListener('click', async () => {
                 await board.methods.addStageMaterial();
             });
+        },
+        removeSupplyItemClickEventListener: (id) => {
+            if (!id) {
+                console.error('Material id not found!');
+                return;
+            }
+            board.props.materialRemoveId = id;
+            board.props.stageModal.hide();
+            board.props.removeStageMaterialModal.show();
+        },
+        changeSupplyStageItemClickEventListener: () => {
+            debugger
         }
     },
     init: async () => {
@@ -162,18 +234,15 @@ board = {
         // Prepare material modal event.
         board.events.materialModalEventTrigger();
         board.events.addStageMaterialEventListener();
-
         // Setup material input.
         materialProvider.setupTreeInputs('material-select-placement');
-
         // Load page when modal closed.
         const modals = document.querySelectorAll('.modal');
         modals.forEach((modal) => {
             modal.addEventListener('hide.bs.modal', () => {
-                window.location.reload();
+                //window.location.reload();
             })
         });
-
         // Money Split
         const moneyElements = document.querySelectorAll('[data-money]');
         moneyElements.forEach((moneyElement) => {
