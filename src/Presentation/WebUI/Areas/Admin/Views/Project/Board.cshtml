@@ -123,7 +123,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="supplies-card-modal-label">مصالح</h1>
+                <h1 class="modal-title fs-4" id="supplies-card-modal-label"><i class="fa fa-block-brick me-2"></i> مصالح</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -199,40 +199,6 @@
         </div>
     </div>
 </div>
-<!-- Contractors Card Modal -->
-<div class="modal modal-xl fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="contractors-card-modal-label">پیمانکاران</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Expenses Card Modal -->
-<div class="modal modal-xl fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="expenses-card-modal-label">هزینه کرد</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Remove Stage Material Modal -->
 <div class="modal fade" id="remove-material-modal" tabindex="-1" aria-labelledby="remove-material-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -246,12 +212,113 @@
         </div>
     </div>
 </div>
+<!-- Contractors Card Modal -->
+<div class="modal modal-xl fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4" id="contractors-card-modal-label">پیمانکاران</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                این بخش در دست توسعه است...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Expenses Card Modal -->
+<div class="modal modal-xl fade" id="expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4" id="expenses-card-modal-label"><i class="fa fa-money-bill me-2"></i> هزینه های آزاد</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <h6>اقدامات</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <a class="button-link" href="#">
+                                    <span><i class="fa fa-plus me-1"></i></span>
+                                    <span>افزودن جدید</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="scrollable">
+                                <table class="table table-borderless table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add New Expenses Card Modal -->
+<div class="modal modal-xl fade" id="add-expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4" id="expenses-card-modal-label">تعریف هزینه جدید</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Transfer Stage Material Modal -->
 <div class="modal fade" id="transfer-material-modal" tabindex="-1" aria-labelledby="transfer-material-modal-label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="transfer-material-modal-label">جابجایی در مرحله دیگر</h1>
+                <h1 class="modal-title fs-4" id="transfer-material-modal-label">جابجایی در مرحله دیگر</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -271,6 +338,7 @@
 
 @section scripts {
     <script src="~/js/material-provider.js"></script>
+    <script src="~/js/project-stage-expenses.js"></script>
     <script src="~/js/board.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

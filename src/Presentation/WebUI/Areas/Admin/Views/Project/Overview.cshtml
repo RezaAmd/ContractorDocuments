@@ -33,7 +33,11 @@
                                 foreach (var project in Model)
                                 {
                                     <tr class="floating-hover">
-                                        <td>@project.Title</td>
+                                        <td>
+                                            <a class="nav-link link-primary" href="/Admin/Project/Board/@project.Id">
+                                                @project.Title
+                                            </a>
+                                        </td>
                                         <td>@project.ProjectType</td>
                                         <td>
                                             @if (project.StartOn.HasValue)
@@ -49,7 +53,7 @@
                                         </td>
                                         <td>
                                             <div class="floating-hover-child">
-                                                <a href="/Admin/Project/Board/@project.Id" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                                                <a href="/Admin/Project/Board/@project.Id"><i class="fa fa-table-layout"></i></a>
                                             </div>
                                         </td>
                                     </tr>

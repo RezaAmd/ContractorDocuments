@@ -4,7 +4,7 @@ board = {
         projectId: null,
         stageId: null,
         materials: [],
-        stageModal: null,
+        stageSupplyModal: null,
         removeStageMaterialModal: null,
         transferMaterialModal: null,
         materialRemoveId: null
@@ -34,8 +34,8 @@ board = {
                 return;
             }
             board.props.stageId = board.props.stageId;
-            board.props.stageModal = new bootstrap.Modal(document.getElementById('supplies-card-modal'))
-            board.props.stageModal.show();
+            board.props.stageSupplyModal = new bootstrap.Modal(document.getElementById('supplies-card-modal'))
+            board.props.stageSupplyModal.show();
             board.methods.loadMaterialModalData(board.props.stageId);
         },
         loadMaterialModalData: async (stageId) => {
@@ -131,8 +131,21 @@ board = {
                 (isSuccess, response) => {
                     if (isSuccess == true) {
                         board.methods.loadMaterialModal();
+                        board.methods._cleanNewMaterialForm();
                     }
                 });
+        },
+        _cleanNewMaterialForm: () => {
+            const newSupplyForm = document.getElementById('new-supply');
+            if (!newSupplyForm) {
+                console.error('New supply form was not found!');
+                return;
+            }
+            newSupplyForm.querySelector('input[name="Amount"]').value = '';
+            newSupplyForm.querySelector('input[name="UnitPrice"]').value = '';
+            newSupplyForm.querySelector('input[name="PurchasedOn"]').value = '';
+            newSupplyForm.querySelector('input[name="TransportCost"]').value = '';
+            newSupplyForm.querySelector('input[name="TotalNetProfit"]').value = '';
         },
         removeStageMaterial: async (id) => {
             debugger
@@ -201,7 +214,7 @@ board = {
             const removeMaterialModal = document.getElementById('remove-material-modal');
             if (removeMaterialModal) {
                 removeMaterialModal.addEventListener('hidden.bs.modal', () => {
-                    board.props.stageModal.show();
+                    board.props.stageSupplyModal.show();
                 })
             }
         },
@@ -219,7 +232,7 @@ board = {
                 return;
             }
             board.props.materialRemoveId = id;
-            board.props.stageModal.hide();
+            board.props.stageSupplyModal.hide();
             board.props.removeStageMaterialModal.show();
         },
         changeSupplyStageItemClickEventListener: () => {
@@ -243,6 +256,10 @@ board = {
                 //window.location.reload();
             })
         });
+
+        // Prepare expenses
+        board.props.expenses = new ProjecStageExpenses();
+
         // Money Split
         const moneyElements = document.querySelectorAll('[data-money]');
         moneyElements.forEach((moneyElement) => {

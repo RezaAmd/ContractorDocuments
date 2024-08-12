@@ -35,6 +35,33 @@ small, .small {
 ::-webkit-scrollbar-track {
     background: var(--bs-body-bg)
 }
+
+.button-link {
+    display: block;
+    position: relative;
+    background-color: #888888ff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    max-width: 300px;
+    margin-top: 8px;
+    overflow: hidden;
+    padding: 6px 12px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition-duration: 85ms;
+    transition-property: background-color, border-color, box-shadow;
+    transition-timing-function: ease;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+    .button-link:hover {
+        background-color: #a0a0a0ff;
+    }
+
 /* Bootstrap costumize */
 body {
     --bs-body-font-family: "Dirooz";
@@ -61,7 +88,7 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
 
 :root, [data-bs-theme=light] {
     --bs-border-radius: 0.8rem;
-    --bs-border-radius-sm: 3rem;
+    --bs-border-radius-sm: 0.55rem;
     --bs-border-radius-lg: 1rem;
     --bs-border-radius-xl: 1.5rem;
     --bs-border-radius-xxl: 2rem;
@@ -81,8 +108,15 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
     backdrop-filter: blur(2px);
 }
 
-/* Utilities */
+.modal-header {
+    border-bottom: 0;
+}
 
+.modal-header .modal-title {
+    font-weight: bold;
+}
+
+/* Utilities */
 .floating-hover:hover .floating-hover-child {
     opacity: 1;
 }
