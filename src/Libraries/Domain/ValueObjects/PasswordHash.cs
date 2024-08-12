@@ -1,5 +1,4 @@
-﻿using ContractorDocuments.Domain.Common;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 
 namespace ContractorDocuments.Domain.ValueObjects
@@ -16,7 +15,7 @@ namespace ContractorDocuments.Domain.ValueObjects
         private static int _maximumLength = 50;
 
         public PasswordHash() { }
-        public PasswordHash(string password)
+        public PasswordHash(string? password)
         {
             _setValue(password);
         }
@@ -41,11 +40,14 @@ namespace ContractorDocuments.Domain.ValueObjects
                 "-ToI-",
                 Convert.ToBase64String(hashPasswordBytes));
         }
-        private void _setValue(string password)
+        private void _setValue(string? password)
         {
             // Validation
             if (string.IsNullOrEmpty(password))
-                throw new ArgumentNullException("Password cannot be null or empty.");
+            {
+                Value = null;
+                return;
+            }
             if (password.Length < _minimumLength)
                 throw new ArgumentOutOfRangeException($"Password characters cannot be less than {_minimumLength}.");
             if (password.Length > _maximumLength)
@@ -54,7 +56,7 @@ namespace ContractorDocuments.Domain.ValueObjects
             Value = _encode(password);
         }
 
-        public static PasswordHash Parse(string password)
+        public static PasswordHash Parse(string? password)
             => new PasswordHash(password);
         public override int GetHashCode() => Value!.GetHashCode();
         protected override IEnumerable<object> GetEqualityComponents()
@@ -105,8 +107,11 @@ namespace ContractorDocuments.Domain.ValueObjects
 
         #region highe level encryption
 
-        public bool VerifyPasswordHash(string password)
+        public bool VerifyPassword(string? password)
         {
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(Value))
+                return false;
+
             var splitHash = Value.Split("-ToI-");
 
             var saltHash = Convert.FromBase64String(splitHash[0]);
