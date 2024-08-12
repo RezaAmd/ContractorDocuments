@@ -6,21 +6,32 @@ namespace ContractorDocuments.Application.Common.Extensions;
 public static class EnumExtensions
 {
 #nullable enable
-    public static string ToDisplay(this Enum value, DisplayProperty property = DisplayProperty.Name)
+    public static string? ToDisplay(this Enum value, DisplayProperty property = DisplayProperty.Name)
     {
         Assert.NotNull(value, nameof(value));
-        List<string> messages = new List<string>();
+        List<string> messages = new List<string>(); ;
 
-        var attribute = value.GetType().GetField(value.ToString())
+        FieldInfo? fieldInfo = value.GetType()
+            .GetField(value.ToString());
+        if (fieldInfo == null)
+            return messages[0];
+
+        var attribute = fieldInfo
             .GetCustomAttributes<DisplayAttribute>(false).FirstOrDefault();
-
         if (attribute == null)
             return messages[0];
-        object? propValue = attribute.GetType()
-            .GetProperty(property.ToString())
-            .GetValue(attribute, null);
+
+        PropertyInfo? propertyInfo = attribute.GetType()
+            .GetProperty(property.ToString());
+
+        if (propertyInfo == null)
+            return messages[0];
+
+        object? propValue = propertyInfo.GetValue(attribute, null);
+
         if (propValue == null)
             return messages[0];
+
         return propValue.ToString();
     }
 
@@ -29,14 +40,27 @@ public static class EnumExtensions
         Assert.NotNull(value, nameof(value));
         List<string> Messages = new List<string>();
 
-        var attribute = value.GetType().GetField(value.ToString())
-            .GetCustomAttributes<DisplayAttribute>(false).FirstOrDefault();
+        FieldInfo? fieldInfo = value.GetType().GetField(value.ToString());
+        if (fieldInfo == null)
+            return Messages;
 
+        DisplayAttribute? attribute = fieldInfo
+            .GetCustomAttributes<DisplayAttribute>(false).FirstOrDefault();
         if (attribute == null)
             return Messages;
 
-        var propValue = attribute.GetType().GetProperty(property.ToString()).GetValue(attribute, null);
-        Messages.Add(propValue.ToString());
+        PropertyInfo? propertyInfo = attribute.GetType().GetProperty(property.ToString());
+        if (propertyInfo == null)
+            return Messages;
+
+        object? propValue = propertyInfo.GetValue(attribute, null);
+        if (propValue != null)
+        {
+            string? valueStr = propValue.ToString();
+            if (!string.IsNullOrWhiteSpace(valueStr))
+                Messages.Add(valueStr);
+        }
+
         return Messages;
     }
 }
