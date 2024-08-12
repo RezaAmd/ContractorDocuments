@@ -15,14 +15,14 @@ namespace UnitTests.Domain.Customers
             var fullname = new Fullname(name, surname);
 
             // Assert
-            Assert.Null(fullname.GetFullName());
+            Assert.Empty(fullname.GetFullName());
         }
 
         [Theory]
         [InlineData("Reza", "Ahmadi", "Reza Ahmadi")]
         [InlineData("رضا", "احمدی", "رضا احمدی")]
         [InlineData("حسین   ", "  خادمی", "حسین خادمی")]
-        [InlineData("", "", null)]
+        [InlineData("", "", "")]
         public void Create_Should_ReturnFullname(string? name, string? surname, string? fullname)
         {
             // Act
