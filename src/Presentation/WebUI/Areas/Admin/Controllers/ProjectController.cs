@@ -114,6 +114,8 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 
         #region Json
 
+        #region Stage Material
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> AddStageMaterial([FromBody] CreateStageMaterialInputModel stageMaterialModel,
@@ -126,10 +128,10 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
                 StageId = stageMaterialModel.StageId,
                 MaterialId = stageMaterialModel.MaterialId,
                 Amount = stageMaterialModel.Amount,
-                UnitPrice = stageMaterialModel.UnitPrice 
+                UnitPrice = stageMaterialModel.UnitPrice
             };
 
-            if(stageMaterialModel.TransportCost.HasValue)
+            if (stageMaterialModel.TransportCost.HasValue)
                 addStageMaterialCommand.TransportCost = stageMaterialModel.TransportCost.Value;
             if (stageMaterialModel.TotalNetProfit.HasValue)
                 addStageMaterialCommand.TotalNetProfit = stageMaterialModel.TotalNetProfit.Value;
@@ -181,6 +183,44 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
 
             return Ok();
         }
+
+        #endregion
+
+        #region Stage Expenses
+
+        [HttpGet]
+        public async Task<IActionResult> GetStageExpenses(string stageId,
+            CancellationToken cancellationToken)
+        {
+            var stageExpenses = await _mediator.Send(new GetStageExpensesQuery
+            {
+                StageId = Guid.Parse(stageId)
+            }, cancellationToken);
+
+            return Ok(stageExpenses);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStageExpenses([FromBody] AddExpensesInputModel expensesModel,
+            CancellationToken cancellationToken)
+        {
+            var addExpenseCommand = new AddStageExpenseCommand
+            {
+                Title = expensesModel.Title,
+                Amount = expensesModel.Amount,
+                PaidOn = DateTime.Parse(expensesModel.PaidOn, new CultureInfo("fa-IR")),
+                ProjectStageId = Guid.Parse(expensesModel.ProjectStageId),
+                Description = expensesModel.Description
+            };
+
+            var addExpenseResult = await _mediator.Send(addExpenseCommand, cancellationToken);
+            if (addExpenseResult.IsSuccess == false)
+                return BadRequest(addExpenseResult);
+            return Ok(addExpenseResult);
+        }
+
+        #endregion
+
         #endregion
     }
 }

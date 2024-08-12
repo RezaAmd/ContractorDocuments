@@ -53,6 +53,8 @@ namespace ContractorDocuments.Application.Projects
             return await _context.SaveChangeAsync(cancellationToken);
         }
 
+        #region Material
+
         public async Task<Result> AddStageMaterialAsync(ProjectStageMaterialEntity stageMaterial,
             CancellationToken cancellationToken = default)
         {
@@ -74,6 +76,19 @@ namespace ContractorDocuments.Application.Projects
             _context.ProjectStageMaterials.Remove(projectStageMaterial);
             return await _context.SaveChangeAsync(cancellationToken);
         }
+        #endregion
+
+        #region Expense
+
+        public async Task<Result> AddStageExpenseAsync(ProjectStageExpenseEntity expense,
+            CancellationToken cancellationToken = default)
+        {
+            _context.ProjectStageExpenses.Add(expense);
+            return await _context.SaveChangeAsync(cancellationToken);
+        }
+
+        #endregion
+
         #endregion
 
         #endregion
