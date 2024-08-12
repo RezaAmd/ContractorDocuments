@@ -2,8 +2,8 @@
 {
     public record CreateMaterialInputModel
     {
-        public string Name { get; set; }
-        public string ParentMaterialId { get; set; }
-        public string MeasureId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string ParentMaterialId { get; set; } = string.Empty;
+        public string MeasureId { get; set; } = string.Empty;
     }
 }

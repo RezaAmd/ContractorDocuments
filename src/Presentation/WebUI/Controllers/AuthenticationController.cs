@@ -56,8 +56,10 @@ namespace ContractorDocuments.WebUI.Controllers
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Name, user.PhoneNumber),
-                    new Claim("Fullname", user.Fullname.GetFullName()),
                 };
+
+                if (!string.IsNullOrEmpty(user.Fullname.GetFullName()))
+                    claims.Add(new Claim("Fullname", user.Fullname.GetFullName()));
 
                 var authProperties = new AuthenticationProperties
                 {

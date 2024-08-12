@@ -2,10 +2,10 @@
 {
     public class MaterialViewModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Measure { get; set; }
-        public IList<MaterialViewModel>? Children { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Measure { get; set; } = string.Empty;
+        public IList<MaterialViewModel>? Children { get; set; } = [];
         public MaterialViewModel? ParentMaterial { get; set; }
     }
 }

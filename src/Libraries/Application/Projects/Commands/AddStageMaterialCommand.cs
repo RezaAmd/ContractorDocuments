@@ -4,8 +4,8 @@ namespace ContractorDocuments.Application.Projects.Commands
 {
     public class AddStageMaterialCommand : IRequest<Result>
     {
-        public string StageId { get; set; }
-        public string MaterialId { get; set; }
+        public string StageId { get; set; } = string.Empty;
+        public string MaterialId { get; set; } = string.Empty;
         public decimal Amount { get; set; }
         public decimal UnitPrice { get; set; }
         public DateTime? PurchasedOn { get; set; }
