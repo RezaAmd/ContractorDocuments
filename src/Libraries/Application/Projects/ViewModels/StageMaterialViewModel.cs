@@ -2,8 +2,8 @@
 {
     public record StageMaterialViewModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public decimal Amount { get; set; }
         public decimal UnitPrice { get; set; }
         public string? PurchasedOn { get; set; }

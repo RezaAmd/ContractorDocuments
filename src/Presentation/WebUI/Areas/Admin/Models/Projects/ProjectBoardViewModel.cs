@@ -13,8 +13,8 @@
     {
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public decimal TotalCost { get; set; }
-        public int DisplayOrder { get; set; }
+        public decimal TotalCost { get; set; } = 0;
+        public int DisplayOrder { get; set; } = 0;
         public IList<ProjectConstructStageMaterialViewModel> Materials { get; set; } = [];
 
     }

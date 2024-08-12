@@ -23,7 +23,7 @@ namespace ContractorDocuments.Domain.Entities.Directory
 
         #region Relations
 
-        public virtual ICollection<MaterialEntity> Materials { get; set; }
+        public virtual ICollection<MaterialEntity>? Materials { get; set; }
 
         #endregion
     }
