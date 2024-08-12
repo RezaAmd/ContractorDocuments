@@ -1,8 +1,4 @@
-﻿using ContractorDocuments.Domain.Common;
-using System;
-using System.Collections.Generic;
-
-namespace ContractorDocuments.Domain.ValueObjects
+﻿namespace ContractorDocuments.Domain.ValueObjects
 {
     public class Fullname : ValueObject
     {
@@ -12,24 +8,20 @@ namespace ContractorDocuments.Domain.ValueObjects
         {
 
         }
-        public Fullname(string name, string surname)
+        public Fullname(string? name, string? surname)
         {
-            if (name != null && name.Length > 50)
+            if (name != null)
             {
-                throw new ArgumentOutOfRangeException("name can not be more than 50 characters");
-            }
-            else
-            {
-                Name = name;
+                if (name.Length > 50)
+                    throw new ArgumentOutOfRangeException("name can not be more than 50 characters");
+                Name = name.Trim();
             }
 
-            if (surname != null && surname.Length > 50)
+            if (surname != null)
             {
-                throw new ArgumentOutOfRangeException("surname can not be more than 50 characters");
-            }
-            else
-            {
-                Surname = surname;
+                if (surname.Length > 50)
+                    throw new ArgumentOutOfRangeException("surname can not be more than 50 characters");
+                Surname = surname.Trim();
             }
         }
 
@@ -40,7 +32,16 @@ namespace ContractorDocuments.Domain.ValueObjects
 
         public string? GetName() => Name;
         public string? GetSurname() => Surname;
-        public string GetFullName() => $"{Name} {Surname}";
+        public string? GetFullName()
+        {
+            if (string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(Surname))
+                return null;
+            if (string.IsNullOrEmpty(Name))
+                return Surname;
+            if (string.IsNullOrEmpty(Surname))
+                return Name;
+            return $"{Name} {Surname}";
+        }
         public void SetFullName(string name, string surname)
         {
             Name = name;
@@ -64,7 +65,8 @@ namespace ContractorDocuments.Domain.ValueObjects
             return $"{left.Name}{left.Surname}" == $"{right.Name}{right.Surname}";
         }
 
-        public static bool operator !=(Fullname left, Fullname right) => $"{left.Name}{left.Surname}" != $"{right.Name}{right.Surname}";
+        public static bool operator !=(Fullname left, Fullname right)
+            => $"{left.Name}{left.Surname}" != $"{right.Name}{right.Surname}";
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
