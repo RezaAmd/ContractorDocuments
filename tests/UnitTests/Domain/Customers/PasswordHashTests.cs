@@ -35,7 +35,7 @@ namespace UnitTests.Domain.Customers
         [InlineData("Q5%g*8Ms#f", "")]
         [InlineData("", "")]
         [InlineData(null, null)]
-        [InlineData(" ", null)]
+        [InlineData("    ", null)]
         public void Create_NullOrEmpty_ShouldBe_Invalid(string? currentPassword, string? passwordInput)
         {
             // Act
