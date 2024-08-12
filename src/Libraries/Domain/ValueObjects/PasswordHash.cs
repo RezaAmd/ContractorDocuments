@@ -61,7 +61,10 @@ namespace ContractorDocuments.Domain.ValueObjects
         public override int GetHashCode() => Value!.GetHashCode();
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return Value;
+            if (string.IsNullOrEmpty(Value))
+                yield return string.Empty;
+            else
+                yield return Value;
         }
 
         #endregion

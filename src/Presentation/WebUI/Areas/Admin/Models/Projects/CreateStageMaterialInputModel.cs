@@ -2,8 +2,8 @@
 {
     public class CreateStageMaterialInputModel
     {
-        public string StageId { get; set; }
-        public string MaterialId { get; set; }
+        public string StageId { get; set; } = string.Empty;
+        public string MaterialId { get; set; } = string.Empty;
         public decimal Amount { get; set; }
         public decimal UnitPrice { get; set; }
         public string? PurchasedOn { get; set; }

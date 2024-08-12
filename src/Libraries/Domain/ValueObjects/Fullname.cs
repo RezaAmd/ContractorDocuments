@@ -32,12 +32,12 @@
 
         public string? GetName() => Name;
         public string? GetSurname() => Surname;
-        public string? GetFullName()
+        public string GetFullName()
         {
             if (string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(Surname))
-                return null;
+                return string.Empty;
             if (string.IsNullOrEmpty(Name))
-                return Surname;
+                return Surname!;
             if (string.IsNullOrEmpty(Surname))
                 return Name;
             return $"{Name} {Surname}";
@@ -70,8 +70,15 @@
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return Name;
-            yield return Surname;
+            if (string.IsNullOrEmpty(Name))
+                yield return string.Empty;
+            else
+                yield return Name;
+
+            if (string.IsNullOrEmpty(Surname))
+                yield return string.Empty;
+            else
+                yield return Surname;
         }
 
         public override bool Equals(object? obj)

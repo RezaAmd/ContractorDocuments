@@ -2,9 +2,9 @@
 {
     public record ConstructStageViewModel
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public ProjectType ProjectTypeId { get; set; }
-        public string ProjectType { get; set; }
+        public string ProjectType { get; set; } = string.Empty;
         public int DisplayOrder { get; set; }
     }
 }

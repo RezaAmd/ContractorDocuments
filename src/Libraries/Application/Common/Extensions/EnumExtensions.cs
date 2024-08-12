@@ -6,7 +6,7 @@ namespace ContractorDocuments.Application.Common.Extensions;
 public static class EnumExtensions
 {
 #nullable enable
-    public static string? ToDisplay(this Enum value, DisplayProperty property = DisplayProperty.Name)
+    public static string ToDisplay(this Enum value, DisplayProperty property = DisplayProperty.Name)
     {
         Assert.NotNull(value, nameof(value));
         List<string> messages = new List<string>(); ;
@@ -28,11 +28,14 @@ public static class EnumExtensions
             return messages[0];
 
         object? propValue = propertyInfo.GetValue(attribute, null);
-
         if (propValue == null)
-            return messages[0];
+            return string.Empty;
 
-        return propValue.ToString();
+        string? propValueStr = propValue.ToString();
+        if (string.IsNullOrEmpty(propValueStr))
+            return string.Empty;
+
+        return propValueStr;
     }
 
     public static List<string> ToDisplays(this Enum value, DisplayProperty property = DisplayProperty.Name)

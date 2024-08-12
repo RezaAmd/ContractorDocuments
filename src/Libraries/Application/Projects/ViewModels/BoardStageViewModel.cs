@@ -2,9 +2,9 @@
 {
     public class BoardStageViewModel
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public decimal TotalExpense { get; set; }
-        public IList<StageMaterialViewModel> Materials { get; set; }
+        public IList<StageMaterialViewModel> Materials { get; set; } = [];
     }
 }
