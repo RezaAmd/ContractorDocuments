@@ -48,14 +48,6 @@ board = {
                 { stageId: stageId }, (isSuccess, response) => {
                     if (response) {
                         response.forEach((material) => {
-                            // Remove link
-                            let removeLink = document.createElement('a');
-                            removeLink.classList.add('dropdown-item');
-                            removeLink.innerText = 'حذف';
-                            removeLink.href = '#';
-                            removeLink.addEventListener('click', () => {
-                                debugger
-                            });
                             materialTableBody.innerHTML += `
                             <tr>
                             <td>${material.name}</td>

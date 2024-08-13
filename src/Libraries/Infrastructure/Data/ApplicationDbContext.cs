@@ -29,6 +29,7 @@ namespace ContractorDocuments.Infrastructure.Data
         public DbSet<ProjectStageEntity> ProjectStages => Set<ProjectStageEntity>();
         public DbSet<ConstructStageEntity> ConstructStages => Set<ConstructStageEntity>();
         public DbSet<ProjectStageMaterialEntity> ProjectStageMaterials => Set<ProjectStageMaterialEntity>();
+        public DbSet<ProjectStageExpenseEntity> ProjectStageExpenses => Set<ProjectStageExpenseEntity>();
 
         #endregion
 

@@ -115,6 +115,22 @@ namespace ContractorDocuments.Application.Projects
                     TotalCost = psm.UnitPrice * psm.Amount + (psm.TransportCost.HasValue ? psm.TransportCost.Value : 0)
                 }).ToListAsync(cancellationToken);
         }
+
+        public async Task<IList<StageExpenseViewModel>> GetStageExpensesAsync(Guid stageId,
+            CancellationToken cancellationToken = default)
+        {
+            return await _projectStageNoTracking.Where(ps => ps.Id == stageId)
+                .Include(ps => ps.Expenses)
+                .SelectMany(ps => ps.Expenses!)
+                .OrderByDescending(pse => pse.PaidOn)
+                .Select(pse => new StageExpenseViewModel
+                {
+                    Title = pse.Title,
+                    Amount = pse.Amount,
+                    PaidOn = pse.PaidOn.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")),
+                    Description = pse.Description
+                }).ToListAsync(cancellationToken);
+        }
         #endregion
 
         #endregion
