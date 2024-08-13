@@ -184,6 +184,12 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> TransferStageMaterial()
+        {
+            return Ok();
+        }
+
         #endregion
 
         #region Stage Expenses

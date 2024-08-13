@@ -118,6 +118,7 @@
         </form>
     </div>
 </div>
+
 <!-- Supplies Card Modal -->
 <div class="modal modal-xl fade" id="supplies-card-modal" tabindex="-1" aria-labelledby="supplies-card-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -199,9 +200,9 @@
         </div>
     </div>
 </div>
-<!-- Remove Stage Material Modal -->
+<!-- Remove Supply Modal -->
 <div class="modal fade" id="remove-material-modal" tabindex="-1" aria-labelledby="remove-material-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -212,6 +213,39 @@
         </div>
     </div>
 </div>
+<!-- Transfer Supply Modal -->
+<div class="modal fade" id="transfer-material-modal" tabindex="-1" aria-labelledby="transfer-material-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4" id="transfer-material-modal-label">جابجایی در مرحله دیگر</h1>
+                <button type="button" class="btn ms-auto fs-4" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <select id="transfer-supply-stage-select" class="form-control">
+                        <option>انتخاب کنید</option>
+                        @if (Model.Stages != null && Model.Stages.Count > 0)
+                        {
+                            foreach (var constructionStage in Model.Stages)
+                            {
+                                <option value="@constructionStage.Id">@constructionStage.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="d-grid">
+                    <button id="transfer-supply-btn" type="button" class="btn btn-primary">منتقل کردن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Contractors Card Modal -->
 <div class="modal modal-xl fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -308,7 +342,7 @@
         </div>
     </div>
 </div>
-<!-- Add New Expenses Card Modal -->
+<!-- Add Expenses Card Modal -->
 <div class="modal fade" id="add-expenses-card-modal" tabindex="-1" aria-labelledby="expenses-card-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -358,29 +392,6 @@
                         افزودن
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Transfer Stage Material Modal -->
-<div class="modal fade" id="transfer-material-modal" tabindex="-1" aria-labelledby="transfer-material-modal-label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-4" id="transfer-material-modal-label">جابجایی در مرحله دیگر</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <select class="form-control">
-                        <option>انتخاب کنید</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-                <button type="button" class="btn btn-primary">ذخیره</button>
             </div>
         </div>
     </div>

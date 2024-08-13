@@ -20,8 +20,9 @@ board = {
                 board.props.removeStageMaterialModal = new bootstrap.Modal(removeMaterialModal);
             // Prepare transfer material modal.
             const transferMaterialModal = document.getElementById('transfer-material-modal');
-            if (transferMaterialModal)
+            if (transferMaterialModal) {
                 board.props.transferMaterialModal = new bootstrap.Modal(transferMaterialModal);
+            }
         },
         // material
         prepareMaterialSelectInput: async () => {
@@ -175,6 +176,21 @@ board = {
                 stageOption.text = stage.name;
                 stageSelectControl.appendChild(stageOption);
             });
+        },
+        // Transfer material
+        _fetchTransferSupply: async (stageMaterialId) => {
+            if (!stageMaterialId) {
+                console.error('Material id was not found for transfer!');
+                return;
+            }
+            const transferData = {
+                projectStageId: board.props.projectStageId,
+                stageMaterialId: stageMaterialId
+            }
+            await rest.postAsync('/admin/project/transferStageMaterial', null, transferData,
+                (isSuccess, response) => {
+                    debugger
+                });
         }
     },
     events: {
@@ -209,6 +225,32 @@ board = {
                     board.props.stageSupplyModal.show();
                 })
             }
+
+            // Transfer supply modal
+            const transferMaterialModalElement = document.getElementById('transfer-material-modal');
+            if (transferMaterialModalElement) {
+                transferMaterialModalElement.addEventListener('hide.bs.modal', () => {
+                    board.props.stageSupplyModal.show();
+                });
+            }
+            
+            const transferSupplyBtn = document.getElementById('transfer-supply-btn');
+            if (transferSupplyBtn) {
+                transferSupplyBtn.addEventListener('click', async (e) => {
+                    // Find stage select.
+                    const transferStageSelect = document.getElementById('transfer-supply-stage-select');
+                    if (!transferStageSelect) {
+                        console.error('Transform stage select input was not found!');
+                        return;
+                    }
+                    const selectedStageId = transferStageSelect.value;
+                    if (!selectedStageId) {
+                        console.error('No stage selected for transfer the material!');
+                        returnl
+                    }
+                    await board.methods._fetchTransferSupply(selectedStageId);
+                });
+            }
         },
         addStageMaterialEventListener: () => {
             const addBtn = document.getElementById('add-new-stage-material-btn');
@@ -228,7 +270,8 @@ board = {
             board.props.removeStageMaterialModal.show();
         },
         changeSupplyStageItemClickEventListener: () => {
-            debugger
+            board.props.transferMaterialModal.show();
+            board.props.stageSupplyModal.hide();
         }
     },
     init: async () => {
