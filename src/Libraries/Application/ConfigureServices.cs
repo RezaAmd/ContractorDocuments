@@ -1,4 +1,5 @@
 ﻿using ContractorDocuments.Application.ConstructStages;
+using ContractorDocuments.Application.Equipments;
 using ContractorDocuments.Application.Materials;
 using ContractorDocuments.Application.Measures;
 using ContractorDocuments.Application.Projects;
@@ -31,7 +32,7 @@ namespace ContractorDocuments.Application
 
             #endregion
 
-            #region Projects
+            #region Services
 
             services
                 // Projects
@@ -43,6 +44,9 @@ namespace ContractorDocuments.Application
                 // Materials
                 .AddScoped<MaterialService>()
                 .AddScoped<MaterialReportService>()
+                // Equipments
+                .AddScoped<EquipmentService>()
+                .AddScoped<EquipmentReportService>()
                 // Directory
                 .AddScoped<MeasureService>()
                 .AddScoped<MeasureReportService>()

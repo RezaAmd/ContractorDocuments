@@ -2,6 +2,7 @@
 using ContractorDocuments.Application.Common.Models;
 using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.Entities.Directory;
+using ContractorDocuments.Domain.Entities.Equipment;
 using ContractorDocuments.Domain.Entities.Materials;
 using ContractorDocuments.Domain.Entities.Projects;
 using System.Reflection;
@@ -30,6 +31,7 @@ namespace ContractorDocuments.Infrastructure.Data
         public DbSet<ConstructStageEntity> ConstructStages => Set<ConstructStageEntity>();
         public DbSet<ProjectStageMaterialEntity> ProjectStageMaterials => Set<ProjectStageMaterialEntity>();
         public DbSet<ProjectStageExpenseEntity> ProjectStageExpenses => Set<ProjectStageExpenseEntity>();
+        public DbSet<ProjectStageEquipmentEntity> ProjectStageEquipments => Set<ProjectStageEquipmentEntity>();
 
         #endregion
 
@@ -37,6 +39,12 @@ namespace ContractorDocuments.Infrastructure.Data
 
         public DbSet<MaterialEntity> Materials => Set<MaterialEntity>();
 
+
+        #endregion
+
+        #region Equipments
+
+        public DbSet<EquipmentEntity> Equipments => Set<EquipmentEntity>();
 
         #endregion
 
