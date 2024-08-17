@@ -117,6 +117,8 @@
             </div>
             <div class="modal-body">
                 <div class="map-form-control" id="map"></div>
+                <input id="latitude-input" type="hidden" value="@Model.Latitude" />
+                <input id="longitude-input" type="hidden" value="@Model.Longitude" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
@@ -272,6 +274,22 @@
 </div>
 
 <!-- Equipments modal -->
+<div class="modal" tabindex="-1" id="equipments-card-modal" aria-labelledby="EquipmentStageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" method="post" action="/Admin/Project/AddConstructStage">
+            <div class="modal-header">
+                <h5 class="modal-title">ابزارها و تجهیزات</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                <button type="submit" class="btn btn-primary">ذخیره</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <!-- Contractors Card Modal -->
 <div class="modal modal-xl fade" id="contractors-card-modal" tabindex="-1" aria-labelledby="contractors-card-modal-label" aria-hidden="true">
@@ -282,7 +300,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                این بخش در دست توسعه است...
+                <i class="far fa-person-digging h3 me-3"></i> این بخش در دست توسعه است ...
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
@@ -431,10 +449,7 @@
     <script src="~/js/project-map.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-                board.init();
-                // Prepare map.
-                var map = new ProjectMap('map');
-                    map.addMarker(@Model.Latitude, @Model.Longitude);
-            });
+            board.init();
+        });
     </script>
 }

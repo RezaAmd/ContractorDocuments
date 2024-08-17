@@ -7,7 +7,14 @@ board = {
         stageSupplyModal: null,
         removeStageMaterialModal: null,
         transferMaterialModal: null,
-        materialRemoveId: null
+        materialRemoveId: null,
+        project: {
+            location: {
+                map: null,
+                latitude: null,
+                longitude: null
+            }
+        }
     },
     methods: {
         prepareProjectProperties: () => {
@@ -22,6 +29,14 @@ board = {
             const transferMaterialModal = document.getElementById('transfer-material-modal');
             if (transferMaterialModal) {
                 board.props.transferMaterialModal = new bootstrap.Modal(transferMaterialModal);
+            }
+            const latitudeInput = document.getElementById('latitude-input');
+            if (latitudeInput && latitudeInput.value) {
+                this.project.location.latitude = latitudeInput.value;
+            }
+            const longitudeInput = document.getElementById('longitude-input');
+            if (longitudeInput && longitudeInput.value) {
+                this.project.location.latitude = longitudeInput.value;
             }
         },
         // material
@@ -191,6 +206,18 @@ board = {
                 (isSuccess, response) => {
                     debugger
                 });
+        },
+        // Prepare Project Map.
+        _prepareMapLocation: () => {
+            if (!board.project
+                || !board.project.location
+                || !board.project.location.map)
+                return;
+                // Prepare map.
+                board.project.location.map = new ProjectMap('map');
+            if (board.project.location.latitude && board.project.location.longitude) {
+                board.project.location.map.addMarker(board.project.location.latitude, board.project.location.longitude);
+            }
         }
     },
     events: {
@@ -304,7 +331,8 @@ board = {
 
         // Prepare expenses
         board.props.expenses = new ProjecStageExpenses();
-
+        // Prepare Map Location
+        board.methods._prepareMapLocation();
         // Money Split
         const moneyElements = document.querySelectorAll('[data-money]');
         moneyElements.forEach((moneyElement) => {
