@@ -10,6 +10,8 @@
         public DateTime? EndOn { get; set; }
         public string? Description { get; set; }
         public DateTime CreatedOn { get; private set; } = DateTime.Now;
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
 
         #region Relations
 

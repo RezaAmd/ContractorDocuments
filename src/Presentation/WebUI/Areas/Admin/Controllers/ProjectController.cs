@@ -72,6 +72,13 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             if (projectModel.SharePercentage != null)
                 command.SharePercentage = projectModel.SharePercentage.Value;
 
+            // Prepare Project Location.
+            if (projectModel.Latitude.HasValue && projectModel.Longitude.HasValue)
+            {
+                command.Latitude = projectModel.Latitude;
+                command.Longitude = projectModel.Longitude;
+            }
+
             var addOrEditResult = await _mediator.Send(command, cancellationToken);
 
             if (addOrEditResult.IsSuccess)

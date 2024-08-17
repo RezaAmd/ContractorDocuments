@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="z-index:900;background:#2125294a;backdrop-filter: blur(4px);">
     <div class="container-fluid">
         <a class="navbar-brand fw-bolder" href="/Admin/Dashboard" style="filter:drop-shadow(-2px 3px 5px black);">@Model.Title</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="board-setting-navbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
                     <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Overview">
@@ -27,9 +27,9 @@
                     </a>
                     <ul class="dropdown-menu" style="right:auto;left:0;">
                         <li class="nav-item">
-                            <a class="nav-link sign-out-controller" href="#" data-bs-placement="bottom">
-                                <i class="fa fa-right-from-bracket me-1"></i>
-                                خروج
+                            <a class="nav-link" href="#" data-bs-placement="bottom" data-bs-target="#project-location-modal" data-bs-toggle="modal">
+                                <i class="fa fa-map me-1"></i>
+                                موقعیت مکانی
                             </a>
                         </li>
                     </ul>
@@ -98,6 +98,24 @@
 </div>
 <div>
     <input id="project-id" name="ProjectId" value="@Model.Id" type="hidden" />
+</div>
+@* Project Location *@
+<div class="modal" tabindex="-1" id="project-location-modal" aria-labelledby="ProjectLocationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">موقعیت مکانی پروژه</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="map-form-control" id="map"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                <button type="submit" class="btn btn-primary">مسیریابی</button>
+            </div>
+        </div>
+    </div>
 </div>
 @* Add New Stage *@
 <div class="modal" tabindex="-1" id="add-stage-modal" aria-labelledby="AddStageLabel" aria-hidden="true">
@@ -390,9 +408,13 @@
     <script src="~/js/material-provider.js"></script>
     <script src="~/js/project-stage-expenses.js"></script>
     <script src="~/js/board.js"></script>
+    <script src="~/js/project-map.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            board.init();
-        });
+                board.init();
+                // Prepare map.
+                var map = new ProjectMap('map');
+                    map.addMarker(@Model.Latitude, @Model.Longitude);
+            });
     </script>
 }

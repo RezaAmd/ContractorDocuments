@@ -14,6 +14,8 @@ namespace ContractorDocuments.Application.Projects.Commands
         public string? Description { get; set; }
         public decimal Amount { get; set; }
         public byte SharePercentage { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 
     public class AddOrEditProjectCommandHandler : IRequestHandler<AddOrEditProjectCommand, Result<ProjectEntity>>

@@ -22,6 +22,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\fonts\dirooz\webfonts\" />
+    <Folder Include="wwwroot\lib\leaflet\js\" />
+    <Folder Include="wwwroot\lib\leaflet\images\" />
   </ItemGroup>
 
   <ItemGroup>

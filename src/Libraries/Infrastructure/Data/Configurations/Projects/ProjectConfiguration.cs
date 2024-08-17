@@ -44,6 +44,16 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
                 .ValueGeneratedOnAdd()
                 .IsRequired();
 
+            // Latitude
+            b.Property(b => b.Latitude)
+                .HasColumnType("DECIMAL(9, 6)")
+                .IsRequired(false);
+
+            // Longitude
+            b.Property(b => b.Longitude)
+                .HasColumnType("DECIMAL(9, 6)")
+                .IsRequired(false);
+
             #region Relations
 
             // Contract

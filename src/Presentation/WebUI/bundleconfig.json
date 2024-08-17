@@ -16,5 +16,23 @@
     "inputFiles": [
       "wwwroot/js/rest.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/leaflet/js/leaflet.min.js",
+    "inputFiles": [
+      "wwwroot/lib/leaflet/js/leaflet.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/leaflet/css/leaflet.min.css",
+    "inputFiles": [
+      "wwwroot/lib/leaflet/css/leaflet.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/leaflet/css/leaflet.custom.min.css",
+    "inputFiles": [
+      "wwwroot/lib/leaflet/css/leaflet.custom.css"
+    ]
   }
 ]

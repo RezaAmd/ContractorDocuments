@@ -178,6 +178,15 @@ board = {
         }
     },
     events: {
+        // Project location events.
+        projectLocationEventListeners: () => {
+            const projectLocationModal = document.getElementById('project-location-modal');
+            if (projectLocationModal) {
+                projectLocationModal.addEventListener('shown.bs.modal', () => {
+                    debugger
+                });
+            }
+        },
         materialModalEventTrigger: () => {
             var materialsListItems = document.querySelectorAll('.material-list-item');
             materialsListItems.forEach((materialItem) => {
@@ -239,6 +248,7 @@ board = {
         // Prepare material modal event.
         board.events.materialModalEventTrigger();
         board.events.addStageMaterialEventListener();
+        board.events.projectLocationEventListeners();
         // Setup material input.
         materialProvider.setupTreeInputs('material-select-placement');
         // Load page when modal closed.

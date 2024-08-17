@@ -15,4 +15,10 @@
         public decimal? Amount { get; set; }
         public byte? SharePercentage { get; set; }
     }
+
+    public partial class AddOrEditProjectModel
+    {
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
+    }
 }

@@ -101,6 +101,17 @@
                         <textarea id="description" rows="5" class="form-control" name="Description"></textarea>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="mb-1">
+                            <i class="far fa-map-marker-alt"></i>
+                            موقعیت روی نقشه
+                        </label>
+                        <div id="map" class="map-form-control"></div>
+                        <input id="latitude" type="hidden" name="Latitude" />
+                        <input id="longitude" type="hidden" name="Longitude" />
+                    </div>
+                </div>
                 @* <div class="row">
                 <div class="col">
                 <label class="mb-1">رنگ شخصی سازی</label>
@@ -115,7 +126,22 @@
         </div>
     </div>
 </form>
-
+<div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="map-zoom-alert" class="toast text-bg-warning text-white hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                لطفا نقشه را بزرگنمایی کنید.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
 @section scripts {
+    <script src="~/js/project-map.js"></script>
     <script src="~/js/project-add-edit.js"></script>
+    <script>
+        var projectMap = new ProjectMap('map');
+        projectMap.setupLatitude('latitude');
+        projectMap.setupLongitude('longitude');
+    </script>
 }

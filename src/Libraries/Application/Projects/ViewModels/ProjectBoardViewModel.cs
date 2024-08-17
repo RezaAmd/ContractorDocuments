@@ -6,5 +6,7 @@
         public string Title { get; set; } = string.Empty;
         public decimal TotalExpense { get; set; }
         public IList<BoardStageViewModel> Stages { get; set; } = [];
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 }
