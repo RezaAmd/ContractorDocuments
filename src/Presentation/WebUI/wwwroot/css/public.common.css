@@ -89,7 +89,7 @@ body[data-bs-theme="dark"] [data-theme="dark"] {
 :root, [data-bs-theme=light] {
     --bs-border-radius: 0.8rem;
     --bs-border-radius-sm: 0.55rem;
-    --bs-border-radius-lg: 1rem;
+    --bs-border-radius-lg: 0.6rem;
     --bs-border-radius-xl: 1.5rem;
     --bs-border-radius-xxl: 2rem;
     --bs-card-border-radius: 0.8rem;

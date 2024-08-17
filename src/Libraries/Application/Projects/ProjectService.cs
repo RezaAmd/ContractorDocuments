@@ -36,6 +36,14 @@ namespace ContractorDocuments.Application.Projects
 
         #region Construct Stages
 
+        public async Task<ProjectStageEntity?> FindProjectStageByIdAsync(Guid projectStageId,
+            CancellationToken cancellationToken = default)
+        {
+            return await _context.ProjectStages
+                .Where(ps => ps.Id == projectStageId)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
         public async Task<Result> AddStageAsync(Guid projectId, Guid constructStageId,
             CancellationToken cancellationToken = default)
         {
@@ -74,6 +82,13 @@ namespace ContractorDocuments.Application.Projects
             CancellationToken cancellationToken = default)
         {
             _context.ProjectStageMaterials.Remove(projectStageMaterial);
+            return await _context.SaveChangeAsync(cancellationToken);
+        }
+
+        public async Task<Result> UpdateStageMaterialAsync(ProjectStageMaterialEntity stageMaterial,
+            CancellationToken cancellationToken = default)
+        {
+            _context.ProjectStageMaterials.Update(stageMaterial);
             return await _context.SaveChangeAsync(cancellationToken);
         }
         #endregion

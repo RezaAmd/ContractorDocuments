@@ -8,6 +8,7 @@ board = {
         removeStageMaterialModal: null,
         transferMaterialModal: null,
         materialRemoveId: null,
+        transferMaterialId: null,
         project: {
             location: {
                 map: null,
@@ -82,7 +83,7 @@ board = {
                                 <li onClick="board.events.removeSupplyItemClickEventListener('${material.id}')">
                                 <a class="dropdown-item" href="#">حذف</a>
                                 </li>
-                                <li onClick="board.events.changeSupplyStageItemClickEventListener()">
+                                <li onClick="board.events.changeSupplyStageItemClickEventListener('${material.id}')">
                                 <a class="dropdown-item" href="#">جابجا کردن</a>
                                 </li>
                               </ul>
@@ -155,8 +156,12 @@ board = {
             newSupplyForm.querySelector('input[name="TransportCost"]').value = '';
             newSupplyForm.querySelector('input[name="TotalNetProfit"]').value = '';
         },
-        removeStageMaterial: async (id) => {
-            debugger
+        removeStageMaterial: async () => {
+            await rest.getAsync('/admin/project/deleteMaterial?id=' + board.props.materialRemoveId, null,
+                (isSuccess, response) => {
+                    board.props.removeStageMaterialModal.hide();
+                    board.methods.loadMaterialModal();
+                });
         },
         // Construction stages
         prepareRemaningStages: async () => {
@@ -193,18 +198,19 @@ board = {
             });
         },
         // Transfer material
-        _fetchTransferSupply: async (stageMaterialId) => {
-            if (!stageMaterialId) {
-                console.error('Material id was not found for transfer!');
+        _fetchTransferSupply: async (selectedStageId) => {
+            if (!selectedStageId) {
+                console.error('Stage id was not found for transfer material!');
                 return;
             }
             const transferData = {
-                projectStageId: board.props.projectStageId,
-                stageMaterialId: stageMaterialId
+                projectStageId: selectedStageId,
+                stageMaterialId: board.props.transferMaterialId
             }
             await rest.postAsync('/admin/project/transferStageMaterial', null, transferData,
                 (isSuccess, response) => {
-                    debugger
+                    board.props.transferMaterialModal.hide();
+                    board.methods.loadMaterialModal();
                 });
         },
         // Prepare Project Map.
@@ -247,11 +253,7 @@ board = {
                         console.error("Material id was not found!");
                         return;
                     }
-                    await rest.getAsync('/admin/project/deleteMaterial?id=' + board.props.materialRemoveId, null,
-                        (isSuccess, response) => {
-                            board.props.removeStageMaterialModal.hide();
-                            board.methods.loadMaterialModal();
-                        });
+                    board.methods.removeStageMaterial();
                 });
             }
 
@@ -305,7 +307,8 @@ board = {
             board.props.stageSupplyModal.hide();
             board.props.removeStageMaterialModal.show();
         },
-        changeSupplyStageItemClickEventListener: () => {
+        changeSupplyStageItemClickEventListener: (materialId) => {
+            board.props.transferMaterialId = materialId;
             board.props.transferMaterialModal.show();
             board.props.stageSupplyModal.hide();
         }

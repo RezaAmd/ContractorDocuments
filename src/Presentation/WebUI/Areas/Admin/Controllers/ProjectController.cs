@@ -192,9 +192,17 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> TransferStageMaterial()
+        public async Task<IActionResult> TransferStageMaterial([FromBody] TransferStageMaterialInputModel TransferInputModel,
+            CancellationToken cancellationToken)
         {
-            return Ok();
+            var transferResult = await _mediator.Send(new TransferStageMaterialToAnotherStageCommand
+            {
+                ProjectStageId = Guid.Parse(TransferInputModel.ProjectStageId),
+                StageMaterialId = Guid.Parse(TransferInputModel.StageMaterialId)
+            }, cancellationToken);
+            if (transferResult.IsSuccess == false)
+                return BadRequest(transferResult);
+            return Ok(transferResult);
         }
 
         #endregion
