@@ -1,0 +1,65 @@
+﻿@model IList<ContractorDocuments.Application.Equipments.ViewModels.EquipmentViewModel>
+@{
+    ViewData["Title"] = "ابزارها و تجهیزات";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form action="/admin/equipment/create" method="post">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="fw-bold"><i class="fa fa-plus"></i> افزودن جدید</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="mb-2">نام</label>
+                        <input class="form-control" type="text" name="Name" placeholder="دستکش، متر، بیل مکانیکی ..." />
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit">افزودن</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <h4 class="fw-bold"><i class="fa fa-hammer-brush"></i> ابزارها و تجهیزات</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="scrollable">
+                    <table class="table table-responsive table-borderless table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>نام</th>
+                                <th>نماد</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model == null || Model.Count <= 0)
+                            {
+                                <tr>
+                                    <td colspan="3" class="text-center">موردی یافت نشد.</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var equipment in Model)
+                                {
+                                    <tr>
+                                        <td>@equipment.Name</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
