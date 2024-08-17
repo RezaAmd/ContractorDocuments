@@ -75,9 +75,19 @@
                     <li class="list-item expenses-list-item" data-bs-toggle="modal" data-bs-target="#expenses-card-modal" data-stage-id="@constructionStage.Id">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="h5 text-primary">دیگر مخارج</div>
-                            <div class="fw-bold">0</div>
+                            @* <div class="fw-bold">0</div> *@
                         </div>
                         <div class="small">
+                            @if (constructionStage.Expenses != null && constructionStage.Expenses.Count > 0)
+                            {
+                                @foreach (var expense in constructionStage.Expenses)
+                                {
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>@expense.Title</span>
+                                        <span>@(expense.Amount.ToString("N0"))</span>
+                                    </div>
+                                }
+                            }
                         </div>
                     </li>
                     <li class="list-item" data-bs-toggle="modal" data-bs-target="#equipments-card-modal" data-stage-id="@constructionStage.Id">

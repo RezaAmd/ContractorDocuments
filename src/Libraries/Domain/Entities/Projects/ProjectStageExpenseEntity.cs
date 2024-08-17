@@ -7,6 +7,7 @@
         public DateTime PaidOn { get; set; }
         public string? Description { get; set; }
         public Guid ProjectStageId { get; set; }
+        public DateTime CreatedOn { get; private set; } = DateTime.Now;
 
         #region Relations
 

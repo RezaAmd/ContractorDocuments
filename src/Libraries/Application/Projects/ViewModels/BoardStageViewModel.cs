@@ -6,5 +6,6 @@
         public string Name { get; set; } = string.Empty;
         public decimal TotalExpense { get; set; }
         public IList<StageMaterialViewModel> Materials { get; set; } = [];
+        public IList<StageExpenseViewModel> Expenses { get; set; } = [];
     }
 }

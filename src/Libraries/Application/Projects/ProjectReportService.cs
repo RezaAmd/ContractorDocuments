@@ -60,7 +60,8 @@ namespace ContractorDocuments.Application.Projects
                     {
                         Id = s.Id.ToString(),
                         Name = s.ConstructStage!.Name,
-                        TotalExpense = s.Materials!.Sum(sm => sm.UnitPrice * sm.Amount),
+                        TotalExpense = s.Materials!.Sum(sm => sm.UnitPrice * sm.Amount)
+                        + s.Expenses!.Sum(se => se.Amount),
                         Materials = s.Materials!.OrderByDescending(m => m.CreatedOn)
                         .Select(m => new StageMaterialViewModel
                         {
@@ -68,6 +69,13 @@ namespace ContractorDocuments.Application.Projects
                             Name = m.Material!.Name,
                             Amount = m.Amount,
                             UnitPrice = m.UnitPrice
+                        }).Take(3).ToList(),
+                        Expenses = s.Expenses!.OrderByDescending(e => e.CreatedOn)
+                        .Select(e => new StageExpenseViewModel
+                        {
+                            Id = e.Id.ToString(),
+                            Title = e.Title,
+                            Amount = e.Amount
                         }).Take(3).ToList()
                     }).ToList()
                 })
