@@ -100,7 +100,7 @@
             </div>
         }
     }
-    <div class="list">
+    <div id="add-stage-item" class="list">
         <button class="add-card-btn btn text-start" data-bs-toggle="modal" data-bs-target="#add-stage-modal">+ مرحله جدید</button>
     </div>
 </div>
@@ -128,7 +128,7 @@
     </div>
 </div>
 
-@* Add New Stage *@
+<!-- Add New Stage -->
 <div class="modal" tabindex="-1" id="add-stage-modal" aria-labelledby="AddStageLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <form class="modal-content" method="post" action="/Admin/Project/AddConstructStage">
@@ -286,8 +286,7 @@
                 <i class="far fa-person-digging h3 me-3"></i> این بخش در دست توسعه است ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
-                <button type="submit" class="btn btn-primary">ذخیره</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
             </div>
         </form>
     </div>

@@ -182,13 +182,21 @@ board = {
                 console.error("An error has occured on fetching remaning construction stages!");
                 return;
             }
-            if (!response.data || response.data.length == 0) return;
+            const addStageModalItem = document.getElementById('add-stage-item');
+            if (!response.data || response.data.length == 0) {
+                if (addStageModalItem) {
+                    addStageModalItem.style.display = 'none';
+                }
+                return;
+            }
+            addStageModalItem.style.display = 'flex';
             // Find stage select input.
             const stageSelectControl = document.getElementById('stages-select-control');
             if (!stageSelectControl) {
                 console.error('Stage select input not found!');
                 return;
             }
+
             // Append option to select.
             response.data.forEach((stage) => {
                 const stageOption = document.createElement('option');
@@ -219,8 +227,8 @@ board = {
                 || !board.project.location
                 || !board.project.location.map)
                 return;
-                // Prepare map.
-                board.project.location.map = new ProjectMap('map');
+            // Prepare map.
+            board.project.location.map = new ProjectMap('map');
             if (board.project.location.latitude && board.project.location.longitude) {
                 board.project.location.map.addMarker(board.project.location.latitude, board.project.location.longitude);
             }
@@ -271,7 +279,7 @@ board = {
                     board.props.stageSupplyModal.show();
                 });
             }
-            
+
             const transferSupplyBtn = document.getElementById('transfer-supply-btn');
             if (transferSupplyBtn) {
                 transferSupplyBtn.addEventListener('click', async (e) => {
