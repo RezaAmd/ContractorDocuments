@@ -52,7 +52,8 @@ namespace ContractorDocuments.Application.Projects
                 {
                     Id = p.Id.ToString(),
                     Title = p.Title,
-                    TotalExpense = p.Stages!.SelectMany(s => s.Materials!).Sum(psm => psm.UnitPrice * psm.Amount),
+                    TotalExpense = p.Stages!.SelectMany(s => s.Materials!).Sum(psm => psm.UnitPrice * psm.Amount)
+                    + p.Stages!.SelectMany(s => s.Expenses!).Sum(pse => pse.Amount),
                     Latitude = p.Latitude,
                     Longitude = p.Longitude,
                     Stages = p.Stages!.OrderBy(s => s.ConstructStage!.DisplayOrder)
