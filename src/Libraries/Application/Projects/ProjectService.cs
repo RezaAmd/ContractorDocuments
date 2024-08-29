@@ -95,10 +95,25 @@ namespace ContractorDocuments.Application.Projects
 
         #region Expense
 
+        public async Task<ProjectStageExpenseEntity?> FindStageExpenseAsync(Guid expenseId,
+            CancellationToken cancellationToken = default)
+        {
+            return await _context.ProjectStageExpenses
+                .Where(pse => pse.Id == expenseId)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
         public async Task<Result> AddStageExpenseAsync(ProjectStageExpenseEntity expense,
             CancellationToken cancellationToken = default)
         {
             _context.ProjectStageExpenses.Add(expense);
+            return await _context.SaveChangeAsync(cancellationToken);
+        }
+
+        public async Task<Result> DeleteStageExpenseAsync(ProjectStageExpenseEntity expense,
+            CancellationToken cancellationToken = default)
+        {
+            _context.ProjectStageExpenses.Remove(expense);
             return await _context.SaveChangeAsync(cancellationToken);
         }
 

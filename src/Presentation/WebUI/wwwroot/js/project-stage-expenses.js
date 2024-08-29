@@ -1,14 +1,37 @@
 ﻿class ProjecStageExpenses {
     constructor() {
         this._prepareMainModal();
+        this._prepareRemoveModal();
         this._prepareEventListeners();
     }
 
     projectStageId = null;
     mainModal = null;
     mainModalElement = null;
+
     addModalElement = null;
+    addModal = null;
     addExpensesBtn = null;
+
+    removeModalElement = null;
+    removeModal = null;
+    removeExpenseId = null;
+
+    removeExpense = async (id) => {
+        if (!id) {
+            console.error('Expense id was not found!');
+            return;
+        }
+        var data = {
+            id: id
+        }
+        await rest.getAsync('/admin/project/deleteStageExpense', data,
+            (isSuccess, response) => {
+                board.props.expenses.removeModal.hide();
+                board.props.expenses.mainModal.show();
+                board.props.expenses._fetchTableList();
+            });
+    }
 
     _pendingAddExpensesButton = () => {
         if (!this.addExpensesBtn)
@@ -122,6 +145,7 @@
                 }
             });
     }
+
     _prepareMainModal = () => {
         // prepare Main modal.
         this.mainModalElement = document.getElementById('expenses-card-modal')
@@ -134,6 +158,13 @@
             this.addModal = new bootstrap.Modal(this.addModalElement);
         }
     }
+    _prepareRemoveModal = () => {
+        this.removeModalElement = document.getElementById('remove-expense-modal');
+        if (this.removeModalElement) {
+            this.removeModal = new bootstrap.Modal(this.removeModalElement);
+        }
+    }
+
     _prepareEventListeners = () => {
         // Main modal events
         if (this.mainModalElement) {
@@ -180,9 +211,12 @@
         if (this.addExpensesBtn) {
             this.addExpensesBtn.addEventListener('click', () => {
                 this._sendNewExpenses();
+                board.props.expenses.removeModal.hide();
+                board.props.expenses.mainModal.show();
             });
         }
     }
+
     _fetchTableList = async () => {
         await rest.getAsync('/admin/project/getStageExpenses',
             {
@@ -220,11 +254,11 @@
                   بیشتر
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
-                  <a class="dropdown-item" href="#">حذف</a>
+                  <li onClick=board.events.removeExpenseItemClickEventListener('${expense.id}')>
+                  <a class="dropdown-item" href="#"><i class="far fa-trash me-1"></i> حذف</a>
                   </li>
                   <li>
-                  <a class="dropdown-item" href="#">جابجا کردن</a>
+                  <a class="dropdown-item" href="#"><i class="far fa-right-left me-1"></i> جابجا کردن</a>
                   </li>
                 </ul>
               </div>

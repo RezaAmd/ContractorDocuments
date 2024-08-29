@@ -136,6 +136,7 @@ namespace ContractorDocuments.Application.Projects
                 .OrderByDescending(pse => pse.PaidOn)
                 .Select(pse => new StageExpenseViewModel
                 {
+                    Id = pse.Id.ToString(),
                     Title = pse.Title,
                     Amount = pse.Amount,
                     PaidOn = pse.PaidOn.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")),

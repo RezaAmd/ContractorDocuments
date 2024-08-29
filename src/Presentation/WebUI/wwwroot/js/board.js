@@ -4,8 +4,10 @@ board = {
         projectId: null,
         stageId: null,
         materials: [],
+        expenses: null,
         stageSupplyModal: null,
         removeStageMaterialModal: null,
+        removeStageExpenseModal: null,
         transferMaterialModal: null,
         materialRemoveId: null,
         transferMaterialId: null,
@@ -26,11 +28,13 @@ board = {
             const removeMaterialModal = document.getElementById('remove-material-modal');
             if (removeMaterialModal)
                 board.props.removeStageMaterialModal = new bootstrap.Modal(removeMaterialModal);
+
             // Prepare transfer material modal.
             const transferMaterialModal = document.getElementById('transfer-material-modal');
             if (transferMaterialModal) {
                 board.props.transferMaterialModal = new bootstrap.Modal(transferMaterialModal);
             }
+
             const latitudeInput = document.getElementById('latitude-input');
             if (latitudeInput && latitudeInput.value) {
                 this.project.location.latitude = latitudeInput.value;
@@ -297,6 +301,17 @@ board = {
                     await board.methods._fetchTransferSupply(selectedStageId);
                 });
             }
+
+            // Expense modal
+            // Remove expense button event.
+            const removeBtnElement = document.getElementById('remove-stage-expense-btn');
+            if (removeBtnElement) {
+                removeBtnElement.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    debugger
+                    board.events.removeExpenseItemClickHandle();
+                });
+            }
         },
         addStageMaterialEventListener: () => {
             const addBtn = document.getElementById('add-new-stage-material-btn');
@@ -308,7 +323,7 @@ board = {
         },
         removeSupplyItemClickEventListener: (id) => {
             if (!id) {
-                console.error('Material id not found!');
+                console.error('Material id was not found!');
                 return;
             }
             board.props.materialRemoveId = id;
@@ -319,6 +334,20 @@ board = {
             board.props.transferMaterialId = materialId;
             board.props.transferMaterialModal.show();
             board.props.stageSupplyModal.hide();
+        },
+        // Expenses
+        removeExpenseItemClickHandle: () => {
+            board.props.expenses.removeExpense(board.props.expenses.removeExpenseId);
+        },
+        removeExpenseItemClickEventListener: (expenseId) => {
+            if (!expenseId) {
+
+                console.error('Expense id was not found!');
+                return;
+            }
+            board.props.expenses.removeExpenseId = expenseId;
+            board.props.expenses.mainModal.hide();
+            board.props.expenses.removeModal.show();
         }
     },
     init: async () => {

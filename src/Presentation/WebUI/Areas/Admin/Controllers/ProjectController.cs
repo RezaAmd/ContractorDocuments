@@ -240,6 +240,23 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             return Ok(addExpenseResult);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DeleteStageExpense(string id,
+            CancellationToken cancellationToken = default)
+        {
+            Guid expenseId = Guid.Parse(id);
+
+            var deleteExpenseResult = await _mediator.Send(new DeleteStageExpenseCommand
+            {
+                ExpenseId = expenseId
+            }, cancellationToken);
+
+            if (deleteExpenseResult.IsSuccess == false)
+                return BadRequest(deleteExpenseResult);
+
+            return Ok(deleteExpenseResult);
+        }
+
         #endregion
 
         #endregion
