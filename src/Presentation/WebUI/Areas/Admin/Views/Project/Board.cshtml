@@ -32,6 +32,12 @@
                                 موقعیت مکانی
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-placement="bottom" data-bs-target="#project-remove-modal" data-bs-toggle="modal">
+                                <i class="fa fa-times me-1"></i>
+                                حذف
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -465,6 +471,20 @@
         </div>
     </div>
 </div>
+<!-- Remove Board Modal -->
+<div class="modal fade" id="remove-board-modal" tabindex="-1" aria-labelledby="remove-board-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="remove-board-modal-label">آیا مطمعنید که می خواهید این پروژه را حذف کنید؟</h5>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                <button id="remove-board-btn" type="button" class="btn btn-danger">حذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section scripts {
     <script src="~/js/material-provider.js" asp-append-version="true"></script>
