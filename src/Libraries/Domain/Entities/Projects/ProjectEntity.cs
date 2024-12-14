@@ -1,6 +1,6 @@
 ﻿namespace ContractorDocuments.Domain.Entities.Projects
 {
-    public class ProjectEntity : BaseEntity
+    public class ProjectEntity : BaseEntity, IDateTimeCreation
     {
         public required string Title { get; set; }
         public required ProjectType ProjectTypeId { get; set; } = ProjectType.Construction;

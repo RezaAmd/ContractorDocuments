@@ -5,7 +5,7 @@ namespace ContractorDocuments.Domain.Entities.Projects
     /// <summary>
     /// Material for project stage.
     /// </summary>
-    public class ProjectStageMaterialEntity : BaseEntity
+    public class ProjectStageMaterialEntity : BaseEntity, IDateTimeCreation
     {
         public required decimal Amount { get; set; }
         public required decimal UnitPrice { get; set; }

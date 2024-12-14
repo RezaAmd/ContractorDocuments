@@ -5,7 +5,7 @@ namespace ContractorDocuments.Domain.Entities.Projects
     /// <summary>
     /// Map between Equipment & ProjectStage.
     /// </summary>
-    public class ProjectStageEquipmentEntity : BaseEntity
+    public class ProjectStageEquipmentEntity : BaseEntity, IDateTimeCreation
     {
         public Guid ProjectStageId { get; private set; }
         public Guid EquipmentId { get; private set; }

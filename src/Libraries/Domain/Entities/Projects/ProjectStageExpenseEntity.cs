@@ -1,6 +1,6 @@
 ﻿namespace ContractorDocuments.Domain.Entities.Projects
 {
-    public class ProjectStageExpenseEntity : BaseEntity
+    public class ProjectStageExpenseEntity : BaseEntity, IDateTimeCreation
     {
         public string Title { get; set; } = string.Empty;
         public decimal Amount { get; set; }
