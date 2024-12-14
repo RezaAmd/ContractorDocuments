@@ -4,6 +4,21 @@ namespace ContractorDocuments.Framework.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {
+        public static Guid GetId(this ClaimsPrincipal claimsPrincipal)
+        {
+            try
+            {
+                var claim = FindClaim(claimsPrincipal.Claims, ClaimTypes.NameIdentifier);
+                if (claim is null)
+                    throw new UnauthorizedAccessException("Cannot find the user claims.");
+                return Guid.Parse(claim.Value);
+            }
+            catch
+            {
+                throw new UnauthorizedAccessException("Cannot find the user claims.");
+            }
+        }
+
         public static string GetDisplayName(this ClaimsPrincipal claimsPrincipal)
         {
             try
@@ -31,5 +46,8 @@ namespace ContractorDocuments.Framework.Extensions
                 return string.Empty;
             return claim.Value;
         }
+
+        private static Claim? FindClaim(IEnumerable<Claim> claims, string claimType)
+            => claims.FirstOrDefault(c => c.Type == claimType);
     }
 }
