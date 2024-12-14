@@ -1,7 +1,8 @@
 ﻿namespace ContractorDocuments.WebApi.Areas.Manage
 {
-    [Route("[controller]/[action]")]
     [ApiController]
+    [Area("Manage")]
+    [Route("[area]/[controller]/[action]")]
     public class ProjectController : ControllerBase
     {
         #region DI & Ctor
