@@ -40,7 +40,7 @@ namespace ContractorDocuments.WebUI.Controllers
         public async Task<IActionResult> SignIn([FromForm] UserSignInInputModel userInputModel,
             CancellationToken cancellationToken)
         {
-            var signInResult = await _mediator.Send(new UserSignInPasswordCommand
+            var signInResult = await _mediator.Send(new SignInCookieCommand
             {
                 Username = userInputModel.username,
                 Password = userInputModel.password

@@ -3,26 +3,26 @@ using ContractorDocuments.Domain.ValueObjects;
 
 namespace ContractorDocuments.Application.Users.Commands
 {
-    public sealed class UserSignInPasswordCommand : IRequest<Result<UserEntity>>
+    public sealed class SignInCookieCommand : IRequest<Result<UserEntity>>
     {
         public required string Username { get; set; }
         public required string Password { get; set; }
     }
 
-    public sealed class UserSignInPasswordCommandHandler : IRequestHandler<UserSignInPasswordCommand, Result<UserEntity>>
+    public sealed class SignInCookieCommandCommandHandler : IRequestHandler<SignInCookieCommand, Result<UserEntity>>
     {
         #region DI & Ctor
 
         private readonly UserAuthenticationService _userAuthenticationService;
 
-        public UserSignInPasswordCommandHandler(UserAuthenticationService userAuthenticationService)
+        public SignInCookieCommandCommandHandler(UserAuthenticationService userAuthenticationService)
         {
             _userAuthenticationService = userAuthenticationService;
         }
 
         #endregion
 
-        public async Task<Result<UserEntity>> Handle(UserSignInPasswordCommand request, CancellationToken cancellationToken)
+        public async Task<Result<UserEntity>> Handle(SignInCookieCommand request, CancellationToken cancellationToken)
         {
             var signinResult = await _userAuthenticationService.SignInPasswordAsync(request.Username, PasswordHash.Parse(request.Password));
 
