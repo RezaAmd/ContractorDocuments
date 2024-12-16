@@ -1,4 +1,4 @@
-﻿namespace ContractorDocuments.WebUI.Infrastructure
+﻿namespace ContractorDocuments.WebUI.Extensions
 {
     public static class ConfigureServices
     {

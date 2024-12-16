@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace WebApi.Controllers
+namespace ContractorDocuments.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
