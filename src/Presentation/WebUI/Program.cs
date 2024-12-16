@@ -17,10 +17,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 builder.Services.AddAuthorization();
 
-// Register dependency services.
-builder.Services.AddDependencyServices();
-builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices(builder.Configuration);
+// Register dependency services. (Application, Infrastructure, Framework)
+builder.Services.AddDependencyServices(builder.Configuration);
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<UserSignInInputModelValidator>();
