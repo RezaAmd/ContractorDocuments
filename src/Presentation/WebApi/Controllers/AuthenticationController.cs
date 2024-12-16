@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using ContractorDocuments.Application.Users;
+using ContractorDocuments.Application.Users.Commands;
 
 namespace ContractorDocuments.WebApi.Controllers
 {
@@ -16,10 +17,19 @@ namespace ContractorDocuments.WebApi.Controllers
 
         #endregion
 
+        #region Commands
+
         [HttpPost]
-        public async Task<IActionResult> SignIn(CancellationToken cancellationToken)
+        public async Task<IActionResult> SignIn(SignInPasswordTokenCommand signinCommand, CancellationToken cancellationToken)
         {
-            return Ok();
+            var signinResult = await _mediator.Send(signinCommand, cancellationToken);
+
+            if (signinResult.Status == UserSignInStatus.Success)
+                return Ok(signinResult.AuthToken);
+
+            return BadRequest(signinResult.Status);
         }
+
+        #endregion
     }
 }

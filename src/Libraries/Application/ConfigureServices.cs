@@ -27,6 +27,7 @@ namespace ContractorDocuments.Application
             services
                 .AddScoped<UserService>()
                 .AddScoped<UserReport>()
+                .AddScoped<UserModelFactory>()
                 .AddScoped<UserAuthenticationService>()
                 ;
 

@@ -1,4 +1,5 @@
 ﻿using ContractorDocuments.Application;
+using ContractorDocuments.Framework;
 using ContractorDocuments.Infrastructure;
 using Microsoft.OpenApi.Models;
 
@@ -48,6 +49,9 @@ namespace ContractorDocuments.WebApi.Extensions
 
             // Register infrastructure services.
             services.AddInfrastructureServices(configuration);
+
+            // Add JWT authentication.
+            services.AddJwtAuthentication(configuration);
 
             return services;
         }
