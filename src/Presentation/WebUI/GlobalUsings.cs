@@ -1,7 +1,7 @@
 ﻿global using ContractorDocuments.Application;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
-global using ContractorDocuments.WebUI.Infrastructure;
+global using ContractorDocuments.WebUI.Extensions;
 global using ContractorDocuments.Application.Common.Models;
 global using ContractorDocuments.Infrastructure.Data;
 global using ContractorDocuments.Infrastructure;
