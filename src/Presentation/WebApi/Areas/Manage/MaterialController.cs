@@ -29,14 +29,14 @@ namespace ContractorDocuments.WebApi.Areas.Manage
         [HttpGet]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
-            var materials = _mediator.Send(new GetAllMaterialsTreeQuery(), cancellationToken);
+            var materials = await _mediator.Send(new GetAllMaterialsTreeQuery(), cancellationToken);
             return Ok(materials);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetParents(CancellationToken cancellationToken)
         {
-            var materialParents = _mediator.Send(new GetAllParentMaterialQuery(), cancellationToken);
+            var materialParents = await _mediator.Send(new GetAllParentMaterialQuery(), cancellationToken);
             return Ok(materialParents);
         }
 
