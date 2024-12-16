@@ -18,11 +18,18 @@ namespace ContractorDocuments.WebApi.Areas.Manage
 
         #endregion
 
+        #region Commands
+
+
+
+        #endregion
+
+        #region Queries
+
         [HttpGet]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
             var materials = _mediator.Send(new GetAllMaterialsTreeQuery(), cancellationToken);
-
             return Ok(materials);
         }
 
@@ -32,5 +39,7 @@ namespace ContractorDocuments.WebApi.Areas.Manage
             var materialParents = _mediator.Send(new GetAllParentMaterialQuery(), cancellationToken);
             return Ok(materialParents);
         }
+
+        #endregion
     }
 }
