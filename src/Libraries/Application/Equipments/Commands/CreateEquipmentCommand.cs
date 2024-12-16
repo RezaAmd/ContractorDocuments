@@ -13,11 +13,14 @@ namespace ContractorDocuments.Application.Equipments.Commands
 
         private readonly ILogger<CreateEquipmentCommand> _logger;
         private readonly EquipmentService _equipmentService;
+        private readonly EquipmentReportService _equipmentReportService;
         public CreateEquipmentCommandHandler(ILogger<CreateEquipmentCommand> logger,
-            EquipmentService equipmentService)
+            EquipmentService equipmentService,
+            EquipmentReportService equipmentReportService)
         {
             _logger = logger;
             _equipmentService = equipmentService;
+            _equipmentReportService = equipmentReportService;
         }
 
         #endregion
@@ -26,6 +29,12 @@ namespace ContractorDocuments.Application.Equipments.Commands
         {
             // Create new instance of equipment.
             var newEquipment = new EquipmentEntity(request.Name);
+
+            // Check is equipment exist?
+            bool isEquipmentExist = await _equipmentReportService.IsExistByNameAsync(request.Name);
+            if (isEquipmentExist)
+                return Result.Fail($"مورد '{request.Name}' از قبل ایجاد شد.");
+
             // Add to database from service.
             return await _equipmentService.CreateAsync(newEquipment);
         }
