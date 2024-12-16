@@ -17,7 +17,7 @@ namespace WebApi.Controllers
         #endregion
 
         [HttpPost]
-        public async Task<IActionResult> SignInPassword(CancellationToken cancellationToken)
+        public async Task<IActionResult> SignIn(CancellationToken cancellationToken)
         {
             return Ok();
         }
