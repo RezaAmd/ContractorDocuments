@@ -1,4 +1,7 @@
-﻿namespace ContractorDocuments.WebApi.Areas.Manage
+﻿using ContractorDocuments.Application.Materials.Queries;
+using MediatR;
+
+namespace ContractorDocuments.WebApi.Areas.Manage
 {
     [ApiController]
     [Route("[controller]/[action]")]
@@ -6,9 +9,10 @@
     {
         #region DI & Ctor
 
-        public MaterialController()
+        private readonly IMediator _mediator;
+        public MaterialController(IMediator mediator)
         {
-            
+            _mediator = mediator;
         }
 
         #endregion
@@ -16,7 +20,16 @@
         [HttpGet]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
-            return Ok();
+            var materials = _mediator.Send(new GetAllMaterialsTreeQuery(), cancellationToken);
+
+            return Ok(materials);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetParents(CancellationToken cancellationToken)
+        {
+            var materialParents = _mediator.Send(new GetAllParentMaterialQuery(), cancellationToken);
+            return Ok(materialParents);
         }
     }
 }
