@@ -35,13 +35,15 @@ board = {
                 board.props.transferMaterialModal = new bootstrap.Modal(transferMaterialModal);
             }
 
-            const latitudeInput = document.getElementById('latitude-input');
-            if (latitudeInput && latitudeInput.value) {
-                this.project.location.latitude = latitudeInput.value;
-            }
-            const longitudeInput = document.getElementById('longitude-input');
-            if (longitudeInput && longitudeInput.value) {
-                this.project.location.latitude = longitudeInput.value;
+            if (this.project) {
+                const latitudeInput = document.getElementById('latitude-input');
+                if (latitudeInput && latitudeInput.value) {
+                    this.project.location.latitude = latitudeInput.value;
+                }
+                const longitudeInput = document.getElementById('longitude-input');
+                if (longitudeInput && longitudeInput.value) {
+                    this.project.location.latitude = longitudeInput.value;
+                }
             }
         },
         // material
