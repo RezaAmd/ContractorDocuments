@@ -1,5 +1,6 @@
 ﻿using ContractorDocuments.Application.Common.Interfaces;
 using ContractorDocuments.Infrastructure.Data;
+using ContractorDocuments.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,9 @@ namespace ContractorDocuments.Infrastructure
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<ApplicationDbContextInitialiser>();
+
+            // Register Jwt provider.
+            services.AddScoped<IJwtBearerProvider, JwtBearerProvider>();
 
             return services;
         }

@@ -1,7 +1,5 @@
-﻿using ContractorDocuments.Application.Common.Interfaces;
-using ContractorDocuments.Application.Common.Models;
+﻿using ContractorDocuments.Application.Common.Models;
 using ContractorDocuments.Application.Common.Models.Settings;
-using ContractorDocuments.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,8 +12,6 @@ namespace ContractorDocuments.Framework
     {
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IJwtBearerProvider, JwtBearerProvider>();
-
             #region JWT settings
 
             // Prepare identity setting from appsetting.json
