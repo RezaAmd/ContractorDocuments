@@ -4,7 +4,8 @@ using MediatR;
 namespace ContractorDocuments.WebApi.Areas.Manage
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Area("Manage")]
+    [Route("[area]/[controller]/[action]")]
     public class MaterialController : ControllerBase
     {
         #region DI & Ctor
