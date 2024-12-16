@@ -1,4 +1,5 @@
-﻿using ContractorDocuments.Application.Materials.Queries;
+﻿using ContractorDocuments.Application.Materials.Commands;
+using ContractorDocuments.Application.Materials.Queries;
 using MediatR;
 
 namespace ContractorDocuments.WebApi.Areas.Manage
@@ -20,7 +21,17 @@ namespace ContractorDocuments.WebApi.Areas.Manage
 
         #region Commands
 
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateMaterialCommand createCommand,
+            CancellationToken cancellationToken)
+        {
+            var createResult = await _mediator.Send(createCommand, cancellationToken);
 
+            if (createResult.IsSuccess == false)
+                return BadRequest(createResult);
+
+            return Ok(createResult);
+        }
 
         #endregion
 
