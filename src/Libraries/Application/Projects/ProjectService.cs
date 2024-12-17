@@ -50,13 +50,14 @@ namespace ContractorDocuments.Application.Projects
             if (await _context.ProjectStages
                 .Where(ps => ps.ProjectId == projectId && ps.ConstructStageId == constructStageId)
                 .AnyAsync(cancellationToken))
-                return Result.Fail();
+                return Result.Fail("این مرحله از قبل اضافه شده است.");
 
             ProjectStageEntity newProjectStage = new()
             {
                 ProjectId = projectId,
                 ConstructStageId = constructStageId
             };
+
             await _context.ProjectStages.AddAsync(newProjectStage, cancellationToken);
             return await _context.SaveChangeAsync(cancellationToken);
         }
