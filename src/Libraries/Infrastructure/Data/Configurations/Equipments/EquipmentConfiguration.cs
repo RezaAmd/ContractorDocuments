@@ -20,6 +20,11 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Equipments
                 .WithOne(pse => pse.Equipment)
                 .HasForeignKey(pse => pse.EquipmentId);
 
+            // Category
+            builder.HasOne(b => b.Category)
+                .WithMany(c => c.Equipments)
+                .HasForeignKey(c => c.CategoryId);
+
             #endregion
         }
     }

@@ -1,4 +1,5 @@
-﻿using ContractorDocuments.Domain.Entities.Customers;
+﻿using ContractorDocuments.Domain.Entities.Catalogs;
+using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.Entities.Directory;
 using ContractorDocuments.Domain.Entities.Equipment;
 using ContractorDocuments.Domain.Entities.Materials;
@@ -14,6 +15,7 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         #endregion
 
+
         #region Projects
 
         DbSet<ProjectEntity> Projects { get; }
@@ -22,6 +24,12 @@ namespace ContractorDocuments.Application.Common.Interfaces
         DbSet<ProjectStageMaterialEntity> ProjectStageMaterials { get; }
         DbSet<ProjectStageExpenseEntity> ProjectStageExpenses { get; }
         DbSet<ProjectStageEquipmentEntity> ProjectStageEquipments { get; }
+
+        #endregion
+
+        #region
+
+        DbSet<CategoryEntity> Categories { get; }
 
         #endregion
 

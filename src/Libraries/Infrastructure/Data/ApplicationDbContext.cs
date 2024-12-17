@@ -1,5 +1,6 @@
 ﻿using ContractorDocuments.Application.Common.Interfaces;
 using ContractorDocuments.Application.Common.Models;
+using ContractorDocuments.Domain.Entities.Catalogs;
 using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.Entities.Directory;
 using ContractorDocuments.Domain.Entities.Equipment;
@@ -32,6 +33,12 @@ namespace ContractorDocuments.Infrastructure.Data
         public DbSet<ProjectStageMaterialEntity> ProjectStageMaterials => Set<ProjectStageMaterialEntity>();
         public DbSet<ProjectStageExpenseEntity> ProjectStageExpenses => Set<ProjectStageExpenseEntity>();
         public DbSet<ProjectStageEquipmentEntity> ProjectStageEquipments => Set<ProjectStageEquipmentEntity>();
+
+        #endregion
+
+        #region Catalogs
+
+        public DbSet<CategoryEntity> Categories => Set<CategoryEntity>();
 
         #endregion
 

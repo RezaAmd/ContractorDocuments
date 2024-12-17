@@ -30,6 +30,11 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Materials
                 .WithMany(m => m.Materials)
                 .HasForeignKey(b => b.MeasureId);
 
+            // Category
+            builder.HasOne(m => m.Category)
+                .WithMany(m => m.Materials)
+                .HasForeignKey(b => b.CategoryId);
+
             #endregion
         }
     }
