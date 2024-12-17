@@ -1,7 +1,5 @@
 ﻿using ContractorDocuments.Application.ConstructStages.Commands;
 using ContractorDocuments.Application.ConstructStages.Queries;
-using ContractorDocuments.Domain.Enums;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ContractorDocuments.WebApi.Areas.Manage
 {
