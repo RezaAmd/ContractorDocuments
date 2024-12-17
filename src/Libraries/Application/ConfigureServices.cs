@@ -1,4 +1,5 @@
-﻿using ContractorDocuments.Application.ConstructStages;
+﻿using ContractorDocuments.Application.Common;
+using ContractorDocuments.Application.ConstructStages;
 using ContractorDocuments.Application.Equipments;
 using ContractorDocuments.Application.Materials;
 using ContractorDocuments.Application.Measures;
@@ -36,6 +37,7 @@ namespace ContractorDocuments.Application
             #region Services
 
             services
+                .AddScoped<DataSeedService>()
                 // Projects
                 .AddScoped<ProjectService>()
                 .AddScoped<ProjectReportService>()
