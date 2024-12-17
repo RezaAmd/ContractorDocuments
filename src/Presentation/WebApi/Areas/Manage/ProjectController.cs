@@ -31,6 +31,32 @@ namespace ContractorDocuments.WebApi.Areas.Manage
             return Ok(createProjectResult);
         }
 
+        #region Stages
+
+        [HttpPost]
+        public async Task<IActionResult> AddConstructStage([FromBody] AddConstructStageCommand addCommand,
+            CancellationToken cancellationToken)
+        {
+            var addResult = await _mediator.Send(addCommand, cancellationToken);
+            if (addResult.IsSuccess == false)
+                return BadRequest(addResult);
+
+            return Ok(addResult);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStageMaterial([FromBody] AddStageMaterialCommand addMaterialCommand,
+            CancellationToken cancellationToken)
+        {
+            var addResult = await _mediator.Send(addMaterialCommand, cancellationToken);
+            if (addResult.IsSuccess == false)
+                return BadRequest(addResult);
+
+            return Ok(addResult);
+        }
+
+        #endregion
+
         #endregion
 
         #region Queries
@@ -42,6 +68,18 @@ namespace ContractorDocuments.WebApi.Areas.Manage
 
             return Ok(projects);
         }
+
+        #region Stages
+
+        [HttpGet]
+        public async Task<IActionResult> Stages(string projectId,
+            CancellationToken cancellationToken)
+        {
+            var projectBoard = await _mediator.Send(new GetProjectBoardDetailsQuery() { Id = Guid.Parse(projectId) }, cancellationToken);
+            return Ok(projectBoard);
+        }
+
+        #endregion
 
         #endregion
     }
