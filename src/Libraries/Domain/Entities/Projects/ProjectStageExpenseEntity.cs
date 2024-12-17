@@ -15,7 +15,6 @@
 
         #endregion
 
-
         #region Ctor
 
         ProjectStageExpenseEntity() { }
