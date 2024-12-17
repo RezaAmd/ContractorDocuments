@@ -49,7 +49,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Create([FromForm] CreateConstructStageInputModel constructStageModel,
             CancellationToken cancellationToken)
         {
-            var createResult = await _mediator.Send(new AddConstructStageCommand
+            var createResult = await _mediator.Send(new CreateConstructStageCommand
             {
                 Name = constructStageModel.Name,
                 ProjectTypeId = constructStageModel.ProjectTypeId,

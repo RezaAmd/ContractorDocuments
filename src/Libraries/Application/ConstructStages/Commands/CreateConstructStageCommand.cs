@@ -2,21 +2,21 @@
 
 namespace ContractorDocuments.Application.ConstructStages.Commands
 {
-    public class AddConstructStageCommand : IRequest<Result>
+    public class CreateConstructStageCommand : IRequest<Result>
     {
         public required string Name { get; set; }
         public required ProjectType ProjectTypeId { get; set; }
         public byte DisplayOrder { get; set; } = 0;
     }
 
-    internal class AddConstructStageCommandHandler : IRequestHandler<AddConstructStageCommand, Result>
+    internal class CreateConstructStageCommandHandler : IRequestHandler<CreateConstructStageCommand, Result>
     {
         #region Fields & Ctor
 
-        private readonly ILogger<AddConstructStageCommandHandler> _logger;
+        private readonly ILogger<CreateConstructStageCommandHandler> _logger;
         private readonly ConstructStageService _constructStageService;
 
-        public AddConstructStageCommandHandler(ILogger<AddConstructStageCommandHandler> logger,
+        public CreateConstructStageCommandHandler(ILogger<CreateConstructStageCommandHandler> logger,
             ConstructStageService constructStageService)
         {
             _logger = logger;
@@ -25,7 +25,7 @@ namespace ContractorDocuments.Application.ConstructStages.Commands
 
         #endregion
 
-        public async Task<Result> Handle(AddConstructStageCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(CreateConstructStageCommand request, CancellationToken cancellationToken)
         {
             // Prepare new instance
             ConstructStageEntity newConstructStage = new()
