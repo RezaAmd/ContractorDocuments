@@ -26,10 +26,11 @@ namespace ContractorDocuments.Application.Materials
             return await _queryAsNoTracking.ToListAsync(default);
         }
 
+        [Obsolete]
         public async Task<IList<MaterialEntity>> GetAllParentAsync(CancellationToken cancellationToken = default)
         {
             return await _queryAsNoTracking
-                .Where(m => m.ParentMaterialId == null)
+                .Where(m => m.CategoryId == null)
                 .ToListAsync(cancellationToken);
         }
 
@@ -47,7 +48,7 @@ namespace ContractorDocuments.Application.Materials
         public async Task<IList<MaterialViewModel>> GetAllParentIncludeChildAsync(CancellationToken cancellationToken)
         {
             return await _queryAsNoTracking
-                .Where(m => m.ParentMaterialId == null)
+                .Where(m => m.CategoryId == null)
                 .Select(m => new MaterialViewModel
                 {
                     Id = m.Id.ToString(),

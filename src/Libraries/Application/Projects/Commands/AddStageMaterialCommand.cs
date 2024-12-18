@@ -6,6 +6,7 @@ namespace ContractorDocuments.Application.Projects.Commands
     {
         public string StageId { get; set; } = string.Empty;
         public string MaterialId { get; set; } = string.Empty;
+        public string MeasureId { get; set; } = string.Empty;
         public decimal Amount { get; set; }
         public decimal UnitPrice { get; set; }
         public DateTime? PurchasedOn { get; set; }
@@ -31,6 +32,7 @@ namespace ContractorDocuments.Application.Projects.Commands
                 Amount = request.Amount,
                 MaterialId = Guid.Parse(request.MaterialId),
                 ProjectStepId = Guid.Parse(request.StageId),
+                MeasureId = Guid.Parse(request.MeasureId),
                 UnitPrice = request.UnitPrice,
                 TransportCost = request.TransportCost,
                 TotalNetProfit = request.TotalNetProfit,

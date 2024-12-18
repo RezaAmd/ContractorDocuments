@@ -40,7 +40,7 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             var createMaterialResult = await _mediator.Send(new CreateMaterialCommand
             {
                 Name = MaterialModel.Name,
-                MeasureId = MaterialModel.MeasureId
+                CategoryId = MaterialModel.CategoryId
             }, cancellationToken);
 
             return RedirectToAction("Overview");
@@ -76,20 +76,6 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             //}
 
             return View(parentMaterialWithChildren);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateChild([FromForm] CreateMaterialInputModel materialInputModel,
-            CancellationToken cancellationToken)
-        {
-            var createMaterialResult = await _mediator.Send(new CreateMaterialCommand
-            {
-                Name = materialInputModel.Name,
-                MeasureId = materialInputModel.MeasureId,
-                ParentMaterialId = materialInputModel.ParentMaterialId
-            }, cancellationToken);
-
-            return RedirectToAction("Detail", new { id = materialInputModel.ParentMaterialId });
         }
 
         [HttpDelete]

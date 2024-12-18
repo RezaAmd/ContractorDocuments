@@ -5,7 +5,7 @@ namespace ContractorDocuments.Domain.Entities.Catalogs
 {
     public class CategoryEntity : BaseEntity
     {
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public CategoryRelevantEntityType RelevantEntityTypeId { get; set; }
         public Guid? ParentId { get; set; }
 
@@ -13,10 +13,5 @@ namespace ContractorDocuments.Domain.Entities.Catalogs
         public virtual ICollection<CategoryEntity>? SubCategories { get; set; }
         public virtual ICollection<MaterialEntity>? Materials { get; set; }
         public virtual ICollection<EquipmentEntity>? Equipments { get; set; }
-
-        public CategoryEntity(string name)
-        {
-            Name = name;
-        }
     }
 }

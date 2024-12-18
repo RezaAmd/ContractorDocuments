@@ -15,7 +15,6 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         #endregion
 
-
         #region Projects
 
         DbSet<ProjectEntity> Projects { get; }
@@ -27,7 +26,7 @@ namespace ContractorDocuments.Application.Common.Interfaces
 
         #endregion
 
-        #region
+        #region Catalog
 
         DbSet<CategoryEntity> Categories { get; }
 

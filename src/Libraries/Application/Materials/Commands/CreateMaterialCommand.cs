@@ -6,8 +6,7 @@ namespace ContractorDocuments.Application.Materials.Commands
     public class CreateMaterialCommand : IRequest<Result>
     {
         public required string Name { get; set; }
-        public required string MeasureId { get; set; }
-        public string? ParentMaterialId { get; set; }
+        public string? CategoryId { get; set; }
     }
 
     internal class CreateMaterialCommandHandler : IRequestHandler<CreateMaterialCommand, Result>
@@ -27,12 +26,12 @@ namespace ContractorDocuments.Application.Materials.Commands
             // Create new instance of material.
             MaterialEntity newMaterial = new()
             {
-                Name = request.Name,
-                MeasureId = Guid.Parse(request.MeasureId)
+                Name = request.Name
             };
-            // Map parent id if exist.
-            if(!string.IsNullOrEmpty(request.ParentMaterialId))
-                newMaterial.ParentMaterialId = Guid.Parse(request.ParentMaterialId);
+            if (!string.IsNullOrEmpty(request.CategoryId))
+            {
+                newMaterial.CategoryId = Guid.Parse(request.CategoryId);
+            }
             // Add new material to db.
             return await _materialService.CreateAsync(newMaterial, cancellationToken);
         }

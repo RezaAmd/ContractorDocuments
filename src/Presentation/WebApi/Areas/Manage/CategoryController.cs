@@ -1,17 +1,18 @@
-﻿using ContractorDocuments.Application.Materials.Commands;
-using ContractorDocuments.Application.Materials.Queries;
+﻿using ContractorDocuments.Application.Categories.Commands;
+using ContractorDocuments.Application.Categories.Queries;
 
 namespace ContractorDocuments.WebApi.Areas.Manage
 {
     [ApiController]
     [Area("Manage")]
     [Route("[area]/[controller]/[action]")]
-    public class MaterialController : ControllerBase
+    [Authorize]
+    public class CategoryController : ControllerBase
     {
         #region DI & Ctor
 
         private readonly IMediator _mediator;
-        public MaterialController(IMediator mediator)
+        public CategoryController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -21,11 +22,10 @@ namespace ContractorDocuments.WebApi.Areas.Manage
         #region Commands
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateMaterialCommand createCommand,
+        public async Task<IActionResult> Create(CreateCategoryCommand createCommand,
             CancellationToken cancellationToken)
         {
             var createResult = await _mediator.Send(createCommand, cancellationToken);
-
             if (createResult.IsSuccess == false)
                 return BadRequest(createResult);
 
@@ -39,8 +39,13 @@ namespace ContractorDocuments.WebApi.Areas.Manage
         [HttpGet]
         public async Task<IActionResult> GetAllTree(CancellationToken cancellationToken)
         {
-            var categoriesWithMaterial = await _mediator.Send(new GetAllCategoryMaterialTreeQuery());
-            return Ok(categoriesWithMaterial);
+            return Ok(await _mediator.Send(new GetAllCategoryTreeQuery(), cancellationToken));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllParents(CancellationToken cancellationToken)
+        {
+            return Ok(await _mediator.Send(new GetAllCategoryParentQuery(), cancellationToken));
         }
 
         #endregion

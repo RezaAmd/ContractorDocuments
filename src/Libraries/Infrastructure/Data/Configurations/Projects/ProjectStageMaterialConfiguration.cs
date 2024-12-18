@@ -45,6 +45,11 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
                 .WithMany(ps => ps.Materials)
                 .HasForeignKey(b => b.ProjectStepId);
 
+            // Measure
+            builder.HasOne(b => b.Measure)
+                .WithMany(m => m.ProjectStageMaterials)
+                .HasForeignKey(b => b.MeasureId);
+
             #endregion
         }
     }

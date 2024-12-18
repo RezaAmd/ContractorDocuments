@@ -4,6 +4,7 @@ using ContractorDocuments.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorDocuments.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241218082550_removeMaterialSelfRelation")]
+    partial class removeMaterialSelfRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,6 +171,9 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("MeasureEntityId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -176,6 +182,8 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("MeasureEntityId");
 
                     b.ToTable("Materials", (string)null);
                 });
@@ -399,9 +407,6 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.Property<Guid>("MaterialId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MeasureId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("ProjectStepId")
                         .HasColumnType("uniqueidentifier");
 
@@ -423,8 +428,6 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MaterialId");
-
-                    b.HasIndex("MeasureId");
 
                     b.HasIndex("ProjectStepId");
 
@@ -544,6 +547,10 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                         .WithMany("Materials")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", null)
+                        .WithMany("Materials")
+                        .HasForeignKey("MeasureEntityId");
+
                     b.Navigation("Category");
                 });
 
@@ -615,12 +622,6 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", "Measure")
-                        .WithMany("ProjectStageMaterials")
-                        .HasForeignKey("MeasureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ContractorDocuments.Domain.Entities.Projects.ProjectStageEntity", "ProjectStep")
                         .WithMany("Materials")
                         .HasForeignKey("ProjectStepId")
@@ -628,8 +629,6 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Material");
-
-                    b.Navigation("Measure");
 
                     b.Navigation("ProjectStep");
                 });
@@ -650,7 +649,7 @@ namespace ContractorDocuments.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Directory.MeasureEntity", b =>
                 {
-                    b.Navigation("ProjectStageMaterials");
+                    b.Navigation("Materials");
                 });
 
             modelBuilder.Entity("ContractorDocuments.Domain.Entities.Equipment.EquipmentEntity", b =>

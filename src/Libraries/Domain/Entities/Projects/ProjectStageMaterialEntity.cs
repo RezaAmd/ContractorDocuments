@@ -1,4 +1,5 @@
-﻿using ContractorDocuments.Domain.Entities.Materials;
+﻿using ContractorDocuments.Domain.Entities.Directory;
+using ContractorDocuments.Domain.Entities.Materials;
 
 namespace ContractorDocuments.Domain.Entities.Projects
 {
@@ -15,11 +16,13 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public DateTime CreatedOn { get; private set; } = DateTime.Now;
         public required Guid MaterialId { get; set; } // Foreign Key
         public required Guid ProjectStepId { get; set; } // Foreign Key
+        public required Guid MeasureId { get; set; } // FK
 
         #region Relations
 
         public virtual MaterialEntity? Material { get; private set; }
         public virtual ProjectStageEntity? ProjectStep { get; private set; }
+        public virtual MeasureEntity? Measure { get; set; }
 
         #endregion
     }

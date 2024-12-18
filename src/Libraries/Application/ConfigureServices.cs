@@ -1,4 +1,5 @@
-﻿using ContractorDocuments.Application.Common;
+﻿using ContractorDocuments.Application.Categories;
+using ContractorDocuments.Application.Common;
 using ContractorDocuments.Application.ConstructStages;
 using ContractorDocuments.Application.Equipments;
 using ContractorDocuments.Application.Materials;
@@ -14,6 +15,33 @@ namespace ContractorDocuments.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+
+            #region Services
+
+            services
+                .AddScoped<DataSeedService>()
+                // Projects
+                .AddScoped<ProjectService>()
+                .AddScoped<ProjectReportService>()
+                // Category
+                .AddScoped<CategoryService>()
+                .AddScoped<CategoryReportService>()
+                .AddScoped<CategoryModelFactory>()
+                // Construct Stages
+                .AddScoped<ConstructStageService>()
+                .AddScoped<ConstructStageReportService>()
+                // Materials
+                .AddScoped<MaterialService>()
+                .AddScoped<MaterialReportService>()
+                // Equipments
+                .AddScoped<EquipmentService>()
+                .AddScoped<EquipmentReportService>()
+                // Directory
+                .AddScoped<MeasureService>()
+                .AddScoped<MeasureReportService>()
+                ;
+
+            #endregion
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
@@ -30,29 +58,6 @@ namespace ContractorDocuments.Application
                 .AddScoped<UserReport>()
                 .AddScoped<UserModelFactory>()
                 .AddScoped<UserAuthenticationService>()
-                ;
-
-            #endregion
-
-            #region Services
-
-            services
-                .AddScoped<DataSeedService>()
-                // Projects
-                .AddScoped<ProjectService>()
-                .AddScoped<ProjectReportService>()
-                // Construct Stages
-                .AddScoped<ConstructStageService>()
-                .AddScoped<ConstructStageReportService>()
-                // Materials
-                .AddScoped<MaterialService>()
-                .AddScoped<MaterialReportService>()
-                // Equipments
-                .AddScoped<EquipmentService>()
-                .AddScoped<EquipmentReportService>()
-                // Directory
-                .AddScoped<MeasureService>()
-                .AddScoped<MeasureReportService>()
                 ;
 
             #endregion

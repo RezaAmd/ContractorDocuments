@@ -1,4 +1,5 @@
 ﻿using ContractorDocuments.Domain.Entities.Materials;
+using ContractorDocuments.Domain.Entities.Projects;
 
 namespace ContractorDocuments.Domain.Entities.Directory
 {
@@ -23,7 +24,7 @@ namespace ContractorDocuments.Domain.Entities.Directory
 
         #region Relations
 
-        public virtual ICollection<MaterialEntity>? Materials { get; set; }
+        public virtual ICollection<ProjectStageMaterialEntity>? ProjectStageMaterials { get; set; }
 
         #endregion
     }

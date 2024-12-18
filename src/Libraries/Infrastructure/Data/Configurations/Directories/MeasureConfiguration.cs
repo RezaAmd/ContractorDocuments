@@ -17,6 +17,15 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Directories
             builder.Property(m => m.SystemKeyword)
                 .HasMaxLength(20)
                 .IsRequired();
+
+            #region Relations
+
+            // ProjectStageMaterials
+            builder.HasMany(m => m.ProjectStageMaterials)
+                .WithOne(psm => psm.Measure)
+                .HasForeignKey(psm => psm.MeasureId);
+
+            #endregion
         }
     }
 }

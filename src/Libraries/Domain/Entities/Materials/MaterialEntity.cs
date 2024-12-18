@@ -6,8 +6,6 @@ namespace ContractorDocuments.Domain.Entities.Materials
     public class MaterialEntity : BaseEntity
     {
         public required string Name { get; set; }
-        public Guid? ParentMaterialId { get; set; } // Foreign Key
-        public Guid MeasureId { get; set; }
         public Guid? CategoryId { get; set; }
 
         #region Relations

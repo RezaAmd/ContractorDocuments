@@ -2,6 +2,7 @@
 
 namespace ContractorDocuments.Application.Materials.Queries
 {
+    [Obsolete]
     public class GetAllParentMaterialQuery : IRequest<IList<MaterialEntity>>
     {
     }

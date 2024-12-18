@@ -13,6 +13,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Materials
                 .HasMaxLength(100)
                 .IsRequired();
 
+            // CategoryId
             builder.Property(b => b.CategoryId);
 
             #region Relations
