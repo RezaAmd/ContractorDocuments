@@ -64,14 +64,16 @@ namespace ContractorDocuments.WebUI.Areas.Admin.Controllers
             parentMaterialWithChildren.Id = materialWithChildren.Id.ToString();
             parentMaterialWithChildren.Name = materialWithChildren.Name;
             parentMaterialWithChildren.Children = new List<MaterialWithChildrenViewModel>();
-            if (materialWithChildren.ChildrenMaterial != null)
-            {
-                parentMaterialWithChildren.Children = materialWithChildren.ChildrenMaterial.Select(m => new MaterialWithChildrenViewModel
-                {
-                    Id = m.Id.ToString(),
-                    Name = m.Name
-                }).ToList();
-            }
+
+            // TODO: Fix this part!
+            //if (materialWithChildren.ChildrenMaterial != null)
+            //{
+            //    parentMaterialWithChildren.Children = materialWithChildren.ChildrenMaterial.Select(m => new MaterialWithChildrenViewModel
+            //    {
+            //        Id = m.Id.ToString(),
+            //        Name = m.Name
+            //    }).ToList();
+            //}
 
             return View(parentMaterialWithChildren);
         }

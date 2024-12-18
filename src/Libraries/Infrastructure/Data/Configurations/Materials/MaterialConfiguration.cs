@@ -13,22 +13,9 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Materials
                 .HasMaxLength(100)
                 .IsRequired();
 
+            builder.Property(b => b.CategoryId);
+
             #region Relations
-
-            // ParentMaterial
-            builder.HasOne(b => b.ParentMaterial)
-                .WithMany(b => b.ChildrenMaterial)
-                .HasForeignKey(b => b.ParentMaterialId);
-
-            // ChildrenMaterial
-            builder.HasMany(b => b.ChildrenMaterial)
-                .WithOne(b => b.ParentMaterial)
-                .HasForeignKey(b => b.ParentMaterialId);
-
-            // Measure
-            builder.HasOne(b => b.Measure)
-                .WithMany(m => m.Materials)
-                .HasForeignKey(b => b.MeasureId);
 
             // Category
             builder.HasOne(m => m.Category)
