@@ -1,9 +1,4 @@
 ﻿using ContractorDocuments.Domain.Entities.Catalogs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContractorDocuments.Infrastructure.Data.Configurations.Catalogs
 {
@@ -17,6 +12,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Catalogs
             builder.HasKey(c => c.Id);
 
             // Name
+            builder.HasIndex(c => c.Name);
             builder.Property(c => c.Name)
                 .HasMaxLength(50);
 
