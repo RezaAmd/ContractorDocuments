@@ -1,0 +1,1302 @@
+{
+	"info": {
+		"_postman_id": "2c2afaa2-7857-4243-876e-b225aae94caf",
+		"name": "Web Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "7437987-2c2afaa2-7857-4243-876e-b225aae94caf"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign-in password",
+					"id": "698e192f-24be-4b68-bded-ba2447c134f6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"09058089095\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authentication/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authentication",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0f503870-6952-4c47-a1c4-70c41a70e16a",
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"09058089095\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7149/authentication/signin",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7149",
+									"path": [
+										"authentication",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"uuid": "6b5a6c44-ecf8-411c-9edd-f0670b5cc4e9"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 16 Dec 2024 09:09:17 GMT",
+									"uuid": "661f37f5-ff7f-431a-8aad-8d05b2896fc9"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"uuid": "cd091f0b-fe8c-4575-8d17-9b00e595c019"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"uuid": "de99e3fe-82e4-47ba-8dd5-2633b8aab86a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYTA5ZjRhOS02NzQ0LTQ5ZmEtYTI4OC04NGI0ZDUwYTgyYjciLCJ1bmlxdWVfbmFtZSI6IjA5MDU4MDg5MDk1IiwibmJmIjoxNzM0MzQwMTU4LCJleHAiOjE3MzQ0MjY1NTgsImlhdCI6MTczNDM0MDE1OCwiaXNzIjoiR0NIdWIiLCJhdWQiOiJHQ0h1YiJ9.vj0xXRPRdRJE9xPxgJXU4dJWWL4BgFP04_zXQKS-hDY\",\n    \"tokenExpireAt\": \"2024/12/17 12:39:18\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkYTA5ZjRhOS02NzQ0LTQ5ZmEtYTI4OC04NGI0ZDUwYTgyYjciLCJ1bmlxdWVfbmFtZSI6IjA5MDU4MDg5MDk1IiwibmJmIjoxNzM0MzQwMTU4LCJleHAiOjE3MzQ5NDQ5NTgsImlhdCI6MTczNDM0MDE1OCwiaXNzIjoiR0NIdWIiLCJhdWQiOiJHQ0h1YiJ9.s0hRW14aHuma-3eeQbog3pNwdCnw6lHeL8UZPCuLxbg\",\n    \"refreshTokenExpireAt\": \"2024/12/23 12:39:18\"\n}"
+						}
+					]
+				}
+			],
+			"id": "f0ccd07a-fd18-4779-a9ff-402cdf66f8e1"
+		},
+		{
+			"name": "Manage",
+			"item": [
+				{
+					"name": "Equipment",
+					"item": [
+						{
+							"name": "Get all",
+							"id": "81b6ea4a-1a1c-4657-b83f-27f42f09514a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/equipment/getAll",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"equipment",
+										"getAll"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "b25604af-744f-4600-b271-772b5195ca5f",
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://localhost:7149/manage/equipment/getAll",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7149",
+											"path": [
+												"manage",
+												"equipment",
+												"getAll"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "7e561e1b-ac93-47f7-8be7-cd4eeb89ee9d"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Dec 2024 09:16:40 GMT",
+											"uuid": "bc2bce94-9a8c-44d4-9ae0-3e17d0988ac7"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "e783ad4e-b9fc-4963-90a4-f17ae1397a15"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "0730006a-6b7e-4d42-a7b0-bdfe7dea9760"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"name\": \"دستکش\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create",
+							"id": "1082cf92-aff4-4416-826c-2a31f505c660",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"بیل مکانیکی\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/manage/equipment/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"equipment",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "dd02dfdb-5a7f-4e29-a869-b49676cdc052",
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"فرغون\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://localhost:7149/manage/equipment/create",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7149",
+											"path": [
+												"manage",
+												"equipment",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "441578ab-4b3b-42d6-a754-57fa99365b99"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Dec 2024 09:28:49 GMT",
+											"uuid": "d6485748-e7b5-4771-834a-24636e869a12"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "d19bb0d3-06c5-49a2-bedb-75750ae35653"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "6569b7f9-5ae5-4f7e-bf35-905520ee3500"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"isSuccess\": true,\n    \"messages\": []\n}"
+								}
+							]
+						}
+					],
+					"id": "c3eff0e8-adcd-44a1-ab27-f4ade630925b"
+				},
+				{
+					"name": "Material",
+					"item": [
+						{
+							"name": "Get all tree",
+							"id": "f93211c8-3210-438f-b6e2-e98fe43c9f94",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/material/getAllTree",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"material",
+										"getAllTree"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "d01a7e11-ef9e-4ce0-b0e4-b002e6b1827c",
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://localhost:7149/manage/material/getAll",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7149",
+											"path": [
+												"manage",
+												"material",
+												"getAll"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "bc058648-e4e5-4231-8ae9-b9bdbe5ee348"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Dec 2024 09:11:34 GMT",
+											"uuid": "967e532a-86fc-42c2-abe2-b156d2718780"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "7bc2bf29-46ac-4540-9732-b77db2b3175f"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "0db1a626-c2f6-4e68-9d2c-5ea135cf8099"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"87993493-7E01-4CBA-AF40-CEF6E61E3728\",\n        \"name\": \"شن\",\n        \"measure\": \"کیلوگرم\",\n        \"children\": [],\n        \"parentMaterial\": null\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create",
+							"id": "ba53855d-55ba-4e52-a7de-205be648d47c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ماسه\",\r\n    \"measureId\": \"b92cfb94-f491-4bfa-a47c-5147e0373392\",\r\n    \"parentMaterialId\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/manage/material/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"material",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "6f883621-ce56-49d4-8be7-2716886d9e6c",
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"ماسه\",\r\n    \"measureId\": \"b92cfb94-f491-4bfa-a47c-5147e0373392\",\r\n    \"parentMaterialId\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://localhost:7149/manage/material/create",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7149",
+											"path": [
+												"manage",
+												"material",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "5b0c1809-2e16-4dc3-bc5a-e30465a486d3"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Dec 2024 09:13:40 GMT",
+											"uuid": "f51b5955-a50d-495e-9d7e-15c3ac193835"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "98911dbf-e11f-42e6-9ff7-356592e80a45"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "c2c0d92e-445f-4188-9030-41490eaf0de2"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"isSuccess\": true,\n    \"messages\": []\n}"
+								}
+							]
+						}
+					],
+					"id": "05787f42-f288-43c9-a25f-dc307e267871"
+				},
+				{
+					"name": "Measure",
+					"item": [
+						{
+							"name": "Get all",
+							"id": "469ed601-dcac-474c-ad97-d3de9c388876",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/measure/getAll",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"measure",
+										"getAll"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "bf317c26-a979-45f4-b93e-48316af15c84"
+				},
+				{
+					"name": "Project",
+					"item": [
+						{
+							"name": "Stage",
+							"item": [
+								{
+									"name": "Stages",
+									"id": "0fd90268-e732-449c-933c-e77f5814abce",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/manage/project/stages?projectId=755dc44b-d54f-43a6-b0ba-9b5afa33acac",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"project",
+												"stages"
+											],
+											"query": [
+												{
+													"key": "projectId",
+													"value": "755dc44b-d54f-43a6-b0ba-9b5afa33acac"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "8874dc75-d4f9-4f50-9f3c-72c8f0c34510",
+											"name": "200",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://localhost:7149/manage/project/board?projectId=755dc44b-d54f-43a6-b0ba-9b5afa33acac",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7149",
+													"path": [
+														"manage",
+														"project",
+														"board"
+													],
+													"query": [
+														{
+															"key": "projectId",
+															"value": "755dc44b-d54f-43a6-b0ba-9b5afa33acac"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8",
+													"uuid": "9e2d32e6-e97f-4038-a8b4-649f85b5c590"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 17 Dec 2024 13:41:54 GMT",
+													"uuid": "d61005d1-12ff-4414-88f6-c7ded83959a3"
+												},
+												{
+													"key": "Server",
+													"value": "Kestrel",
+													"uuid": "b56d7ce9-db7e-4543-ae9d-8f756c7be0a0"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked",
+													"uuid": "5ccf5eea-39b0-4ac9-9daf-6b9a9b8a4a5c"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"id\": \"755DC44B-D54F-43A6-B0BA-9B5AFA33ACAC\",\n    \"title\": \"نمونه پروژه درصدی\",\n    \"totalExpense\": 0,\n    \"stages\": [\n        {\n            \"id\": \"E545966B-F9E6-4F78-A7FB-288D8160C7DA\",\n            \"name\": \"اداری\",\n            \"totalExpense\": 0,\n            \"materials\": [],\n            \"expenses\": []\n        }\n    ],\n    \"latitude\": 0,\n    \"longitude\": 0\n}"
+										}
+									]
+								},
+								{
+									"name": "Add construct stage",
+									"id": "18d11be4-a759-41fc-a954-23a7e03b69fb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"projectId\": \"755dc44b-d54f-43a6-b0ba-9b5afa33acac\",\r\n    \"constructStageId\": \"2dc67066-0dc4-4b8b-af4a-a17fcad199ee\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/manage/project/addConstructStage",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"project",
+												"addConstructStage"
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "be607612-dbfc-4350-8d30-20482c4828a2",
+											"name": "200",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"projectId\": \"755dc44b-d54f-43a6-b0ba-9b5afa33acac\",\r\n    \"constructStageId\": \"2dc67066-0dc4-4b8b-af4a-a17fcad199ee\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://localhost:7149/manage/project/addConstructStage",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7149",
+													"path": [
+														"manage",
+														"project",
+														"addConstructStage"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8",
+													"uuid": "6b0f8510-4be6-4f26-aa50-e72ffbfd238e"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 17 Dec 2024 13:32:30 GMT",
+													"uuid": "4f75e7e1-e5dc-471d-a129-692a2aa9ad41"
+												},
+												{
+													"key": "Server",
+													"value": "Kestrel",
+													"uuid": "52a44ecf-3c8b-4984-87e0-5286638e5306"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked",
+													"uuid": "8d06bb9c-c484-4a4f-88a7-f71cd118cc1a"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"isSuccess\": true,\n    \"messages\": []\n}"
+										}
+									]
+								},
+								{
+									"name": "Add stage material",
+									"id": "e8fb0b46-b4db-46ee-9799-5784c8517273",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"stageId\": \"E545966B-F9E6-4F78-A7FB-288D8160C7DA\",\r\n    \"materialId\": \"b5d7f904-2142-4049-b9aa-442b04a92016\",\r\n    \"amount\": 1,\r\n    \"unitPrice\": 12000000,\r\n    \"purchasedOn\": \"2024-12-17T13:44:25.894Z\",\r\n    \"transportCost\": 400000,\r\n    \"totalNetProfit\": 0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/manage/project/addStageMaterial",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"project",
+												"addStageMaterial"
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "9702f057-f9c9-41af-8552-ae00b4522f4d",
+											"name": "200",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"stageId\": \"E545966B-F9E6-4F78-A7FB-288D8160C7DA\",\r\n    \"materialId\": \"b5d7f904-2142-4049-b9aa-442b04a92016\",\r\n    \"amount\": 1,\r\n    \"unitPrice\": 12000000,\r\n    \"purchasedOn\": \"2024-12-17T13:44:25.894Z\",\r\n    \"transportCost\": 400000,\r\n    \"totalNetProfit\": 0\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://localhost:7149/manage/project/addStageMaterial",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7149",
+													"path": [
+														"manage",
+														"project",
+														"addStageMaterial"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8",
+													"uuid": "aba92a7e-0ad0-41ec-9c59-8f0a890f7e91"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 17 Dec 2024 13:48:03 GMT",
+													"uuid": "af58a169-dfef-43fd-96f9-00a918e21343"
+												},
+												{
+													"key": "Server",
+													"value": "Kestrel",
+													"uuid": "770e7bff-0acd-45dd-902e-5585ab3b49d8"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked",
+													"uuid": "cbd3b5e7-af46-4d7d-b77c-3a154f7e69c2"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"isSuccess\": true,\n    \"messages\": []\n}"
+										}
+									]
+								}
+							],
+							"id": "087d94bf-b6d7-4a80-8690-64a7d10b4fb0"
+						},
+						{
+							"name": "Get all",
+							"id": "f9e01eed-d8be-4784-a93a-ca25b4169b97",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/project/getAll",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"project",
+										"getAll"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "5b1d0103-7f81-4be8-83b3-e9be2041936d",
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/manage/project/getAll",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"project",
+												"getAll"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "f183a273-80f1-4b6b-9c1f-80e8af2a0fe2"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Dec 2024 10:11:57 GMT",
+											"uuid": "4c7235cd-a29d-49cc-a31d-5349f15a4622"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "f8ec3700-5f24-46e1-9af8-cd46d9b3a6f2"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "31327674-2932-4550-80f3-07f7067559b8"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"title\": \"نمونه پروژه درصدی\",\n        \"projectTypeId\": 5,\n        \"contractId\": \"0b6de1fe-e85c-4835-94f8-145aa2ad30ec\",\n        \"startOn\": \"2024-12-16T09:59:24.306\",\n        \"endOn\": \"2024-12-16T09:59:24.306\",\n        \"description\": \"این پروژه از نوع ساخت و ساز است، قرارداد بصورت درصدی است.\",\n        \"createdOn\": \"2024-12-16T13:40:41.6810181\",\n        \"latitude\": 0,\n        \"longitude\": 0,\n        \"contract\": null,\n        \"stages\": null,\n        \"id\": \"755dc44b-d54f-43a6-b0ba-9b5afa33acac\"\n    },\n    {\n        \"title\": \"برج 30 طبقه تجریش\",\n        \"projectTypeId\": 5,\n        \"contractId\": \"c9d5912f-3f1b-4fd7-b445-ac7249ab11b8\",\n        \"startOn\": \"2024-11-21T00:00:00\",\n        \"endOn\": \"2026-12-22T00:00:00\",\n        \"description\": \"توضیحات تکمیلی پروژه ساخت برج 30 طبقه تجریش تهران\",\n        \"createdOn\": \"2024-12-16T13:23:19.2676593\",\n        \"latitude\": 35.803295,\n        \"longitude\": 51.434971,\n        \"contract\": null,\n        \"stages\": null,\n        \"id\": \"827e3d7a-0ddd-42bf-af7b-86518c86244e\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create",
+							"id": "808911b5-fb85-4f65-8185-f3b90be3a61f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"نمونه پروژه درصدی\",\r\n  \"typeId\": 5, // Construction: 5, Renovation: 10\r\n  \"contractTypeId\": 10,\r\n  \"sharePercentage\": 60, // contractTypeId = 10 || 15\r\n  \"amount\": 0, // contractTypeId = 5 || 15\r\n  \"processStatusTypeId\": 5, // NotStartedYet: 0, InProgrecc: 5, Completed: 10\r\n  \"startOn\": \"2024-12-16T09:59:24.306Z\",\r\n  \"endOn\": \"2024-12-16T09:59:24.306Z\",\r\n  \"description\": \"این پروژه از نوع ساخت و ساز است، قرارداد بصورت درصدی است.\",\r\n  \"latitude\": 0,\r\n  \"longitude\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/manage/project/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"project",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "10bf51c0-af08-427b-baec-41d84614e021",
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"title\": \"نمونه پروژه درصدی\",\r\n  \"typeId\": 5, // Construction: 5, Renovation: 10\r\n  \"contractTypeId\": 10, // Personal: 0, LumpSum: 5, Percentage: 10, Salary: 15, PriceList: 20\r\n  \"sharePercentage\": 60, // contractTypeId = 10\r\n  \"amount\": 0, // contractTypeId = 5 || 15\r\n  \"processStatusTypeId\": 5, // NotStartedYet: 0, InProgrecc: 5, Completed: 10\r\n  \"startOn\": \"2024-12-16T09:59:24.306Z\",\r\n  \"endOn\": \"2024-12-16T09:59:24.306Z\",\r\n  \"description\": \"این پروژه از نوع ساخت و ساز است، قرارداد بصورت درصدی است.\",\r\n  \"latitude\": 0,\r\n  \"longitude\": 0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/manage/project/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"project",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "340c1722-66b8-4ec9-92a9-fcb37164618f"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 16 Dec 2024 10:10:41 GMT",
+											"uuid": "4e11c08d-cc5e-46f4-a261-71dabe6cb738"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "7dbb5b82-c8e4-49f8-b705-05d925124d3b"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "2053593d-7777-459c-ac78-edd2a85192f4"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": null,\n    \"isSuccess\": true,\n    \"messages\": []\n}"
+								}
+							]
+						}
+					],
+					"id": "fac878d8-6d3b-491d-8d09-e8abc5adf6f1"
+				},
+				{
+					"name": "Construct Stage",
+					"item": [
+						{
+							"name": "Get all",
+							"id": "c06786b2-9737-49b8-be72-909279ac68cd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/constructStage/getAll?projectTypeId=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"constructStage",
+										"getAll"
+									],
+									"query": [
+										{
+											"key": "projectTypeId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "0ee89830-824b-440c-9084-a733dd99e84c",
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/manage/constructStage/getAll?projectTypeId=",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"constructStage",
+												"getAll"
+											],
+											"query": [
+												{
+													"key": "projectTypeId",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "64d3c0e7-397e-41c5-b37b-a109e2647c20"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 17 Dec 2024 13:28:23 GMT",
+											"uuid": "bd8e1fc4-4059-4427-899f-c2ec36530353"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "eea62173-80fc-4c1e-bec1-bd207a528ede"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "ad4756a9-3b56-4fe5-b497-d5f26ec7ad87"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"name\": \"اداری\",\n        \"projectTypeId\": 5,\n        \"displayOrder\": 5,\n        \"projectStages\": null,\n        \"id\": \"2dc67066-0dc4-4b8b-af4a-a17fcad199ee\"\n    },\n    {\n        \"name\": \"بررسی اولیه\",\n        \"projectTypeId\": 10,\n        \"displayOrder\": 5,\n        \"projectStages\": null,\n        \"id\": \"53155a22-6e04-491a-b01d-d3e6e2652512\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create",
+							"id": "d2941684-ed91-4d86-8df4-f03bdfd607c3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"فنداسیون\",\r\n    \"projectTypeId\": 5, // Construction: 5, Renovation: 10\r\n    \"displayOrder\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/manage/constructStage/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"constructStage",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "f9416f8f-ee9f-4619-a039-6fc24d4a3d83"
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Create",
+							"id": "6d7ff7c8-1c9d-4189-a9c6-4f4ba876b464",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"نمونه\",\r\n    \"relevantEntityTypeId\": 10,\r\n    \"parentMaterialId\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/manage/category/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "57b2d2e1-e5f1-425f-aa5a-9a8168f89d0a",
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"نمونه\",\r\n    \"relevantEntityTypeId\": 10,\r\n    \"parentMaterialId\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/manage/category/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"category",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "83048f0b-03da-4e5b-bf98-4e1b45c4f7d7"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 18 Dec 2024 06:33:13 GMT",
+											"uuid": "a1b78d30-e78f-4d79-8b18-d357e9223deb"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "40458260-c7aa-4f2e-ab46-1cf477dd334f"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "125e9d2f-dafd-4ecc-8f0f-9748b79ab030"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"isSuccess\": true,\n    \"messages\": []\n}"
+								},
+								{
+									"id": "5852a77a-c035-40b4-8aa1-8f488b44af31",
+									"name": "400",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"نمونه\",\r\n    \"relevantEntityTypeId\": 10,\r\n    \"parentMaterialId\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/manage/category/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manage",
+												"category",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8",
+											"uuid": "5563062f-3701-4ace-bcf1-6b67409a8b54"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 18 Dec 2024 06:33:35 GMT",
+											"uuid": "773b8726-5969-40c5-9f21-64686176f8fa"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel",
+											"uuid": "32d158d2-31a3-4b8d-a90f-924ea840a8da"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked",
+											"uuid": "b258b012-cd1d-4f9f-befb-97832add7473"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"isSuccess\": false,\n    \"messages\": [\n        \"این دسته بندی قبلا ایجاد شده.\"\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get all parents",
+							"id": "5ba9fe2b-9e36-4de5-895e-954d0d3cb8a9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/category/getAllParents",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"category",
+										"getAllParents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all tree",
+							"id": "481f91d7-c1ab-42c4-b6a9-21f4c0967a6e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/manage/category/getAllTree",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manage",
+										"category",
+										"getAllTree"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "3af364ee-56ad-405b-8499-a42e372e9fb8"
+				}
+			],
+			"id": "0aad97f2-4217-4e80-9160-1dcf4959d65f",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0e40e204-01c7-4584-86f1-208b206ff820",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "31abc5b1-b537-4958-9741-6b385038aeec",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4e5280de-e5ef-4ac2-9965-0898dd1cfeaf",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f2f0d0bf-3eb4-4fa6-9349-5dda731f2e63",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5b1709fb-c3a8-4bfe-9923-4cd37bfe5bad",
+			"key": "baseUrl",
+			"value": "http://localhost:5125",
+			"type": "string"
+		},
+		{
+			"id": "56bd6772-702f-47cc-8bf8-321783da18fb",
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "792b9be0-040e-484b-abf6-01e23d7a9b72",
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
