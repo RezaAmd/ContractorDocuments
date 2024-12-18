@@ -1,7 +1,7 @@
 # Contractor Documents
 
 ### General Contractor Project Management System
-This project is a comprehensive solution for general contractors to efficiently manage construction and reconstruction projects. Designed for flexibility and scalability, the application provides tools to track and organize every stage of a project. Key features include:
+This project is a comprehensive solution for **general contractors** to efficiently manage construction and reconstruction projects. Designed for flexibility and scalability, the application provides tools to track and organize every stage of a project. Key features include:
 - **Trello-like Project Board:** Manage projects in stages, with each column representing a stage in the workflow.
 - **Expense Tracking:** Log materials, equipment usage, worker wages, and subcontractor costs for each stage.
 - **Task Management:** Assign, track, and update tasks for teams and subcontractors.
