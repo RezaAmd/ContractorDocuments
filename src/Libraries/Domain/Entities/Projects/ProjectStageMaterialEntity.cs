@@ -21,7 +21,7 @@ namespace ContractorDocuments.Domain.Entities.Projects
         #region Relations
 
         public virtual MaterialEntity? Material { get; private set; }
-        public virtual ProjectStageEntity? ProjectStep { get; private set; }
+        public virtual ProjectStageEntity? ProjectStage { get; private set; }
         public virtual MeasureEntity? Measure { get; set; }
 
         #endregion

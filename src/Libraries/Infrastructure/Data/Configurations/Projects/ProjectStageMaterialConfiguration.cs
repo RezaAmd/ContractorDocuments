@@ -41,7 +41,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
                 .HasForeignKey(b => b.MaterialId);
 
             // ProjectStage
-            builder.HasOne(b => b.ProjectStep)
+            builder.HasOne(b => b.ProjectStage)
                 .WithMany(ps => ps.Materials)
                 .HasForeignKey(b => b.ProjectStepId);
 

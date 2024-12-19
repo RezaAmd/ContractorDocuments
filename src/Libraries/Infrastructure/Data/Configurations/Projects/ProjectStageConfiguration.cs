@@ -30,7 +30,7 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
 
             // Materials
             builder.HasMany(b => b.Materials)
-                .WithOne(psm => psm.ProjectStep)
+                .WithOne(psm => psm.ProjectStage)
                 .HasForeignKey(b => b.ProjectStepId);
 
             #endregion
