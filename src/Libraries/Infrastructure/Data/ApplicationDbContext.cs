@@ -17,48 +17,34 @@ namespace ContractorDocuments.Infrastructure.Data
         #region Tables
 
         #region Customers
-
         public DbSet<UserEntity> Users => Set<UserEntity>();
         public DbSet<ContractorEntity> Contractors => Set<ContractorEntity>();
         public DbSet<ContractorPhoneEntity> ContractorPhones => Set<ContractorPhoneEntity>();
-
-
         #endregion
 
         #region Projects
-
         public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
         public DbSet<ProjectStageEntity> ProjectStages => Set<ProjectStageEntity>();
         public DbSet<ConstructStageEntity> ConstructStages => Set<ConstructStageEntity>();
         public DbSet<ProjectStageMaterialEntity> ProjectStageMaterials => Set<ProjectStageMaterialEntity>();
         public DbSet<ProjectStageExpenseEntity> ProjectStageExpenses => Set<ProjectStageExpenseEntity>();
         public DbSet<ProjectStageEquipmentEntity> ProjectStageEquipments => Set<ProjectStageEquipmentEntity>();
-
         #endregion
 
         #region Catalogs
-
         public DbSet<CategoryEntity> Categories => Set<CategoryEntity>();
-
         #endregion
 
         #region Materials
-
         public DbSet<MaterialEntity> Materials => Set<MaterialEntity>();
-
-
         #endregion
 
         #region Equipments
-
         public DbSet<EquipmentEntity> Equipments => Set<EquipmentEntity>();
-
         #endregion
 
         #region Directory
-
         public DbSet<MeasureEntity> Measures => Set<MeasureEntity>();
-
         #endregion
 
         #endregion

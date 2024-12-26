@@ -16,13 +16,11 @@ namespace ContractorDocuments.Application.Projects.Commands
     internal class AddStageMaterialCommandHandler : IRequestHandler<AddStageMaterialCommand, Result>
     {
         #region Fields & Ctor
-
         private readonly ProjectService _projectService;
         public AddStageMaterialCommandHandler(ProjectService projectService)
         {
             _projectService = projectService;
         }
-
         #endregion
 
         public async Task<Result> Handle(AddStageMaterialCommand request, CancellationToken cancellationToken)
@@ -33,7 +31,7 @@ namespace ContractorDocuments.Application.Projects.Commands
                 MaterialId = Guid.Parse(request.MaterialId),
                 ProjectStepId = Guid.Parse(request.StageId),
                 MeasureId = Guid.Parse(request.MeasureId),
-                UnitPrice = request.UnitPrice,
+                //UnitPrice = request.UnitPrice,
                 TransportCost = request.TransportCost,
                 TotalNetProfit = request.TotalNetProfit,
                 PurchacedOn = request.PurchasedOn

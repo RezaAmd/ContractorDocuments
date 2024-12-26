@@ -10,9 +10,7 @@
         public DateTime CreatedOn { get; private set; } = DateTime.Now;
 
         #region Relations
-
         public virtual ICollection<ContractorPhoneEntity>? Phones { get; private set; }
-
         #endregion
     }
 }

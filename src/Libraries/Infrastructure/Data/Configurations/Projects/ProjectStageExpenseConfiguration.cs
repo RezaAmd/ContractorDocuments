@@ -1,4 +1,5 @@
 ﻿using ContractorDocuments.Domain.Entities.Projects;
+using ContractorDocuments.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,11 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
             // Amount
             builder.Property(b => b.Amount)
                 .HasPrecision(18, 2);
+
+            // TypeId
+            builder.Property(b => b.TypeId)
+                .HasDefaultValue(ExpenseType.Other)
+                .HasColumnType("tinyint");
 
             // PaidOn
             builder.Property(b => b.PaidOn);

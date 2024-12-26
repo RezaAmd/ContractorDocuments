@@ -1,9 +1,4 @@
 ﻿using ContractorDocuments.Domain.Entities.Projects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContractorDocuments.Application.Projects.Commands
 {
@@ -19,20 +14,19 @@ namespace ContractorDocuments.Application.Projects.Commands
     internal class AddStageExpenseCommandHandler : IRequestHandler<AddStageExpenseCommand, Result>
     {
         #region Fields & Ctor
-
         private readonly ProjectService _projectService;
-
         public AddStageExpenseCommandHandler(ProjectService projectService)
         {
             _projectService = projectService;
         }
-
         #endregion
 
         public async Task<Result> Handle(AddStageExpenseCommand request, CancellationToken cancellationToken)
         {
-            var projectStageExpense = new ProjectStageExpenseEntity(request.Title, request.Amount, request.PaidOn, request.ProjectStageId);
+            var projectStageExpense = new ProjectStageExpenseEntity(request.Title, request.Amount, ExpenseType.Other, request.PaidOn, request.ProjectStageId);
+
             projectStageExpense.Description = request.Description;
+
             return await _projectService.AddStageExpenseAsync(projectStageExpense);
         }
     }

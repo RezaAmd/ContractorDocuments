@@ -26,15 +26,12 @@ namespace ContractorDocuments.Infrastructure.Data
     public class ApplicationDbContextInitialiser
     {
         #region Fields
-
         private readonly ILogger<ApplicationDbContextInitialiser> _logger;
         private readonly ApplicationDbContext _context;
         private readonly UserService _userService;
-
         #endregion
 
         #region Ctor
-
         public ApplicationDbContextInitialiser(ILogger<ApplicationDbContextInitialiser> logger,
             ApplicationDbContext context, UserService userService)
         {
@@ -42,7 +39,6 @@ namespace ContractorDocuments.Infrastructure.Data
             _context = context;
             _userService = userService;
         }
-
         #endregion
 
         public async Task InitialiseAsync()

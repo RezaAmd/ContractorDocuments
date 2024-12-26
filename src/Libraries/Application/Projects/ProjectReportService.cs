@@ -1,7 +1,6 @@
 ﻿using ContractorDocuments.Application.Projects.ViewModels;
 using ContractorDocuments.Domain.Entities.Projects;
 using System.Globalization;
-using System.Net.Http.Headers;
 
 namespace ContractorDocuments.Application.Projects
 {
@@ -52,8 +51,9 @@ namespace ContractorDocuments.Application.Projects
                 {
                     Id = p.Id.ToString(),
                     Title = p.Title,
-                    TotalExpense = p.Stages!.SelectMany(s => s.Materials!).Sum(psm => psm.UnitPrice * psm.Amount)
-                    + p.Stages!.SelectMany(s => s.Expenses!).Sum(pse => pse.Amount),
+                    // TODO: Rewrite total expense.
+                    //TotalExpense = p.Stages!.SelectMany(s => s.Materials!).Sum(psm => psm.UnitPrice * psm.Amount)
+                    //+ p.Stages!.SelectMany(s => s.Expenses!).Sum(pse => pse.Amount),
                     Latitude = p.Latitude,
                     Longitude = p.Longitude,
                     Stages = p.Stages!.OrderBy(s => s.ConstructStage!.DisplayOrder)
@@ -61,15 +61,17 @@ namespace ContractorDocuments.Application.Projects
                     {
                         Id = s.Id.ToString(),
                         Name = s.ConstructStage!.Name,
-                        TotalExpense = s.Materials!.Sum(sm => sm.UnitPrice * sm.Amount)
-                        + s.Expenses!.Sum(se => se.Amount),
+                        // TODO: Rewrite total expense.
+                        //TotalExpense = s.Materials!.Sum(sm => sm.UnitPrice * sm.Amount)
+                        //+ s.Expenses!.Sum(se => se.Amount),
                         Materials = s.Materials!.OrderByDescending(m => m.CreatedOn)
                         .Select(m => new StageMaterialViewModel
                         {
                             Id = m.Id.ToString(),
                             Name = m.Material!.Name,
                             Amount = m.Amount,
-                            UnitPrice = m.UnitPrice
+                            // TODO: Rewrite UnitPrice.
+                            //UnitPrice = m.UnitPrice
                         }).Take(3).ToList(),
                         Expenses = s.Expenses!.OrderByDescending(e => e.CreatedOn)
                         .Select(e => new StageExpenseViewModel
@@ -118,12 +120,13 @@ namespace ContractorDocuments.Application.Projects
                     Id = psm.Id.ToString(),
                     Name = psm.Material!.Name,
                     Amount = psm.Amount,
-                    UnitPrice = psm.UnitPrice,
-                    PurchasedOn = psm.PurchacedOn.HasValue ? psm.PurchacedOn.Value.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")) : 
+                    //UnitPrice = psm.UnitPrice,
+                    PurchasedOn = psm.PurchacedOn.HasValue ? psm.PurchacedOn.Value.ToString("yyyy/MM/dd", new CultureInfo("fa-IR")) :
                     null,
                     TransportCost = psm.TransportCost,
                     TotalNetProfit = psm.TotalNetProfit,
-                    TotalCost = psm.UnitPrice * psm.Amount + (psm.TransportCost.HasValue ? psm.TransportCost.Value : 0)
+                    // TODO: Fill total cost in project board.
+                    //TotalCost = psm.UnitPrice * psm.Amount + (psm.TransportCost.HasValue ? psm.TransportCost.Value : 0)
                 }).ToListAsync(cancellationToken);
         }
 

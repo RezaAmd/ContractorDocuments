@@ -13,8 +13,8 @@ namespace ContractorDocuments.Infrastructure.Data.Configurations.Projects
                 .HasPrecision(18, 2);
 
             // UnitPrice
-            builder.Property(b => b.UnitPrice)
-                .HasPrecision(18, 2);
+            //builder.Property(b => b.UnitPrice)
+            //    .HasPrecision(18, 2);
 
             // TotalNetProfit
             builder.Property(b => b.TotalNetProfit)

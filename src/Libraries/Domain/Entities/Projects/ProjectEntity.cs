@@ -9,20 +9,16 @@
         public DateTime? StartOn { get; set; }
         public DateTime? EndOn { get; set; }
         public string? Description { get; set; }
-        public DateTime CreatedOn { get; private set; } = DateTime.Now;
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
 
         #region Relations
-
         public required virtual ProjectContractEntity Contract { get; set; }
         public virtual ICollection<ProjectStageEntity>? Stages { get; private set; }
-
         #endregion
 
         #region Ctor
-
-
 
         #endregion
     }

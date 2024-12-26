@@ -9,7 +9,6 @@ namespace ContractorDocuments.Domain.Entities.Projects
     public class ProjectStageMaterialEntity : BaseEntity, IDateTimeCreation
     {
         public required decimal Amount { get; set; }
-        public required decimal UnitPrice { get; set; }
         public decimal? TotalNetProfit { get; set; }
         public decimal? TransportCost { get; set; }
         public DateTime? PurchacedOn { get; set; }
