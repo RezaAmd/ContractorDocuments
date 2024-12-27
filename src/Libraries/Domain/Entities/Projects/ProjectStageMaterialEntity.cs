@@ -16,12 +16,14 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public required Guid MaterialId { get; set; } // Foreign Key
         public required Guid ProjectStepId { get; set; } // Foreign Key
         public required Guid MeasureId { get; set; } // FK
+        public Guid? ExpenseId { get; set; }
 
         #region Relations
 
         public virtual MaterialEntity? Material { get; private set; }
         public virtual ProjectStageEntity? ProjectStage { get; private set; }
         public virtual MeasureEntity? Measure { get; set; }
+        public virtual ProjectStageExpenseEntity? Expense { get; set; }
 
         #endregion
     }

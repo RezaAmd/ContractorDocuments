@@ -16,16 +16,15 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public DateTime? RentEndTime { get; set; }
         public DateTime CreatedOn { get; private set; } = DateTime.Now;
         public string? Description { get; set; }
+        public Guid? ExpenseId { get; set; }
 
         #region Relations
-
         public virtual EquipmentEntity? Equipment { get; private set; }
         public virtual ProjectStageEntity? ProjectStage { get; private set; }
-
+        public virtual ProjectStageExpenseEntity? Expense { get; set; }
         #endregion
 
         #region Ctor
-
         public ProjectStageEquipmentEntity(int quantity, decimal totalCost, Guid projectStageId, Guid equipmentId)
         {
             if (quantity <= 0)
@@ -44,7 +43,6 @@ namespace ContractorDocuments.Domain.Entities.Projects
                 throw new ArgumentNullException("Project stage id cannot be null or empty.");
             EquipmentId = equipmentId;
         }
-
         #endregion
     }
 }
