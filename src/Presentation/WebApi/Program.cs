@@ -14,10 +14,17 @@ if (app.Environment.IsDevelopment())
 {
     // Enable Swagger in development mode
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI((options) =>
+    {
+        options.DocumentTitle = "Bildora API";
+        options.HeadContent = "<link rel='icon' href='/favicon.ico' />";
+        options.InjectStylesheet("/css/dark-swagger.min.css");
+    });
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseCors(options =>
 {
