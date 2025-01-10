@@ -12,7 +12,7 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public decimal? TotalNetProfit { get; set; }
         public decimal? TransportCost { get; set; }
         public DateTime? PurchacedOn { get; set; }
-        public DateTime CreatedOn { get; private set; } = DateTime.Now;
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
         public required Guid MaterialId { get; set; } // Foreign Key
         public required Guid ProjectStepId { get; set; } // Foreign Key
         public required Guid MeasureId { get; set; } // FK

@@ -14,7 +14,7 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public bool IsRent { get; set; }
         public DateTime? RentStartTime { get; set; }
         public DateTime? RentEndTime { get; set; }
-        public DateTime CreatedOn { get; private set; } = DateTime.Now;
+        public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
         public string? Description { get; set; }
         public Guid? ExpenseId { get; set; }
 
