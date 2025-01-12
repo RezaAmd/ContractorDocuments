@@ -13,16 +13,19 @@ namespace ContractorDocuments.Domain.Entities.Projects
         public decimal? TransportCost { get; set; }
         public DateTime? PurchacedOn { get; set; }
         public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
-        public required Guid MaterialId { get; set; } // Foreign Key
-        public required Guid ProjectStepId { get; set; } // Foreign Key
-        public required Guid MeasureId { get; set; } // FK
-        public Guid? ExpenseId { get; set; }
 
         #region Relations
 
+        public required Guid MaterialId { get; set; } // Foreign Key
         public virtual MaterialEntity? Material { get; private set; }
+
+        public required Guid ProjectStepId { get; set; } // Foreign Key
         public virtual ProjectStageEntity? ProjectStage { get; private set; }
+
+        public required Guid MeasureId { get; set; } // FK
         public virtual MeasureEntity? Measure { get; set; }
+
+        public Guid? ExpenseId { get; set; } // FK
         public virtual ProjectStageExpenseEntity? Expense { get; set; }
 
         #endregion

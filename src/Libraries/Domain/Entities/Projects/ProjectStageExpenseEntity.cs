@@ -8,9 +8,9 @@
         public DateTime PaidOn { get; set; }
         public string? Description { get; set; }
         public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
-        public Guid ProjectStageId { get; set; }
 
         #region Relations
+        public Guid ProjectStageId { get; set; } // FK
         public virtual ProjectStageEntity? ProjectStage { get; private set; }
         #endregion
 

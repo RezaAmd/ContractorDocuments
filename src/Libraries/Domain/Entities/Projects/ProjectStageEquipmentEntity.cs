@@ -46,3 +46,9 @@ namespace ContractorDocuments.Domain.Entities.Projects
         #endregion
     }
 }
+
+public class WeatherResponse
+{
+    public decimal Temperature { get; set; } // دمای هوا
+    public byte HumidityPercentage { get; set; } // رطوبت هوا
+}
