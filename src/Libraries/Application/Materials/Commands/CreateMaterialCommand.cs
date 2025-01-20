@@ -1,5 +1,4 @@
-﻿
-using ContractorDocuments.Domain.Entities.Materials;
+﻿using ContractorDocuments.Domain.Entities.Resources;
 
 namespace ContractorDocuments.Application.Materials.Commands
 {

@@ -1,4 +1,4 @@
-﻿using ContractorDocuments.Domain.Entities.Equipment;
+﻿using ContractorDocuments.Domain.Entities.Resources;
 
 namespace ContractorDocuments.Application.Equipments
 {

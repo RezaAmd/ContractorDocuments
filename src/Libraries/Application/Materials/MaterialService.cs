@@ -1,4 +1,4 @@
-﻿using ContractorDocuments.Domain.Entities.Materials;
+﻿using ContractorDocuments.Domain.Entities.Resources;
 using System.Linq;
 
 namespace ContractorDocuments.Application.Materials

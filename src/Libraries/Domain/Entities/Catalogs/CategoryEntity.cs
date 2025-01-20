@@ -1,5 +1,4 @@
-﻿using ContractorDocuments.Domain.Entities.Equipment;
-using ContractorDocuments.Domain.Entities.Materials;
+﻿using ContractorDocuments.Domain.Entities.Resources;
 
 namespace ContractorDocuments.Domain.Entities.Catalogs
 {

@@ -1,6 +1,6 @@
 ﻿using ContractorDocuments.Domain.Entities.Directory;
-using ContractorDocuments.Domain.Entities.Equipment;
 using ContractorDocuments.Domain.Entities.Projects;
+using ContractorDocuments.Domain.Entities.Resources;
 
 namespace ContractorDocuments.Application.Common
 {

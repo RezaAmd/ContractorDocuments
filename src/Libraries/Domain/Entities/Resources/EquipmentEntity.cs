@@ -1,7 +1,7 @@
 ﻿using ContractorDocuments.Domain.Entities.Catalogs;
 using ContractorDocuments.Domain.Entities.Projects;
 
-namespace ContractorDocuments.Domain.Entities.Equipment
+namespace ContractorDocuments.Domain.Entities.Resources
 {
     public class EquipmentEntity : BaseEntity
     {

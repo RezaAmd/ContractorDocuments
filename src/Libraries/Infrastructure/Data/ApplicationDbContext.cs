@@ -3,9 +3,8 @@ using ContractorDocuments.Application.Common.Models;
 using ContractorDocuments.Domain.Entities.Catalogs;
 using ContractorDocuments.Domain.Entities.Customers;
 using ContractorDocuments.Domain.Entities.Directory;
-using ContractorDocuments.Domain.Entities.Equipment;
-using ContractorDocuments.Domain.Entities.Materials;
 using ContractorDocuments.Domain.Entities.Projects;
+using ContractorDocuments.Domain.Entities.Resources;
 using System.Reflection;
 
 namespace ContractorDocuments.Infrastructure.Data

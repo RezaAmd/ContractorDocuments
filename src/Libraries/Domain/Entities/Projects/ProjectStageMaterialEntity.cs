@@ -1,5 +1,5 @@
 ﻿using ContractorDocuments.Domain.Entities.Directory;
-using ContractorDocuments.Domain.Entities.Materials;
+using ContractorDocuments.Domain.Entities.Resources;
 
 namespace ContractorDocuments.Domain.Entities.Projects
 {
