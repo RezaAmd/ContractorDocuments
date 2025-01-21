@@ -7,6 +7,7 @@ namespace ContractorDocuments.Domain.Entities.Tasks
     {
         public required string Title { get; set; }
         public string? Description { get; set; }
+        public PriorityLevel PriorityLevelId { get; set; } = PriorityLevel.Medium;
         public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
 
         #region Relations
