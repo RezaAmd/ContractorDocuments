@@ -8,6 +8,7 @@ namespace ContractorDocuments.Domain.Entities.Tasks
         public required string Title { get; set; }
         public string? Description { get; set; }
         public PriorityLevel PriorityLevelId { get; set; } = PriorityLevel.Medium;
+        public TaskStatus StatusId { get; set; } = TaskStatus.NotStarted;
         public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
 
         #region Relations
